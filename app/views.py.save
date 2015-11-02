@@ -1,0 +1,38 @@
+from app import app
+from flask import request
+import requests
+placesApiKey = "AIzaSyDE5Kh1UcwN44VxsM_BrxAIXFt5XB3KoVY"
+nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+
+app.debug = 1
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return 'Hello World'
+
+@app.route('/nearbySpecific', methods=['GET','POST'])
+def searchSpecific():
+    latitude = request.form.get['latitude']
+    longitude = request.form.get['longitude']
+    rank = 'distance'
+    location = latitude + ',' + longitude
+    genre = request.form.get['genre']
+    genre = genre + '+food'
+    payload = {'location': location, 'rank': rank, 'query': genre, 'key': placesApiKey}
+    r = requests.get(textSearch, param=payload);
+    
+@app.route('/nearbySuggested', methods=['GET','POST'])   
+@app.route('/nearbyAny', methods=['GET','POST'])
+def searchNearby():
+    data = request.get_json(force=False, silent=True, cached=True)
+    latitude = request.form.get['latitude']
+    longitude = request.form.get['longitude']
+    location = latitude + "," + longitude
+    return location 
+    payload = {'location': location, 'radius': 500, 'types': 'food', 'key': placesApiKey}
+    r = requests.get(nearbySearch, params=payload)
+    return r.json() 
+
+

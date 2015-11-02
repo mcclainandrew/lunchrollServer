@@ -1,0 +1,30 @@
+[Sun Nov 01 18:56:29.901516 2015] [ssl:info] [pid 20079:tid 140500839163776] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Sun Nov 01 18:56:29.901751 2015] [ssl:info] [pid 20079:tid 140500839163776] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Sun Nov 01 18:56:29.902020 2015] [ssl:warn] [pid 20079:tid 140500839163776] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Nov 01 18:56:29.902034 2015] [ssl:warn] [pid 20079:tid 140500839163776] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Sun Nov 01 18:56:29.910513 2015] [ssl:info] [pid 20080:tid 140500839163776] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Sun Nov 01 18:56:29.910721 2015] [ssl:info] [pid 20080:tid 140500839163776] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Sun Nov 01 18:56:29.910982 2015] [ssl:warn] [pid 20080:tid 140500839163776] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Nov 01 18:56:29.911009 2015] [ssl:warn] [pid 20080:tid 140500839163776] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Sun Nov 01 18:56:57.839448 2015] [ssl:info] [pid 20187:tid 140014809401216] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Sun Nov 01 18:56:57.839684 2015] [ssl:info] [pid 20187:tid 140014809401216] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Sun Nov 01 18:56:57.839991 2015] [ssl:warn] [pid 20187:tid 140014809401216] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Nov 01 18:56:57.840006 2015] [ssl:warn] [pid 20187:tid 140014809401216] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Sun Nov 01 18:56:57.847745 2015] [ssl:info] [pid 20188:tid 140014809401216] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Sun Nov 01 18:56:57.847982 2015] [ssl:info] [pid 20188:tid 140014809401216] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Sun Nov 01 18:56:57.848238 2015] [ssl:warn] [pid 20188:tid 140014809401216] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Nov 01 18:56:57.848252 2015] [ssl:warn] [pid 20188:tid 140014809401216] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Sun Nov 01 18:57:15.185572 2015] [ssl:info] [pid 20191:tid 140014698170112] [client 68.226.111.133:35604] AH01964: Connection to child 0 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:15.185947 2015] [ssl:info] [pid 20191:tid 140014698170112] [client 68.226.111.133:35604] AH01996: SSL handshake failed: HTTP spoken on HTTPS port; trying to send HTML error page
+[Sun Nov 01 18:57:15.185980 2015] [ssl:info] [pid 20191:tid 140014698170112] SSL Library Error: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request -- speaking HTTP to HTTPS port!?
+[Sun Nov 01 18:57:15.433685 2015] [ssl:info] [pid 20192:tid 140014566491904] [client 68.226.111.133:35605] AH01964: Connection to child 71 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:15.433994 2015] [ssl:info] [pid 20192:tid 140014566491904] [client 68.226.111.133:35605] AH01996: SSL handshake failed: HTTP spoken on HTTPS port; trying to send HTML error page
+[Sun Nov 01 18:57:15.434017 2015] [ssl:info] [pid 20192:tid 140014566491904] SSL Library Error: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request -- speaking HTTP to HTTPS port!?
+[Sun Nov 01 18:57:15.491745 2015] [ssl:info] [pid 20191:tid 140014689777408] [client 68.226.111.133:35606] AH01964: Connection to child 1 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:15.491936 2015] [ssl:info] [pid 20191:tid 140014689777408] [client 68.226.111.133:35606] AH01996: SSL handshake failed: HTTP spoken on HTTPS port; trying to send HTML error page
+[Sun Nov 01 18:57:15.491951 2015] [ssl:info] [pid 20191:tid 140014689777408] SSL Library Error: error:1407609C:SSL routines:SSL23_GET_CLIENT_HELLO:http request -- speaking HTTP to HTTPS port!?
+[Sun Nov 01 18:57:27.901927 2015] [ssl:info] [pid 20192:tid 140014549706496] [client 68.226.111.133:35607] AH01964: Connection to child 73 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:35.988721 2015] [ssl:info] [pid 20191:tid 140014681384704] [client 68.226.111.133:35608] AH01964: Connection to child 2 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:37.137422 2015] [ssl:info] [pid 20191:tid 140014672992000] [client 68.226.111.133:35609] AH01964: Connection to child 3 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:48.683442 2015] [ssl:info] [pid 20191:tid 140014499350272] [client 68.226.111.133:35610] AH01964: Connection to child 15 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Sun Nov 01 18:57:48.749556 2015] [:info] [pid 20191:tid 140014499350272] [client 68.226.111.133:35610] mod_wsgi (pid=20191, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.

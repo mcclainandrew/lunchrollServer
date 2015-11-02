@@ -1,0 +1,8 @@
+68.226.111.133 - - [01/Nov/2015:18:57:15 +0000] "GET / HTTP/1.0" 400 0 "-" "-"
+68.226.111.133 - - [01/Nov/2015:18:57:15 +0000] "GET / HTTP/1.0" 400 0 "-" "-"
+68.226.111.133 - - [01/Nov/2015:18:57:15 +0000] "GET / HTTP/1.0" 400 0 "-" "-"
+68.226.111.133 - - [01/Nov/2015:18:57:48 +0000] "GET / HTTP/1.1" 200 3532 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0"
+68.226.111.133 - - [01/Nov/2015:18:57:48 +0000] "GET /static/apipage.css HTTP/1.1" 200 1368 "https://52.8.67.183/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0"
+68.226.111.133 - - [01/Nov/2015:18:57:49 +0000] "GET /favicon.ico HTTP/1.1" 404 486 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0"
+68.226.111.133 - - [01/Nov/2015:18:57:49 +0000] "GET /favicon.ico HTTP/1.1" 404 486 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0"
+68.226.111.133 - - [01/Nov/2015:18:57:53 +0000] "GET /help/client/nearbyAny HTTP/1.1" 200 1976 "https://52.8.67.183/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0"

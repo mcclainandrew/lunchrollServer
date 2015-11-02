@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>POST client/nearbySpecific</title>
+    
+</head>
+<body>
+    
+
+<link type="text/css" href="{{ url_for('static', filename='apipage.css') }}" rel="stylesheet">
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="/help">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+<h2>POST client/nearbySpecific</h2>
+<div>
+    <p>Query Google for types of restaurants.</p>
+
+    <h2>Request Information</h2>
+
+    <h3>URI Parameters</h3>
+        <p>None.</p>
+
+
+
+    <h3>Body Parameters</h3>
+
+    <p>Location Data</p>
+    <table class="help-page-table">
+        <thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Type</th>
+			<th>Additional Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Latitude</td>
+			<td>The user's latitude</td>
+			<td>String</td>
+			<td>Required<br>Use lower case "latitude"</td>
+		</tr>
+		<tr>
+			<td>Longitude</td>
+			<td>The user's longitude</td>
+			<td>String</td>
+			<td>Required<br>Use lower case "longitude"</td>
+		</tr>
+		<tr>
+			<td>Genre</td>
+			<td>The genre of food</td>
+			<td>String</td>
+			<td>Required<br>Use lower case "genre"</td>
+	</tbody>
+    </table>
+	<h3>Request Formats</h3>
+	<div>
+		<h4 class="sample-header">application/json</h4>
+		<div class="sample-content">
+			<span>
+				<pre class="wrapped">{"latitude": "32", "longitude":"-111", "genre":"asian"}</pre>
+			</span>
+		</div>
+	</div>
+    <h2>Response Information</h2>
+
+    <h3>Resource Description</h3>
+
+    <p>application/json</p>
+	
+	<h3>Response Formats</h3>
+	
+	<div>
+		<h4 class="sample-header">application/json</h4>
+		<div class="sample-content">
+			<span>
+				<pre class="wrapped">{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : -33.870775,
+               "lng" : 151.199025
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/travel_agent-71.png",
+         "id" : "21a0b251c9b8392186142c798263e289fe45b4aa",
+         "name" : "Rhythmboat Cruises",
+         "opening_hours" : {
+            "open_now" : true
+         },
+         "photos" : [
+            {
+               "height" : 270,
+               "html_attributions" : [],
+               "photo_reference" : "CnRnAAAAF-LjFR1ZV93eawe1cU_3QNMCNmaGkowY7CnOf-kcNmPhNnPEG9W979jOuJJ1sGr75rhD5hqKzjD8vbMbSsRnq_Ni3ZIGfY6hKWmsOf3qHKJInkm4h55lzvLAXJVc-Rr4kI9O1tmIblblUpg2oqoq8RIQRMQJhFsTr5s9haxQ07EQHxoUO0ICubVFGYfJiMUPor1GnIWb5i8",
+               "width" : 519
+            }
+         ],
+         "place_id" : "ChIJyWEHuEmuEmsRm9hTkapTCrk",
+         "scope" : "GOOGLE",
+         "alt_ids" : [
+            {
+               "place_id" : "D9iJyWEHuEmuEmsRm9hTkapTCrk",
+               "scope" : "APP"
+            }
+         ],
+         "reference" : "CoQBdQAAAFSiijw5-cAV68xdf2O18pKIZ0seJh03u9h9wk_lEdG-cP1dWvp_QGS4SNCBMk_fB06YRsfMrNkINtPez22p5lRIlj5ty_HmcNwcl6GZXbD2RdXsVfLYlQwnZQcnu7ihkjZp_2gk1-fWXql3GQ8-1BEGwgCxG-eaSnIJIBPuIpihEhAY1WYdxPvOWsPnb2-nGb6QGhTipN0lgaLpQTnkcMeAIEvCsSa0Ww",
+         "types" : [ "travel_agency", "restaurant", "food", "establishment" ],
+         "vicinity" : "Pyrmont Bay Wharf Darling Dr, Sydney"
+      },...
+   ],
+   "status" : "OK"
+}</pre>
+			</span>
+		</div>
+	</div>
+</body></html>

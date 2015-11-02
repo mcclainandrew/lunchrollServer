@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>LunchRoll API</title>
+    
+</head>
+<body>
+    
+
+<link type="text/css" href="{{ url_for('static', filename='apipage.css') }}" rel="stylesheet">
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>LunchRoll API Documentation</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>Introduction</h2>
+            <p>
+                Provides a general description of the LunchRoll API.
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+
+
+<h2 id="Request">client</h2>
+    <p>Provides web services for requesting Google queries.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="help/client/nearbyAny">POST client/nearbyAny</a></td>
+            <td class="api-documentation">
+                <p>Retrieves any restaurant in the area of the user</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="help/client/nearbySpecific">POST client/nearbySpecific</a></td>
+            <td class="api-documentation">
+                <p>Retrieves restaurants based on the type of food passed in</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="help/client/nearbySuggested">POST client/nearbySuggested</a></td>
+            <td class="api-documentation">
+                <p>Retrieves restaurants based on the user's previous choices</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--
+<h2 id="Client">Account</h2>
+    <p>Provides web services for managing clients.</p>
+	<p>THIS SECTION IS STILL UNDER CONSTRUCTION</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="52.8.67.183:80/api/account/updateProfile">DELETE api/ClientManagement/Clients/{clientId}</a></td>
+            <td class="api-documentation">
+                <p>Allows an organization admin to delete a client.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://localhost:44301/Help/Api/GET-api-ClientManagement-Clients-clientId">GET api/ClientManagement/Clients/{clientId}</a></td>
+            <td class="api-documentation">
+                <p>Allows a client admin or an organization admin of the specified client to get the client.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://localhost:44301/Help/Api/GET-api-ClientManagement-Clients">GET api/ClientManagement/Clients</a></td>
+            <td class="api-documentation">
+                <p>Allows a SAFEAdmin to get all clients, and allows an organization admin to get all clients associated associated
+            with their organization.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://localhost:44301/Help/Api/GET-api-ClientManagement-Clients-clientId-Users">GET api/ClientManagement/Clients/{clientId}/Users</a></td>
+            <td class="api-documentation">
+                <p>Allows a client admin or an organization admin of the specified client to get all users associated to the client.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://localhost:44301/Help/Api/POST-api-ClientManagement-Clients">POST api/ClientManagement/Clients</a></td>
+            <td class="api-documentation">
+                <p>Allows an organization admin to create a new client, and allows a client admin to update their client.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->
+</body></html>
