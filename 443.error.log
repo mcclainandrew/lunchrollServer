@@ -1249,3 +1249,35 @@
 [Thu Nov 05 14:05:28.980507 2015] [ssl:info] [pid 18792:tid 139768515651456] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
 [Thu Nov 05 14:05:28.980766 2015] [ssl:warn] [pid 18792:tid 139768515651456] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Thu Nov 05 14:05:28.980779 2015] [ssl:warn] [pid 18792:tid 139768515651456] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:11:28.242613 2015] [ssl:info] [pid 19256:tid 139833917593472] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:11:28.242864 2015] [ssl:info] [pid 19256:tid 139833917593472] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:11:28.243125 2015] [ssl:warn] [pid 19256:tid 139833917593472] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:11:28.243141 2015] [ssl:warn] [pid 19256:tid 139833917593472] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:11:28.251293 2015] [ssl:info] [pid 19257:tid 139833917593472] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:11:28.251514 2015] [ssl:info] [pid 19257:tid 139833917593472] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:11:28.251768 2015] [ssl:warn] [pid 19257:tid 139833917593472] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:11:28.251782 2015] [ssl:warn] [pid 19257:tid 139833917593472] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:12:56.472806 2015] [ssl:info] [pid 19363:tid 140611488851840] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:12:56.473073 2015] [ssl:info] [pid 19363:tid 140611488851840] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:12:56.473326 2015] [ssl:warn] [pid 19363:tid 140611488851840] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:12:56.473347 2015] [ssl:warn] [pid 19363:tid 140611488851840] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:12:56.481125 2015] [ssl:info] [pid 19364:tid 140611488851840] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:12:56.481325 2015] [ssl:info] [pid 19364:tid 140611488851840] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:12:56.481593 2015] [ssl:warn] [pid 19364:tid 140611488851840] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:12:56.481606 2015] [ssl:warn] [pid 19364:tid 140611488851840] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:24:45.761160 2015] [ssl:info] [pid 19564:tid 140710011303808] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:24:45.761421 2015] [ssl:info] [pid 19564:tid 140710011303808] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:24:45.761686 2015] [ssl:warn] [pid 19564:tid 140710011303808] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:24:45.761700 2015] [ssl:warn] [pid 19564:tid 140710011303808] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:24:45.769888 2015] [ssl:info] [pid 19565:tid 140710011303808] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:24:45.770110 2015] [ssl:info] [pid 19565:tid 140710011303808] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:24:45.770347 2015] [ssl:warn] [pid 19565:tid 140710011303808] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:24:45.770360 2015] [ssl:warn] [pid 19565:tid 140710011303808] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:25:39.701290 2015] [ssl:info] [pid 19674:tid 140002891409280] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:25:39.701531 2015] [ssl:info] [pid 19674:tid 140002891409280] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:25:39.701822 2015] [ssl:warn] [pid 19674:tid 140002891409280] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:25:39.701837 2015] [ssl:warn] [pid 19674:tid 140002891409280] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 05 18:25:39.710130 2015] [ssl:info] [pid 19675:tid 140002891409280] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 05 18:25:39.710325 2015] [ssl:info] [pid 19675:tid 140002891409280] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 05 18:25:39.710606 2015] [ssl:warn] [pid 19675:tid 140002891409280] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 05 18:25:39.710620 2015] [ssl:warn] [pid 19675:tid 140002891409280] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name

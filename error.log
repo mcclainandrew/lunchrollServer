@@ -1240,3 +1240,77 @@
 [Thu Nov 05 17:02:03.252573 2015] [:error] [pid 18795:tid 139768125892352] [client 70.162.89.164:49972]   File "/var/www/lunchroll/app/views.py", line 178, in login
 [Thu Nov 05 17:02:03.252806 2015] [:error] [pid 18795:tid 139768125892352] [client 70.162.89.164:49972]     email = data_dict['email'] + ""
 [Thu Nov 05 17:02:03.252829 2015] [:error] [pid 18795:tid 139768125892352] [client 70.162.89.164:49972] KeyError: 'email'
+[Thu Nov 05 18:22:58.572514 2015] [:info] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808] mod_wsgi (pid=19368, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:22:58.649615 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808] mod_wsgi (pid=19368): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:22:58.649634 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808] mod_wsgi (pid=19368): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:22:58.649653 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808] Traceback (most recent call last):
+[Thu Nov 05 18:22:58.649669 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:22:58.649712 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]     from app import app as application
+[Thu Nov 05 18:22:58.649723 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:22:58.649758 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]     from app import views
+[Thu Nov 05 18:22:58.649795 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:22:58.649802 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]     for i in range(0,totalGenre)
+[Thu Nov 05 18:22:58.649806 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808]                                ^
+[Thu Nov 05 18:22:58.649809 2015] [:error] [pid 19368:tid 140611333609216] [client 150.135.210.67:45808] SyntaxError: invalid syntax
+[Thu Nov 05 18:23:23.867547 2015] [:info] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428] mod_wsgi (pid=19367, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:23:23.946663 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428] mod_wsgi (pid=19367): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:23:23.946687 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428] mod_wsgi (pid=19367): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:23:23.946717 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428] Traceback (most recent call last):
+[Thu Nov 05 18:23:23.946733 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:23:23.946776 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]     from app import app as application
+[Thu Nov 05 18:23:23.946786 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:23:23.946815 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]     from app import views
+[Thu Nov 05 18:23:23.946867 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:23:23.946873 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]     for i in range(0,totalGenre)
+[Thu Nov 05 18:23:23.946877 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428]                                ^
+[Thu Nov 05 18:23:23.946880 2015] [:error] [pid 19367:tid 140611375572736] [client 150.135.210.67:47428] SyntaxError: invalid syntax
+[Thu Nov 05 18:23:45.051701 2015] [:info] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434] mod_wsgi (pid=19367, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:23:45.053541 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434] mod_wsgi (pid=19367): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:23:45.053552 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434] mod_wsgi (pid=19367): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:23:45.053571 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434] Traceback (most recent call last):
+[Thu Nov 05 18:23:45.053590 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:23:45.053614 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]     from app import app as application
+[Thu Nov 05 18:23:45.053622 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:23:45.053634 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]     from app import views
+[Thu Nov 05 18:23:45.053666 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:23:45.053672 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]     for i in range(0,totalGenre)
+[Thu Nov 05 18:23:45.053676 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434]                                ^
+[Thu Nov 05 18:23:45.053680 2015] [:error] [pid 19367:tid 140611367180032] [client 150.135.210.72:2434] SyntaxError: invalid syntax
+[Thu Nov 05 18:24:00.106754 2015] [:info] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494] mod_wsgi (pid=19367, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:00.108457 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494] mod_wsgi (pid=19367): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:24:00.108469 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494] mod_wsgi (pid=19367): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:00.108488 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494] Traceback (most recent call last):
+[Thu Nov 05 18:24:00.108519 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:24:00.108544 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]     from app import app as application
+[Thu Nov 05 18:24:00.108553 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:24:00.108566 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]     from app import views
+[Thu Nov 05 18:24:00.108600 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:24:00.108606 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]     for i in range(0,totalGenre)
+[Thu Nov 05 18:24:00.108610 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494]                                ^
+[Thu Nov 05 18:24:00.108614 2015] [:error] [pid 19367:tid 140611358787328] [client 150.135.210.72:59494] SyntaxError: invalid syntax
+[Thu Nov 05 18:24:00.998660 2015] [:info] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173] mod_wsgi (pid=19367, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:01.000391 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173] mod_wsgi (pid=19367): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:24:01.000405 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173] mod_wsgi (pid=19367): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:01.000423 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173] Traceback (most recent call last):
+[Thu Nov 05 18:24:01.000443 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:24:01.000466 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]     from app import app as application
+[Thu Nov 05 18:24:01.000475 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:24:01.000487 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]     from app import views
+[Thu Nov 05 18:24:01.000519 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:24:01.000524 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]     for i in range(0,totalGenre)
+[Thu Nov 05 18:24:01.000528 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173]                                ^
+[Thu Nov 05 18:24:01.000532 2015] [:error] [pid 19367:tid 140611350394624] [client 150.135.210.72:50173] SyntaxError: invalid syntax
+[Thu Nov 05 18:24:07.816460 2015] [:info] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779] mod_wsgi (pid=19367, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:07.818302 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779] mod_wsgi (pid=19367): Target WSGI script '/var/www/lunchroll/lunchroll.wsgi' cannot be loaded as Python module.
+[Thu Nov 05 18:24:07.818313 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779] mod_wsgi (pid=19367): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:24:07.818330 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779] Traceback (most recent call last):
+[Thu Nov 05 18:24:07.818349 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]   File "/var/www/lunchroll/lunchroll.wsgi", line 4, in <module>
+[Thu Nov 05 18:24:07.818423 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]     from app import app as application
+[Thu Nov 05 18:24:07.818435 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]   File "/var/www/lunchroll/app/__init__.py", line 4, in <module>
+[Thu Nov 05 18:24:07.818449 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]     from app import views
+[Thu Nov 05 18:24:07.818481 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]   File "/var/www/lunchroll/app/views.py", line 208
+[Thu Nov 05 18:24:07.818486 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]     for i in range(0,totalGenre)
+[Thu Nov 05 18:24:07.818490 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779]                                ^
+[Thu Nov 05 18:24:07.818493 2015] [:error] [pid 19367:tid 140611342001920] [client 150.135.210.72:26779] SyntaxError: invalid syntax
+[Thu Nov 05 18:26:01.243129 2015] [:info] [pid 19678:tid 140002736166656] [client 150.135.210.72:9021] mod_wsgi (pid=19678, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Thu Nov 05 18:26:26.156056 2015] [:info] [pid 19679:tid 140002778130176] [client 150.135.210.67:34657] mod_wsgi (pid=19679, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.

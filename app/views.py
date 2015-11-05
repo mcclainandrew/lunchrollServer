@@ -117,6 +117,16 @@ def getUserData():
     entries = [dict(userID=userID, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
     return jsonify(data=entries)   
 
+@app.route('/user/getGroups', methods = ['POST'])
+def getGroups():
+    db = get_db()
+    data_dict = request.get_json()
+    userID = data_dict['userID']
+    cur = db.execute("SELECT groupID, name FROM Groups WHERE userID = ?", [userID])
+    db.commit()
+    entries = [dict(groupID=row[0], name=row[1]) for row in cur.fetchall()]
+    return jsonify(data = entries)
+
 @app.route('/group/getData', methods = ['POST'])
 def getGroupData():
     db = get_db()
@@ -173,6 +183,15 @@ def updatePreferences():
         return None
 #todo
 
+@app.route('/admin/getUsers', methods = ['POST'])
+def getUsers():
+    db = get_db()
+    data_dict = requesst.get_json()
+    cur = db.execute("SELECT * FROM Users")
+    db.commit()
+    entries = [dict(userID=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
+    return jsonify(data=entries)
+
 @app.route('/user/login', methods = ['POST'])
 def login():
     db = get_db()
@@ -185,7 +204,7 @@ def login():
     db.commit()
     entries = [dict(userID=row[0], username=row[1]) for row in cur.fetchall()]
     return jsonify(data=entries)         
-
+'''d
 def suggest(userID):
     db = get_db()
     totalGenre = 6
@@ -205,7 +224,7 @@ def suggest(userID):
         count += genreTok[i]
         if count <= ran:
             return genres[i]    
-
+'''
 @app.teardown_appcontext
 def teardown_request(exception):
     if hasattr(g, 'db'):
