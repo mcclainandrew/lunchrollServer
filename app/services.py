@@ -14,8 +14,8 @@ headers = {'Content-Type':'application/json'}
 
 client = Blueprint('client', __name__)
 user = Blueprint('user', __name__)
-group = Blueprint('group' __name__)
-admin = Blueprint('admin' __name__)
+group = Blueprint('group', __name__)
+admin = Blueprint('admin', __name__)
 
 app.debug = True
 
@@ -206,10 +206,6 @@ def suggest(userID):
         if count <= ran:
             return genres[i]    
 '''
-@app.teardown_appcontext
-def teardown_request(exception):
-    if hasattr(g, 'db'):
-        g.db.close()
 
 def get_db():
     if not hasattr(g, 'db'):

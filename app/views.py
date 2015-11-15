@@ -2,6 +2,20 @@ from app import app
 from flask import render_template
 from services import client, user, group, admin
 
+
+#Register client endpoints
+app.register_blueprint(client)
+
+#Register user endpoints
+app.register_blueprint(user)
+
+#Register group endpoints
+app.register_blueprint(group)
+
+#Register admin endpoints
+app.register_blueprint(admin)
+
+
 ####################
 #Start Api Help Page
 
@@ -30,16 +44,8 @@ def helpNearbySuggested(name=None):
 #End Api Help Page
 ###################
 
-
-#Register client endpoints
-app.register_blueprint(client)
-
-#Register user endpoints
-app.register_blueprint(user)
-
-#Register group endpoints
-app.register_blueprint(group)
-
-#Register admin endpoints
-app.register_blueprint(admin)
+@app.teardown_appcontext
+def teardown_request(exception):
+    if hasattr(g, 'db'):
+        g.db.close()
 
