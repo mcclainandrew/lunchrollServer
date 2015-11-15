@@ -186,7 +186,6 @@ def updatePreferences():
 @app.route('/admin/getUsers', methods = ['POST'])
 def getUsers():
     db = get_db()
-    data_dict = requesst.get_json()
     cur = db.execute("SELECT * FROM Users")
     db.commit()
     entries = [dict(userID=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
