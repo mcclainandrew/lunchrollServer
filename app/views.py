@@ -1,7 +1,8 @@
+from app import app
 from flask import render_template
+from services import client, user, group, admin
 
-
-
+####################
 #Start Api Help Page
 
 @app.route('/')
@@ -27,7 +28,18 @@ def helpNearbySuggested(name=None):
     return render_template("nearbySuggested.html", name=name)
 
 #End Api Help Page
+###################
 
 
+#Register client endpoints
+app.register_blueprint(client)
 
+#Register user endpoints
+app.register_blueprint(user)
+
+#Register group endpoints
+app.register_blueprint(group)
+
+#Register admin endpoints
+app.register_blueprint(admin)
 

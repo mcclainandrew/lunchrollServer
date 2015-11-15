@@ -12,10 +12,17 @@ nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 headers = {'Content-Type':'application/json'}
 
+client = Blueprint('client', __name__)
+user = Blueprint('user', __name__)
+group = Blueprint('group' __name__)
+admin = Blueprint('admin' __name__)
+
 app.debug = True
+
+
 #Start Client Calls
 
-@app.route('/client/nearbySpecific', methods=['POST'])
+@client.route('/client/nearbySpecific', methods=['POST'])
 def searchSpecific():
     data_dict = request.get_json()
     latitude = data_dict['latitude']
@@ -27,10 +34,10 @@ def searchSpecific():
     r = requests.post(textSearch, params=payload, headers=headers);
     return Response(r.text, content_type='application/json')
     
-@app.route('/client/nearbySuggested', methods=['POST'])
+@client.route('/client/nearbySuggested', methods=['POST'])
      
        
-@app.route('/client/nearbyAny', methods=['POST'])
+@client.route('/client/nearbyAny', methods=['POST'])
 def searchNearby():
     data_dict = request.get_json()
 
@@ -46,7 +53,7 @@ def searchNearby():
 
 #Start Database Calls
 
-@app.route('/user/updateUser', methods = ['POST'])
+@user.route('/user/updateUser', methods = ['POST'])
 def new_user():
     db = get_db()
     data_dict = request.get_json()
@@ -65,7 +72,7 @@ def new_user():
 
     return jsonify(data=entries[-1])
 
-@app.route('/group/updateGroup', methods = ['POST'])
+@group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    
     db = get_db()
     data_dict = request.get_json()
@@ -82,7 +89,7 @@ def updateGroup():
     entries = [dict(groupID=row[0], userID=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
-@app.route('/user/getData', methods = ['POST'])
+@user.route('/user/getData', methods = ['POST'])
 def getUserData():
     db = get_db()
     data_dict = request.get_json()
@@ -92,7 +99,7 @@ def getUserData():
     entries = [dict(userID=userID, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
     return jsonify(data=entries)   
 
-@app.route('/user/getGroups', methods = ['POST'])
+@user.route('/user/getGroups', methods = ['POST'])
 def getGroups():
     db = get_db()
     data_dict = request.get_json()
@@ -102,7 +109,7 @@ def getGroups():
     entries = [dict(groupID=row[0], name=row[1]) for row in cur.fetchall()]
     return jsonify(data = entries)
 
-@app.route('/group/getData', methods = ['POST'])
+@group.route('/group/getData', methods = ['POST'])
 def getGroupData():
     db = get_db()
     data_dict = request.get_json()
@@ -112,7 +119,7 @@ def getGroupData():
     entries = [dict(groupID=groupID, userID=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
-@app.route('/user/getPreferences', methods = ['POST'])
+@user.route('/user/getPreferences', methods = ['POST'])
 def getPreferences():
     db = get_db()
     data_dict = request.get_json()
@@ -126,7 +133,7 @@ def getPreferences():
     return jsonify(data=entries)
     
 
-@app.route('/user/updatePreferences', methods = ['POST'])
+@user.route('/user/updatePreferences', methods = ['POST'])
 def updatePreferences():
     db = get_db()
     data_dict = request.get_json()
@@ -158,7 +165,7 @@ def updatePreferences():
         return None
 #todo
 
-@app.route('/admin/getUsers', methods = ['POST'])
+@admin.route('/admin/getUsers', methods = ['POST'])
 def getUsers():
     db = get_db()
     cur = db.execute("SELECT * FROM Users")
@@ -166,7 +173,7 @@ def getUsers():
     entries = [dict(userID=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
-@app.route('/user/login', methods = ['POST'])
+@user.route('/user/login', methods = ['POST'])
 def login():
     db = get_db()
     data_dict = request.get_json()
