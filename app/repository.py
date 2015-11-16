@@ -7,7 +7,7 @@ from passlib.hash import md5_crypt
 
 def createUser(username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
-	users = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+	user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
 	if user is not None:
 		return -1
 	
