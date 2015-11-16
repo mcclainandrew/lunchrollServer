@@ -27,7 +27,7 @@ def new_user():
 	else:
 		entries = updateUser(userId, username, password, email)
 	
-	return jsonify(data=entries)
+	return jsonify(userId=entries)
 
 @group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    
