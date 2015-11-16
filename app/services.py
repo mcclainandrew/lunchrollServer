@@ -1,6 +1,6 @@
 from app import app
 from repository import *
-from flask import request, session, abort, jsonify, g
+from flask import Blueprint, request, session, abort, jsonify, g
 import json
 import random
 

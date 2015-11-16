@@ -1623,3 +1623,11 @@
 [Sun Nov 15 21:59:37.246046 2015] [ssl:info] [pid 4950:tid 139943527921536] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
 [Sun Nov 15 21:59:37.246286 2015] [ssl:warn] [pid 4950:tid 139943527921536] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Sun Nov 15 21:59:37.246299 2015] [ssl:warn] [pid 4950:tid 139943527921536] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 16 07:50:42.538986 2015] [ssl:info] [pid 10074:tid 139675066210176] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 16 07:50:42.539231 2015] [ssl:info] [pid 10074:tid 139675066210176] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 16 07:50:42.539487 2015] [ssl:warn] [pid 10074:tid 139675066210176] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 16 07:50:42.539501 2015] [ssl:warn] [pid 10074:tid 139675066210176] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 16 07:50:42.547270 2015] [ssl:info] [pid 10075:tid 139675066210176] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 16 07:50:42.547468 2015] [ssl:info] [pid 10075:tid 139675066210176] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 16 07:50:42.547721 2015] [ssl:warn] [pid 10075:tid 139675066210176] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 16 07:50:42.547735 2015] [ssl:warn] [pid 10075:tid 139675066210176] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name

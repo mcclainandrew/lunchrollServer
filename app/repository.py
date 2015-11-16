@@ -1,5 +1,5 @@
 from app import app
-from Flask import g;
+from flask import g;
 import sqlite3
 import random
 from passlib.hash import md5_crypt
