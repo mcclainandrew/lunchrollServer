@@ -7,27 +7,34 @@ from passlib.hash import md5_crypt
 
 def createUser(username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
-	user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
-	if user is not None:
-		return -1
+	existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+	if existing_user is not None:
+		return "Error: username already exists"
+		
+	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
+	if existing_email is not None:
+		return "Error: email already exists"
 	
 	query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
 	cur = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
 	if cur is None:
-		return -2;
+		return "Error: could not write to database"
 	
-	return cur;
+	return cur[userId];
 
 def updateUser(userId, username, password, email):
-	db = get_db()
-	encryptPass = md5_crypt.encrypt(password)
-	db.execute("UPDATE Users SET username=(?), password=(?), email=(?) WHERE userId = (?)", [username, encryptedPass, email, userId])
-	db.commit()
-	cur = db.execute("SELECT userId, username, password, email FROM Users WHERE username = (?)")
-	db.commit()
-	entries = [dict(userID=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
-	return entries
-
+	encryptedPass = md5_crypt.encrypt(password)
+	user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
+	if user is None:
+		return "Error: user does not exist"
+	
+	existing_email = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+	if existing_email is not None:
+		return "Error: email already exists"	
+		
+	query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [userId])
+	
+	return cur[userId];
 	
 def get_db():
 	db = getattr(g, 'db', None)
