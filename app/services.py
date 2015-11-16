@@ -3,10 +3,7 @@ from repository import *
 from flask import request, session, abort, jsonify, g
 import json
 import random
-placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
-nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-headers = {'Content-Type':'application/json'}
+
 
 user = Blueprint('user', __name__)
 group = Blueprint('group', __name__)
@@ -25,6 +22,7 @@ def new_user():
 	email = data_dict['email'] + ""
 	
 	if userId == '0':
+		## EH BUDY GOT YUR PROBLEM RIGHT HERE HEHEHEHE
 		return createUser(username, password, email)
 	else:
 		return updateUser(userId, username, password, email)

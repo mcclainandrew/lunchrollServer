@@ -3,6 +3,11 @@ import repository
 from flask import Blueprint, Response, jsonify
 import requests
 
+placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
+nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+headers = {'Content-Type':'application/json'}
+
 #Start Client Calls
 client = Blueprint('client', __name__)
 
