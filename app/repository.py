@@ -12,11 +12,11 @@ def createUser(username, password, email):
 		return -1
 	
 	query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
-	cur = query_db("SELECT * FROM Users WHERE username = (?)", [username])
+	cur = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
 	if cur is None:
 		return -2;
 	
-	return cur['userId'];
+	return cur;
 
 def updateUser(userId, username, password, email):
 	db = get_db()
@@ -38,9 +38,6 @@ def get_db():
     
 def connect_db():
 	return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
-
-def make_dicts(cursor, row):
-	return dict((cursor.description[idx][0], value) for idx, value in enumerate(row))
 
 def query_db(query, args=(), one=False):
 	db = get_db()
