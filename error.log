@@ -1423,3 +1423,29 @@
 [Mon Nov 16 07:50:51.852672 2015] [:error] [pid 10078:tid 139674952931072] [client 68.226.111.133:57120]   File "/var/www/lunchroll/app/repository.py", line 2, in <module>
 [Mon Nov 16 07:50:51.852711 2015] [:error] [pid 10078:tid 139674952931072] [client 68.226.111.133:57120]     from Flask import g;
 [Mon Nov 16 07:50:51.852728 2015] [:error] [pid 10078:tid 139674952931072] [client 68.226.111.133:57120] ImportError: No module named Flask
+[Mon Nov 16 07:58:15.689959 2015] [:info] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264] mod_wsgi (pid=10519, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Mon Nov 16 07:58:15.800643 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264] mod_wsgi (pid=10519): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Mon Nov 16 07:58:15.800675 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264] Traceback (most recent call last):
+[Mon Nov 16 07:58:15.800691 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Mon Nov 16 07:58:15.801069 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     return self.wsgi_app(environ, start_response)
+[Mon Nov 16 07:58:15.801083 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Mon Nov 16 07:58:15.801099 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     response = self.make_response(self.handle_exception(e))
+[Mon Nov 16 07:58:15.801106 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Mon Nov 16 07:58:15.801118 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     reraise(exc_type, exc_value, tb)
+[Mon Nov 16 07:58:15.801125 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Mon Nov 16 07:58:15.801136 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     response = self.full_dispatch_request()
+[Mon Nov 16 07:58:15.801144 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Mon Nov 16 07:58:15.801154 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     rv = self.handle_user_exception(e)
+[Mon Nov 16 07:58:15.801161 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Mon Nov 16 07:58:15.801172 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     reraise(exc_type, exc_value, tb)
+[Mon Nov 16 07:58:15.801178 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Mon Nov 16 07:58:15.801189 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     rv = self.dispatch_request()
+[Mon Nov 16 07:58:15.801196 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Mon Nov 16 07:58:15.801206 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Nov 16 07:58:15.801213 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/var/www/lunchroll/app/services.py", line 26, in new_user
+[Mon Nov 16 07:58:15.801273 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     entries = createUser(username, password, email)
+[Mon Nov 16 07:58:15.801283 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/var/www/lunchroll/app/repository.py", line 14, in createUser
+[Mon Nov 16 07:58:15.801344 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
+[Mon Nov 16 07:58:15.801355 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]   File "/var/www/lunchroll/app/repository.py", line 46, in query_db
+[Mon Nov 16 07:58:15.801368 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264]     cur = get_db().execute(query, args)
+[Mon Nov 16 07:58:15.801396 2015] [:error] [pid 10519:tid 140074127681280] [client 23.20.108.159:34264] OperationalError: attempt to write a readonly database

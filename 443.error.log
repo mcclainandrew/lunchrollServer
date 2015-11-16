@@ -1631,3 +1631,11 @@
 [Mon Nov 16 07:50:42.547468 2015] [ssl:info] [pid 10075:tid 139675066210176] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
 [Mon Nov 16 07:50:42.547721 2015] [ssl:warn] [pid 10075:tid 139675066210176] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Mon Nov 16 07:50:42.547735 2015] [ssl:warn] [pid 10075:tid 139675066210176] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 16 07:58:06.470966 2015] [ssl:info] [pid 10514:tid 140074274531200] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 16 07:58:06.471211 2015] [ssl:info] [pid 10514:tid 140074274531200] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 16 07:58:06.471470 2015] [ssl:warn] [pid 10514:tid 140074274531200] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 16 07:58:06.471484 2015] [ssl:warn] [pid 10514:tid 140074274531200] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 16 07:58:06.479325 2015] [ssl:info] [pid 10515:tid 140074274531200] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 16 07:58:06.479554 2015] [ssl:info] [pid 10515:tid 140074274531200] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 16 07:58:06.479804 2015] [ssl:warn] [pid 10515:tid 140074274531200] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 16 07:58:06.479816 2015] [ssl:warn] [pid 10515:tid 140074274531200] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
