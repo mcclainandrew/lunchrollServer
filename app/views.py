@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template
-from services import client, user, group, admin
+from services import user, group, admin
+from clientServices import client
 
 
 #Register client endpoints

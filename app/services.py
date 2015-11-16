@@ -1,134 +1,92 @@
 from app import app
-import repository
-
-from flask import request, Response, session, abort, jsonify, g
+from repository import *
+from flask import request, session, abort, jsonify, g
 import json
-import requests
-import sqlite3
 import random
-from passlib.hash import md5_crypt
 placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
 nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 headers = {'Content-Type':'application/json'}
 
-client = Blueprint('client', __name__)
 user = Blueprint('user', __name__)
 group = Blueprint('group', __name__)
 admin = Blueprint('admin', __name__)
 
 app.debug = True
 
-
-#Start Client Calls
-
-@client.route('/client/nearbySpecific', methods=['POST'])
-def searchSpecific():
-    data_dict = request.get_json()
-    latitude = data_dict['latitude']
-    longitude = data_dict['longitude']
-    location = latitude + ',' + longitude
-    genre = data_dict['genre']
-    genre = genre + '+food'
-    payload = {'location': location, 'radius': 5000, 'types': "food|restaurant", 'query': genre, 'key': placesApiKey}
-    r = requests.post(textSearch, params=payload, headers=headers);
-    return Response(r.text, content_type='application/json')
-    
-@client.route('/client/nearbySuggested', methods=['POST'])
-     
-       
-@client.route('/client/nearbyAny', methods=['POST'])
-def searchNearby():
-    data_dict = request.get_json()
-
-    latitude = data_dict['latitude']
-    longitude = data_dict['longitude']
-    location = latitude + "," + longitude 
-    payload = {'location': location, 'radius': 5000, 'types': 'food', 'key': placesApiKey}
-
-    r = requests.post(nearbySearch, params=payload, headers=headers)
-    return Response(r.text, content_type="application/json")
-
-#End Client Calls
-
 #Start Database Calls
 
 @user.route('/user/updateUser', methods = ['POST'])
 def new_user():
-    db = get_db()
     data_dict = request.get_json()
-    userID = data_dict['userID'] + ""
+    userId = data_dict['userId'] + ""
     username = data_dict['username'] + ""
     password = data_dict['password'] + ""
     email = data_dict['email'] + ""
     
-    if userID == '0':
-	encryptedPass = md5_crypt.encrypt(password)
-        db.execute("insert into Users (username, password, email) values (?, ?, ?)", [username, password, email])
-        db.commit()
-    cur = db.execute("SELECT userID, username, password, email FROM Users WHERE email = (?)", [email])
-    db.commit()
-    entries = [dict(userID=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
-
-    return jsonify(data=entries[-1])
+    if userId == '0':
+		return createUser(username, password, email)
+	else:
+		return updateUser(userId, username, password, email)
+	
 
 @group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    
     db = get_db()
     data_dict = request.get_json()
-    groupID = data_dict['groupID'] + ""
-    userID = data_dict['userID'] + ""
+    groupId = data_dict['groupId'] + ""
+    userId = data_dict['userId'] + ""
     name = data_dict['name'] + ""
     users = data_dict['users'] + ""
 
-    if groupID == '0':
-        db.execute("INSERT INTO Groups (userID, name, users) VALUES (?, ?, ?)", [userID, name, users])
+    if groupId == '0':
+        db.execute("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users])
         db.commit()
-    cur = db.execute("SELECT groupID, userID, name, users FROM Groups WHERE name = (?)", [name])
+    cur = db.execute("SELECT groupId, userId, name, users FROM Groups WHERE name = (?)", [name])
     db.commit()
-    entries = [dict(groupID=row[0], userID=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
+    entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
 @user.route('/user/getData', methods = ['POST'])
 def getUserData():
     db = get_db()
     data_dict = request.get_json()
-    userID = data_dict['userID']
-    cur = db.execute("SELECT username, password, email FROM Users WHERE userID = (?)", [userID])
+    userId = data_dict['userId']
+    cur = db.execute("SELECT username, password, email FROM Users WHERE userId = (?)", [userId])
     db.commit()
-    entries = [dict(userID=userID, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
+    entries = [dict(userId=userId, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
     return jsonify(data=entries)   
 
 @user.route('/user/getGroups', methods = ['POST'])
 def getGroups():
     db = get_db()
     data_dict = request.get_json()
-    userID = data_dict['userID']
-    cur = db.execute("SELECT groupID, name FROM Groups WHERE userID = ?", [userID])
+    userId = data_dict['userId']
+    cur = db.execute("SELECT groupId, name FROM Groups WHERE userId = ?", [userId])
     db.commit()
-    entries = [dict(groupID=row[0], name=row[1]) for row in cur.fetchall()]
+    entries = [dict(groupId=row[0], name=row[1]) for row in cur.fetchall()]
     return jsonify(data = entries)
 
 @group.route('/group/getData', methods = ['POST'])
 def getGroupData():
     db = get_db()
     data_dict = request.get_json()
-    groupID = data_dict['groupID']
-    cur = db.execute("SELECT userID, name, users FROM Groups WHERE groupID = (?)", [groupID])
+    groupId = data_dict['groupId']
+    cur = db.execute("SELECT userId, name, users FROM Groups WHERE groupId = (?)", [groupId])
     db.commit()
-    entries = [dict(groupID=groupID, userID=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
+    entries = [dict(groupId=groupId, userId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
 @user.route('/user/getPreferences', methods = ['POST'])
 def getPreferences():
     db = get_db()
     data_dict = request.get_json()
-    userID = data_dict['userID']
-    cur = db.execute("SELECT genrePreferenceID FROM Preferences WHERE userID = ?", [userID])
+    userId = data_dict['userId']
+    cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?", [userId])
     db.commit()
     (rv,) = cur.fetchone()
-    genrePreferenceID = rv
-    cur = db.execute("SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceID = ?", [genrePreferenceID])
+    genrePreferenceId = rv
+    cur = db.execute("SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?", [genrePreferenceId])
     entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row in cur.fetchall()]
     return jsonify(data=entries)
     
@@ -137,30 +95,30 @@ def getPreferences():
 def updatePreferences():
     db = get_db()
     data_dict = request.get_json()
-    userID = data_dict['userID'] + ""
+    userId = data_dict['userId'] + ""
     asian = data_dict['asian'] + ""
     american = data_dict['american'] + ""
     italian = data_dict['italian'] + ""
     mexican = data_dict['mexican'] + ""
     indian = data_dict['indian'] + ""
     greek = data_dict['greek'] + ""
-    preferenceID = data_dict['preferenceID'] + ""
-    if preferenceID == '0':
+    preferenceId = data_dict['preferenceId'] + ""
+    if preferenceId == '0':
         c = db.cursor()
         c.execute("INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek) VALUES (?, ?, ?, ?, ?, ?)", [asian, american, italian, mexican, indian, greek])
         db.commit()
-        genrePreferenceID = c.lastrowid
-        c.execute("INSERT INTO Preferences (userID, genrePreferenceID) VALUES (?, ?)", [userID, genrePreferenceID])
+        genrePreferenceId = c.lastrowid
+        c.execute("INSERT INTO Preferences (userId, genrePreferenceId) VALUES (?, ?)", [userId, genrePreferenceId])
         db.commit()
-        preferenceID = c.lastrowid
-        entries = dict(preferenceID = preferenceID)
+        preferenceId = c.lastrowid
+        entries = dict(preferenceId = preferenceId)
         return jsonify(data = entries)
     else:
         #need to fix this
         #user can't update settings yet
-        db.execute("SELECT GenrePrefernceID FROM Preferences WHERE userID = ?", [userID])
+        db.execute("SELECT GenrePrefernceId FROM Preferences WHERE userId = ?", [userId])
         db.commit()
-        db.execute("UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceID = ?", [asian,american,italian,mexican,indian,greek,groupPreferencesID])
+        db.execute("UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceId = ?", [asian,american,italian,mexican,indian,greek,groupPreferencesId])
         db.commit()
         return None
 #todo
@@ -170,7 +128,7 @@ def getUsers():
     db = get_db()
     cur = db.execute("SELECT * FROM Users")
     db.commit()
-    entries = [dict(userID=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
+    entries = [dict(userId=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
     return jsonify(data=entries)
 
 @user.route('/user/login', methods = ['POST'])
@@ -183,18 +141,18 @@ def login():
 
     cur = db.execute("SELECT * FROM Users WHERE email = ? AND password = ?", [email, password])
     db.commit()
-    entries = [dict(userID=row[0], username=row[1]) for row in cur.fetchall()]
+    entries = [dict(userId=row[0], username=row[1]) for row in cur.fetchall()]
     return jsonify(data=entries)         
 '''d
-def suggest(userID):
+def suggest(userId):
     db = get_db()
     totalGenre = 6
     genres = ["mexican", "american", "italian", "asian", "indian", "greek"]
     genreTok = []
-    cur = db.execute("SELECT genrePreferenceID FROM Preferences WHERE userID = ?",[userID])
+    cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?",[userId])
     db.commit()
     (rv,) = cur.fetchone()
-    cur = db.execute("SELECT mexican, american, italian, asian, indian, greek FROM GenrePreferences WHERE genrePreferenceID = ? ", rv)
+    cur = db.execute("SELECT mexican, american, italian, asian, indian, greek FROM GenrePreferences WHERE genrePreferenceId = ? ", rv)
     for i in range(0,totalGenre)
         (rv,) = cur.fetchone()
         genreTok[i] = rv
@@ -207,13 +165,5 @@ def suggest(userID):
             return genres[i]    
 '''
 
-def get_db():
-    if not hasattr(g, 'db'):
-        g.db = connect_db()
-        g.db.row_factory = sqlite3.Row
-    return g.db
-    
-def connect_db():
-    return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
 
 #End Database Calls
