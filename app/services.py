@@ -23,10 +23,11 @@ def new_user():
 	
 	if userId == '0':
 		## EH BUDY GOT YUR PROBLEM RIGHT HERE HEHEHEHE
-		return createUser(username, password, email)
+		entries = createUser(username, password, email)
 	else:
-		return updateUser(userId, username, password, email)
+		entries = updateUser(userId, username, password, email)
 	
+	return jsonify(data=entries)
 
 @group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    

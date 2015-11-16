@@ -13,7 +13,7 @@ def createUser(username, password, email):
 	cur = db.execute("SELECT userId, username, password, email FROM Users WHERE username = (?)", [email])
 	db.commit()
 	entries = [dict(userID=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
-	return jsonify(data=entries)
+	return entries
 
 def updateUser(userId, username, password, email):
 	db = get_db()
@@ -23,7 +23,7 @@ def updateUser(userId, username, password, email):
 	cur = db.execute("SELECT userId, username, password, email FROM Users WHERE username = (?)")
 	db.commit()
 	entries = [dict(userID=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
-	return jsonify(data=entries)
+	return entries
 
 	
 def get_db():
