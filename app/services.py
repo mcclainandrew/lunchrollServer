@@ -40,8 +40,8 @@ def updateGroup():
     users = data_dict['users'] + ""
 
     if groupId == '0':
-        db.execute("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users])
-        db.commit()
+		db.execute("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users])
+		db.commit()
     cur = db.execute("SELECT groupId, userId, name, users FROM Groups WHERE name = (?)", [name])
     db.commit()
     entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
