@@ -28,11 +28,11 @@ def updateUser(userId, username, password, email):
 	if user is None:
 		return "Error: user does not exist"
 	
-	existing_email = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
 	if existing_email is not None:
 		return "Error: email already exists"	
 		
-	query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [userId])
+	query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
 	
 	return cur[userId];
 	
