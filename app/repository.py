@@ -20,7 +20,7 @@ def createUser(username, password, email):
 	if cur is None:
 		return "Error: could not write to database"
 	
-	return cur[userId];
+	return cur['userId'];
 
 def updateUser(userId, username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
@@ -32,9 +32,9 @@ def updateUser(userId, username, password, email):
 	if existing_email is not None:
 		return "Error: email already exists"	
 		
-	query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
+	cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
 	
-	return cur[userId];
+	return userId;
 	
 def get_db():
 	db = getattr(g, 'db', None)
