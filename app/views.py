@@ -47,6 +47,11 @@ def helpNearbySuggested(name=None):
 def helpUpdateUser(name=None):
     return render_template("updateUser.html", name=name)
 
+@app.route('/help/user/getUser')
+@app.route('/help/user/getUser/<name>')
+def helpUpdateUser(name=None):
+    return render_template("getUser.html", name=name)
+
 
 #End Api Help Page
 ###################
