@@ -30,19 +30,26 @@ def updateUser(userId, username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
 	user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
 	if user is None:
-		return "Error: user does not exist"
+		errorReport = dict(Success=False, Error="username does not exist")
+		return errorReport
 	
 	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
 	if existing_email is not None:
-		return "Error: email already exists"	
+		errorReport = dict(Success=False, Error="email already exists")
+		return errorReport	
 		
 	cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
-	
-	return userId;
+	successReport = dict(Success=True, userId=userId)
+	return successReport;
 	
 def getUser(userId):
 	cur = get_db("SELECT username, password, email FROM Users WHERE userId = (?)", [userId], one=True)
-	return 
+	if cur is None:
+		operationReport = dict(Success=False, Error="could not find userId in the table")
+	else
+		operationReport = dict(Success=True, username=cur['username'], email=cur['email']])
+	return operationReport	
+	
 def get_db():
 	db = getattr(g, 'db', None)
 	if db is None:

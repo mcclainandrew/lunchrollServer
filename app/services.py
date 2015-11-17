@@ -22,7 +22,6 @@ def new_user():
 	email = data_dict['email']
 	
 	if userId == '0':
-		## EH BUDY GOT YUR PROBLEM RIGHT HERE HEHEHEHE
 		entries = createUser(username, password, email)
 	else:
 		entries = updateUser(userId, username, password, email)
@@ -35,18 +34,17 @@ def getUserData():
 	data_dict = request.get_json()
 	userId = data_dict['userId']
 	
-	db.commit()
-	entries = [dict(userId=userId, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
+	entries = getUser(userId)
 	return jsonify(data=entries)   
 
 @group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    
 	db = get_db()
 	data_dict = request.get_json()
-	groupId = data_dict['groupId'] + ""
-	userId = data_dict['userId'] + ""
-	name = data_dict['name'] + ""
-	users = data_dict['users'] + ""
+	groupId = data_dict['groupId']
+	userId = data_dict['userId']
+	name = data_dict['name']
+	users = data_dict['users']
 
 	if groupId == '0':
 		db.execute("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users])
