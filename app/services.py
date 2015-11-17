@@ -30,7 +30,6 @@ def new_user():
 
 @user.route('/user/getUser', methods = ['POST'])
 def getUserData():
-	db = get_db()
 	data_dict = request.get_json()
 	userId = data_dict['userId']
 	
