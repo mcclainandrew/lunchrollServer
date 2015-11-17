@@ -48,7 +48,7 @@ def getUser(userId):
 		operationReport = dict(Success=False, Error="could not find userId in the table")
 		return operationReport
 	else:
-		operationReport = dict(Success=True, username=cur['username'], email=cur['email']])
+		operationReport = dict(Success=True, username=cur['username'], email=cur['email'])
 		return operationReport	
 	
 def get_db():
