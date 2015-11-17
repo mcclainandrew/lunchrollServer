@@ -23,8 +23,8 @@ def createUser(username, password, email):
 		errorReport = dict(Success=False, Error="user was not successfully saved")
 		return errorReport
 	
-	cur["Success"] = True
-	return cur;
+	successReport = dict(Success=True, userId=cur['userId'])
+	return successReport;
 
 def updateUser(userId, username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
