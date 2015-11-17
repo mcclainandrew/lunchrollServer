@@ -16,10 +16,10 @@ app.debug = True
 @user.route('/user/updateUser', methods = ['POST'])
 def new_user():
 	data_dict = request.get_json()
-	userId = data_dict['userId'] + ""
-	username = data_dict['username'] + ""
-	password = data_dict['password'] + ""
-	email = data_dict['email'] + ""
+	userId = data_dict['userId']
+	username = data_dict['username']
+	password = data_dict['password']
+	email = data_dict['email']
 	
 	if userId == '0':
 		## EH BUDY GOT YUR PROBLEM RIGHT HERE HEHEHEHE
