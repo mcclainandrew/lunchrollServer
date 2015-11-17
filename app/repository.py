@@ -43,7 +43,7 @@ def updateUser(userId, username, password, email):
 	return successReport;
 	
 def getUser(userId):
-	cur = get_db("SELECT username, password, email FROM Users WHERE userId = (?)", [userId], one=True)
+	cur = query_db("SELECT username, password, email FROM Users WHERE userId = (?)", [userId], one=True)
 	if cur is None:
 		operationReport = dict(Success=False, Error="could not find userId in the table")
 	else
