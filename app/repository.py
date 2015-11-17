@@ -9,46 +9,46 @@ def createUser(username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
 	existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
 	if existing_user is not None:
-		errorReport = dict(Success=False, Error="username already exists")
+		errorReport = dict(success=False, Error="username already exists")
 		return errorReport
 		
 	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
 	if existing_email is not None:
-		errorReport = dict(Success=False, Error="email already exists")
+		errorReport = dict(success=False, Error="email already exists")
 		return errorReport
 	
 	query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
 	cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
 	if cur is None:
-		errorReport = dict(Success=False, Error="user was not successfully saved")
+		errorReport = dict(success=False, Error="user was not successfully saved")
 		return errorReport
 	
-	successReport = dict(Success=True, userId=cur['userId'])
+	successReport = dict(success=True, userId=cur['userId'])
 	return successReport;
 
 def updateUser(userId, username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
 	user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
 	if user is None:
-		errorReport = dict(Success=False, Error="username does not exist")
+		errorReport = dict(success=False, Error="username does not exist")
 		return errorReport
 	
 	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
 	if existing_email is not None:
-		errorReport = dict(Success=False, Error="email already exists")
+		errorReport = dict(success=False, Error="email already exists")
 		return errorReport	
 		
 	cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
-	successReport = dict(Success=True, userId=userId)
+	successReport = dict(success=True, userId=userId)
 	return successReport;
 	
 def getUser(userId):
 	cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
 	if cur is None:
-		operationReport = dict(Success=False, Error="could not find userId in the table")
+		operationReport = dict(success=False, Error="could not find userId in the table")
 		return operationReport
 	else:
-		operationReport = dict(Success=True, username=cur['username'], email=cur['email'])
+		operationReport = dict(success=True, username=cur['username'], email=cur['email'])
 		return operationReport	
 	
 def get_db():
