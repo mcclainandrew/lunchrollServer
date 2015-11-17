@@ -9,18 +9,22 @@ def createUser(username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
 	existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
 	if existing_user is not None:
-		return "Error: username already exists"
+		errorReport = dict(Success=False, Error="username already exists")
+		return errorReport
 		
 	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
 	if existing_email is not None:
-		return "Error: email already exists"
+		errorReport = dict(Success=False, Error="email already exists")
+		return errorReport
 	
 	query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
-	cur = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+	cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
 	if cur is None:
-		return "Error: could not write to database"
+		errorReport = dict(Success=False, Error="user was not successfully saved")
+		return errorReport
 	
-	return cur['userId'];
+	cur["Success"] = True
+	return cur;
 
 def updateUser(userId, username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
@@ -36,6 +40,9 @@ def updateUser(userId, username, password, email):
 	
 	return userId;
 	
+def getUser(userId):
+	cur = get_db("SELECT username, password, email FROM Users WHERE userId = (?)", [userId], one=True)
+	return 
 def get_db():
 	db = getattr(g, 'db', None)
 	if db is None:

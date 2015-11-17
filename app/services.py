@@ -27,7 +27,17 @@ def new_user():
 	else:
 		entries = updateUser(userId, username, password, email)
 	
-	return jsonify(userId=entries)
+	return jsonify(data=entries)
+
+@user.route('/user/getUser', methods = ['POST'])
+def getUserData():
+	db = get_db()
+	data_dict = request.get_json()
+	userId = data_dict['userId']
+	
+	db.commit()
+	entries = [dict(userId=userId, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
+	return jsonify(data=entries)   
 
 @group.route('/group/updateGroup', methods = ['POST'])
 def updateGroup():    
@@ -45,16 +55,6 @@ def updateGroup():
 	db.commit()
 	entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
 	return jsonify(data=entries)
-
-@user.route('/user/getData', methods = ['POST'])
-def getUserData():
-	db = get_db()
-	data_dict = request.get_json()
-	userId = data_dict['userId']
-	cur = db.execute("SELECT username, password, email FROM Users WHERE userId = (?)", [userId])
-	db.commit()
-	entries = [dict(userId=userId, username=row[0], password=row[1], email=row[2]) for row in cur.fetchall()]
-	return jsonify(data=entries)   
 
 @user.route('/user/getGroups', methods = ['POST'])
 def getGroups():
