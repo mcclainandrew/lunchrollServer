@@ -82,7 +82,7 @@ def get_group(groupId):
     if cur is None:
         operationReport = dict(success=False, Error="could not find group")
     else:
-        operationReport = dict(Success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
+        operationReport = dict(success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
                                users=cur['users'])
     return operationReport
 
@@ -101,14 +101,14 @@ def delete_group(groupId, password):
     cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
     userId = cur['userId']
     if userId is None:
-        operationReport = dict(Success=False, Error="unknown error in groupDB")
+        operationReport = dict(success=False, Error="unknown error in groupDB")
         return operationReport
     cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
     if cur['password'] != encryptedPass:
-        operationReport = dict(Success=False, Error="incorrect password")
+        operationReport = dict(success=False, Error="incorrect password", attempted=encryptedPass, actual=cur['password'])
         return operationReport
     query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
-    operationReport = dict(Success=True)
+    operationReport = dict(success=True)
     return operationReport
 
 
