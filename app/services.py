@@ -113,11 +113,11 @@ def get_group_data_service():
 def update_group_service():
     data_dict = request.get_json()
     groupId = data_dict['groupId']
-    userId = data_dict['userId']
     name = data_dict['name']
     users = data_dict['users']
 
     if groupId == '0':
+        userId = data_dict['userId']
         entries = create_group(userId, name, users)
     else:
         entries = update_group(groupId, name, users)
