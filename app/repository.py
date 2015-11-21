@@ -93,8 +93,7 @@ def get_groups(userId):
         operationReport = dict(success=False, Error="could not find any groups")
     else:
 
-        operationReport = [dict(groupId=row[0], name=row[1], users=row[2]) for row in cur]
-        #operationReport['success'] = True
+        operationReport = [dict(success=True, groupId=row[0], name=row[1], users=row[2]) for row in cur]
     return operationReport
 
 
