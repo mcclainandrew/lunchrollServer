@@ -52,6 +52,10 @@ def helpUpdateUser(name=None):
 def helpGetUser(name=None):
     return render_template("user/getUser.html", name=name)
 
+@app.route('/help/user/getGroups')
+@app.route('/help/user/getGroups/<name>')
+def helpGetUserGroups(name=None):
+    return render_template("user/getGroups.html", name=name)
 
 #End Api Help Page
 ###################
