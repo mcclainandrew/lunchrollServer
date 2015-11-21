@@ -96,56 +96,6 @@ def updatePreferences():
 		db.commit()
 		return None
 """
-
-
-##################
-# Group Services #
-##################
-@group.route('/group/getData', methods=['POST'])
-def get_group_data_service():
-    data_dict = request.get_json()
-    groupId = data_dict['groupId']
-    entries = get_group(groupId)
-    return jsonify(data=entries)
-
-
-@group.route('/group/updateGroup', methods=['POST'])
-def update_group_service():
-    data_dict = request.get_json()
-    groupId = data_dict['groupId']
-    name = data_dict['name']
-    users = data_dict['users']
-
-    if groupId == '0':
-        userId = data_dict['userId']
-        entries = create_group(userId, name, users)
-    else:
-        entries = update_group(groupId, name, users)
-
-    return jsonify(data=entries)
-
-
-@group.route('/group/deleteGroup', methods=['POST'])
-def delete_group_service():
-    data_dict = request.get_json()
-    groupId = data_dict['groupId']
-    password = data_dict['password']
-    report = delete_group(groupId, password)
-    return jsonify(data=report)
-
-
-@admin.route('/admin/getUsers', methods=['POST'])
-def get_all_users_service():
-    entries = get_all_users()
-    return jsonify(data=entries)
-
-
-@admin.route('/admin/getGroups', methods=['POST'])
-def get_all_groups_service():
-    entries = get_all_groups()
-    return jsonify(data=entries)
-
-
 @user.route('/user/login', methods=['POST'])
 def login():
     db = get_db()
@@ -179,8 +129,56 @@ def suggest(userId):
 	for i in range(0, totalGenre)
 		count += genreTok[i]
 		if count <= ran:
-			return genres[i]    
+			return genres[i]
 '''
 
+##################
+# Group Services #
+##################
+@group.route('/group/getGroup', methods=['POST'])
+def get_group_data_service():
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    entries = get_group(groupId)
+    return jsonify(data=entries)
+
+
+@group.route('/group/updateGroup', methods=['POST'])
+def update_group_service():
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    name = data_dict['name']
+    users = data_dict['users']
+
+    if groupId == '0':
+        userId = data_dict['userId']
+        entries = create_group(userId, name, users)
+    else:
+        entries = update_group(groupId, name, users)
+
+    return jsonify(data=entries)
+
+
+@group.route('/group/deleteGroup', methods=['POST'])
+def delete_group_service():
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    password = data_dict['password']
+    report = delete_group(groupId, password)
+    return jsonify(data=report)
+
+########################
+# Debug Admin Services #
+########################
+@admin.route('/admin/getUsers', methods=['POST'])
+def get_all_users_service():
+    entries = get_all_users()
+    return jsonify(data=entries)
+
+
+@admin.route('/admin/getGroups', methods=['POST'])
+def get_all_groups_service():
+    entries = get_all_groups()
+    return jsonify(data=entries)
 
 # End Database Calls

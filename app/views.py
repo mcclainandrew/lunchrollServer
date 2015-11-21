@@ -30,27 +30,27 @@ def help(name=None):
 @app.route('/help/client/nearbyAny')
 @app.route('/help/client/nearbyAny/<name>')
 def helpNearbyAny(name=None):
-    return render_template("nearbyAny.html", name=name)
+    return render_template("client/nearbyAny.html", name=name)
 
 @app.route('/help/client/nearbySpecific')
 @app.route('/help/client/nearbySpecific/<name>')
 def helpNearbySpecific(name=None):
-    return render_template("nearbySpecific.html", name=name)
+    return render_template("client/nearbySpecific.html", name=name)
 
 @app.route('/help/client/nearbySuggested')
 @app.route('/help/client/nearbySuggested/<name>')
 def helpNearbySuggested(name=None):
-    return render_template("nearbySuggested.html", name=name)
+    return render_template("client/nearbySuggested.html", name=name)
 	
 @app.route('/help/user/updateUser')
 @app.route('/help/user/updateUser/<name>')
 def helpUpdateUser(name=None):
-    return render_template("updateUser.html", name=name)
+    return render_template("user/updateUser.html", name=name)
 
 @app.route('/help/user/getUser')
 @app.route('/help/user/getUser/<name>')
 def helpUpdateUser(name=None):
-    return render_template("getUser.html", name=name)
+    return render_template("user/getUser.html", name=name)
 
 
 #End Api Help Page

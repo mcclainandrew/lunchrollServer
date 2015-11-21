@@ -58,6 +58,10 @@ def get_user(userId):
 # Group Repository #
 ####################
 def create_group(userId, name, users):
+    result = check_user_existence(users)
+    if result['success'] != True:
+        return result
+
     cur = query_db("SELECT groupId FROM Groups WHERE name=(?) and userId=(?)", [name, userId], one=True)
     if cur is not None:
         operationReport = dict(success=False, error="group already exists for user")
@@ -69,6 +73,9 @@ def create_group(userId, name, users):
 
 
 def update_group(groupId, name, users):
+    result = check_user_existence(users)
+    if result['success'] != True:
+        return result
     cur = query_db("SELECT * FROM Groups WHERE groupId=(?)", [groupId], one=True)
     if cur is None:
         operationReport = dict(success=False, error="could not find group")
@@ -132,6 +139,14 @@ def get_all_groups():
 ############################
 # Aux Repository Functions #
 ############################
+def check_user_existence(users):
+    user_list = users.split(',')
+    for user in user_list:
+        cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
+        if cur is None:
+            return dict(Success=False, Error="could not find user", userId=user)
+    return dict(Success=True)
+
 def get_db():
     db = getattr(g, 'db', None)
     if db is None:
