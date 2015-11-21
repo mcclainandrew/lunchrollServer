@@ -123,13 +123,15 @@ def delGroup():
 	return jsonify(data=report)
 
 @admin.route('/admin/getUsers', methods = ['POST'])
-def getUsers():
-	db = get_db()
-	cur = db.execute("SELECT * FROM Users")
-	db.commit()
-	entries = [dict(userId=row[0],username=row[1],password=row[2],email=row[3]) for row in cur.fetchall()]
+def getAllUsers():
+	entries = get_all_users()
 	return jsonify(data=entries)
 
+@admin.route('/admin/getGroups', methods = ['POST'])
+def getAllGroups():
+	entries = get_all_groups()
+	return jsonify(data=entries)
+	
 @user.route('/user/login', methods = ['POST'])
 def login():
 	db = get_db()
