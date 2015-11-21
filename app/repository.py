@@ -80,7 +80,7 @@ def update_group(groupId, name, users):
     if cur is None:
         operationReport = dict(success=False, error="could not find group")
     else:
-        cur = query_db("UPDATE Groups SET name=(?),users=(?) WHERE groupId=(?)",
+        query_db("UPDATE Groups SET name=(?),users=(?) WHERE groupId=(?)",
                        [name, users, groupId], one=True)
         operationReport = dict(success=True)
     return operationReport
@@ -124,13 +124,13 @@ def delete_group(groupId, password):
 ##############################
 
 def get_all_users():
-    cur = query_db("SELECT * FROM Users")
+    cur = query_db("SELECT * FROM Users",[], one=False)
     entries = [dict(userId=row[0], username=row[1], password=row[2], email=row[3]) for row in cur]
     return entries
 
 
 def get_all_groups():
-    cur = query_db("SELECT * FROM Groups")
+    cur = query_db("SELECT * FROM Groups",[], one=False)
     entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur]
     return entries
 
@@ -141,7 +141,7 @@ def get_all_groups():
 def check_user_existence(users):
     user_list = users.split(',')
     for user in user_list:
-        cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
+        cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user], one=True)
         if cur is None:
             return dict(success=False, Error="could not find user", userId=user)
     return dict(success=True)
@@ -158,7 +158,7 @@ def connect_db():
     return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
 
 
-def query_db(query, args=(), one=False):
+def query_db(query, args=(), one=True):
     db = get_db()
     cur = db.execute(query, args)
     db.commit()
