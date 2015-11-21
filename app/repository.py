@@ -107,7 +107,7 @@ def get_groups(userId):
 
 def delete_group(groupId, password):
     cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
-    userId = cur['userId']
+    userId = cur['groupId']
     if userId is None:
         operationReport = dict(success=False, error="unknown error in groupDB")
         return operationReport
