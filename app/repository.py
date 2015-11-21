@@ -143,8 +143,8 @@ def check_user_existence(users):
     for user in user_list:
         cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
         if cur is None:
-            return dict(Success=False, Error="could not find user", userId=user)
-    return dict(Success=True)
+            return dict(success=False, Error="could not find user", userId=user)
+    return dict(success=True)
 
 def get_db():
     db = getattr(g, 'db', None)
