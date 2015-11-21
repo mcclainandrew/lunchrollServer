@@ -84,7 +84,7 @@ def getGroups(userId):
 	cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
 	if cur is None: 
 		operationReport = dict(success=False, Error="could not find any groups")
-	else
+	else:
 		operationReport = [dict(groupId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
 		operationReport['success'] = True
 	return operationReport
