@@ -120,7 +120,7 @@ def update_group_service():
     if groupId == '0':
         entries = create_group(userId, name, users)
     else:
-        entries = update_group(groupId, userId, name, users)
+        entries = update_group(groupId, name, users)
 
     return jsonify(data=entries)
 

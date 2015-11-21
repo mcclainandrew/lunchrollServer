@@ -71,8 +71,8 @@ def update_group(groupId, userId, name, users):
     if cur is None:
         operationReport = dict(success=False, Error="could not find group")
     else:
-        cur = query_db("UPDATE Groups SET userId=(?),name=(?),users=(?) WHERE groupId=(?)",
-                       [userId, name, users, groupId], one=True)
+        cur = query_db("UPDATE Groups SET name=(?),users=(?) WHERE groupId=(?)",
+                       [name, users, groupId], one=True)
         operationReport = dict(success=True)
     return operationReport
 
@@ -92,7 +92,6 @@ def get_groups(userId):
     if cur is None:
         operationReport = dict(success=False, Error="could not find any groups")
     else:
-
         operationReport = [dict(success=True, groupId=row[0], name=row[1], users=row[2]) for row in cur]
     return operationReport
 
