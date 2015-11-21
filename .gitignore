@@ -1,0 +1,10 @@
+# logs and  databases #
+#######################
+
+*.db
+*.log
+
+# compiled python code #
+########################
+
+*.pyc
