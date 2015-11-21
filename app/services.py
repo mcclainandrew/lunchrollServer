@@ -15,7 +15,7 @@ app.debug = True
 # User Services #
 #################
 @user.route('/user/updateUser', methods=['POST'])
-def modifyUser():
+def modify_user_service():
     data_dict = request.get_json()
     userId = data_dict['userId']
     username = data_dict['username']
@@ -23,32 +23,32 @@ def modifyUser():
     email = data_dict['email']
 
     if userId == '0':
-        entries = createUser(username, password, email)
+        entries = create_user(username, password, email)
     else:
-        entries = updateUser(userId, username, password, email)
+        entries = update_user(userId, username, password, email)
 
     return jsonify(data=entries)
 
 
 @user.route('/user/getUser', methods=['POST'])
-def getUserData():
+def get_user_data_service():
     data_dict = request.get_json()
     userId = data_dict['userId']
 
-    entries = getUser(userId)
+    entries = get_user(userId)
     return jsonify(data=entries)
 
 
 @user.route('/user/getGroups', methods=['POST'])
-def getUsersGroups():
+def get_user_groups_service():
     data_dict = request.get_json()
     userId = data_dict['userId']
-    entries = getGroups(userId)
+    entries = get_groups(userId)
     return jsonify(data=entries)
 
 
 @user.route('/user/getPreferences', methods=['POST'])
-def getPreferences():
+def get_preferences_service():
     db = get_db()
     data_dict = request.get_json()
     userId = data_dict['userId']
@@ -102,15 +102,15 @@ def updatePreferences():
 # Group Services #
 ##################
 @group.route('/group/getData', methods=['POST'])
-def getGroupData():
+def get_group_data_service():
     data_dict = request.get_json()
     groupId = data_dict['groupId']
-    entries = getGroup(groupId)
+    entries = get_group(groupId)
     return jsonify(data=entries)
 
 
 @group.route('/group/updateGroup', methods=['POST'])
-def updateGroup():
+def update_group_service():
     data_dict = request.get_json()
     groupId = data_dict['groupId']
     userId = data_dict['userId']
@@ -118,30 +118,30 @@ def updateGroup():
     users = data_dict['users']
 
     if groupId == '0':
-        entries = createGroup(userId, name, users)
+        entries = create_group(userId, name, users)
     else:
-        entries = updateGroup(groupId, userId, name, users)
+        entries = update_group(groupId, userId, name, users)
 
     return jsonify(data=entries)
 
 
 @group.route('/group/deleteGroup', methods=['POST'])
-def delGroup():
+def delete_group_service():
     data_dict = request.get_json()
     groupId = data_dict['groupId']
     password = data_dict['password']
-    report = deleteGroup(groupId, password)
+    report = delete_group(groupId, password)
     return jsonify(data=report)
 
 
 @admin.route('/admin/getUsers', methods=['POST'])
-def getAllUsers():
+def get_all_users_service():
     entries = get_all_users()
     return jsonify(data=entries)
 
 
 @admin.route('/admin/getGroups', methods=['POST'])
-def getAllGroups():
+def get_all_groups_service():
     entries = get_all_groups()
     return jsonify(data=entries)
 

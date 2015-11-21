@@ -8,7 +8,7 @@ from passlib.hash import md5_crypt
 ###################
 # User Repository #
 ###################
-def createUser(username, password, email):
+def create_user(username, password, email):
     encryptedPass = md5_crypt.encrypt(password)
     existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
     if existing_user is not None:
@@ -31,7 +31,7 @@ def createUser(username, password, email):
     return successReport;
 
 
-def updateUser(userId, username, password, email):
+def update_user(userId, username, password, email):
     encryptedPass = md5_crypt.encrypt(password)
     user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
     if user is None:
@@ -48,7 +48,7 @@ def updateUser(userId, username, password, email):
     return successReport;
 
 
-def getUser(userId):
+def get_user(userId):
     cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
     if cur is None:
         operationReport = dict(success=False, Error="could not find userId in the table")
@@ -60,16 +60,13 @@ def getUser(userId):
 ####################	
 # Group Repository #
 ####################
-def createGroup(userId, name, users):
+def create_group(userId, name, users):
     cur = query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
-    if cur is None:
-        operationReport = dict(success=False, Error="could not create group")
-    else:
-        operationReport = dict(success=True, groupId=cur['groupId'])
+    operationReport = dict(success=True, groupId=cur['groupId'])
     return operationReport
 
 
-def updateGroup(groupId, userId, name, users):
+def update_group(groupId, userId, name, users):
     cur = query_db("Select * FROM Groups WHERE groupId=(?)", [groupId], one=True)
     if cur is None:
         operationReport = dict(success=False, Error="could not find group")
@@ -80,7 +77,7 @@ def updateGroup(groupId, userId, name, users):
     return operationReport
 
 
-def getGroup(groupId):
+def get_group(groupId):
     cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
     if cur is None:
         operationReport = dict(success=False, Error="could not find group")
@@ -90,7 +87,7 @@ def getGroup(groupId):
     return operationReport
 
 
-def getGroups(userId):
+def get_groups(userId):
     cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
     if cur is None:
         operationReport = dict(success=False, Error="could not find any groups")
@@ -100,7 +97,7 @@ def getGroups(userId):
     return operationReport
 
 
-def deleteGroup(groupId, password):
+def delete_group(groupId, password):
     encryptedPass = md5_crypt.encrypt(password)
     cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
     userId = cur['userId']
