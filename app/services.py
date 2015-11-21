@@ -11,10 +11,11 @@ admin = Blueprint('admin', __name__)
 
 app.debug = True
 
-#Start Database Calls
-
+#################
+# User Services #
+#################
 @user.route('/user/updateUser', methods = ['POST'])
-def new_user():
+def modifyUser():
 	data_dict = request.get_json()
 	userId = data_dict['userId']
 	username = data_dict['username']
@@ -36,43 +37,14 @@ def getUserData():
 	entries = getUser(userId)
 	return jsonify(data=entries)   
 
-@group.route('/group/updateGroup', methods = ['POST'])
-def updateGroup():    
-	db = get_db()
-	data_dict = request.get_json()
-	groupId = data_dict['groupId']
-	userId = data_dict['userId']
-	name = data_dict['name']
-	users = data_dict['users']
-
-	if groupId == '0':
-		db.execute("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users])
-		db.commit()
-	cur = db.execute("SELECT groupId, userId, name, users FROM Groups WHERE name = (?)", [name])
-	db.commit()
-	entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
-	return jsonify(data=entries)
-
-@user.route('/user/getGroups', methods = ['POST'])
-def getGroups():
-	db = get_db()
+	@user.route('/user/getGroups', methods = ['POST'])
+def getUsersGroups():
 	data_dict = request.get_json()
 	userId = data_dict['userId']
-	cur = db.execute("SELECT groupId, name FROM Groups WHERE userId = ?", [userId])
-	db.commit()
-	entries = [dict(groupId=row[0], name=row[1]) for row in cur.fetchall()]
+	entries = getGroups(userId)
 	return jsonify(data = entries)
 
-@group.route('/group/getData', methods = ['POST'])
-def getGroupData():
-	db = get_db()
-	data_dict = request.get_json()
-	groupId = data_dict['groupId']
-	cur = db.execute("SELECT userId, name, users FROM Groups WHERE groupId = (?)", [groupId])
-	db.commit()
-	entries = [dict(groupId=groupId, userId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
-	return jsonify(data=entries)
-
+#
 @user.route('/user/getPreferences', methods = ['POST'])
 def getPreferences():
 	db = get_db()
@@ -85,8 +57,7 @@ def getPreferences():
 	cur = db.execute("SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?", [genrePreferenceId])
 	entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row in cur.fetchall()]
 	return jsonify(data=entries)
-	
-
+#	
 @user.route('/user/updatePreferences', methods = ['POST'])
 def updatePreferences():
 	db = get_db()
@@ -117,7 +88,39 @@ def updatePreferences():
 		db.execute("UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceId = ?", [asian,american,italian,mexican,indian,greek,groupPreferencesId])
 		db.commit()
 		return None
-#todo
+
+##################
+# Group Services #
+##################
+@group.route('/group/getData', methods = ['POST'])
+def getGroupData():
+	data_dict = request.get_json()
+	groupId = data_dict['groupId']
+	entries = getGroup(groupId)
+	return jsonify(data=entries)
+	
+@group.route('/group/updateGroup', methods = ['POST'])
+def updateGroup():    
+	data_dict = request.get_json()
+	groupId = data_dict['groupId']
+	userId = data_dict['userId']
+	name = data_dict['name']
+	users = data_dict['users']
+
+	if groupId == '0':
+		entries = createGroup(userId, name, users)
+	else:
+		entries = updateGroup(groupId, userId, name, users)
+		
+	return jsonify(data=entries)
+
+@group.route('/group/deleteGroup', methods = ['POST'])
+def delGroup():
+	data_dict = request.get_json()
+	groupId = data_dict['groupId']
+	password = data_dict['password']
+	report = deleteGroup(groupId, password)
+	return jsonify(data=report)
 
 @admin.route('/admin/getUsers', methods = ['POST'])
 def getUsers():

@@ -4,7 +4,9 @@ import sqlite3
 import random
 from passlib.hash import md5_crypt
 
-
+###################
+# User Repository #
+###################
 def createUser(username, password, email):
 	encryptedPass = md5_crypt.encrypt(password)
 	existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
@@ -46,11 +48,66 @@ def getUser(userId):
 	cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
 	if cur is None:
 		operationReport = dict(success=False, Error="could not find userId in the table")
-		return operationReport
 	else:
 		operationReport = dict(success=True, username=cur['username'], email=cur['email'])
-		return operationReport	
+	return operationReport	
 	
+####################	
+# Group Repository #
+####################
+def createGroup(userId, name, users):
+	cur = query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
+	if cur is None:
+		operationReport = dict(success=False, Error="could not create group")
+	else:
+		operationReport = dict(success=True, groupId=cur['groupId'])
+	return operationReport
+	
+def updateGroup(groupId, userId, name, users):
+	cur = query_db("Select * FROM Groups WHERE groupId=(?)",[groupId], one=True)
+	if cur is None:
+		operationReport = dict(success=False, Error="could not find group")
+	else:
+		cur = query_db("UPDATE Groups SET userId=(?),name=(?),users=(?) WHERE groupId=(?)", [userId, name, users, groupId], one=True)
+		operationReport = dict(success=True)
+	return operationReport
+	
+def getGroup(groupId):
+	cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
+	if cur is None:
+		operationReport = dict(success=False, Error="could not find group")
+	else:
+		operationReport = dict(Success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'], users=cur['users'])
+	return operationReport
+
+def getGroups(userId):
+	cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
+	if cur is None: 
+		operationReport = dict(success=False, Error="could not find any groups")
+	else
+		operationReport = [dict(groupId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
+		operationReport['success'] = True
+	return operationReport
+	
+def deleteGroup(groupId, password):
+	encryptedPass = md5_crypt.encrypt(password)
+	cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
+	userId = cur['userId']
+	if userId is None:
+		operationReport = dict(Success=False, Error="unknown error in groupDB")
+		return operationReport
+	cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
+	if cur['password'] != encryptedPass
+		operationReport = dict(Success=False, Error="incorrect password")
+		return operationReport
+	query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
+	operationReport = dict(Success=True)
+	return operationReport
+	
+
+############################
+# Aux Repository Functions #
+############################
 def get_db():
 	db = getattr(g, 'db', None)
 	if db is None:
