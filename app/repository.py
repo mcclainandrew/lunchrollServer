@@ -124,13 +124,13 @@ def delete_group(groupId, password):
 ##############################
 
 def get_all_users():
-    cur = query_db("SELECT * FROM Users",[], one=False)
+    cur = query_db("SELECT * FROM Users", one=False)
     entries = [dict(userId=row[0], username=row[1], password=row[2], email=row[3]) for row in cur]
     return entries
 
 
 def get_all_groups():
-    cur = query_db("SELECT * FROM Groups",[], one=False)
+    cur = query_db("SELECT * FROM Groups", one=False)
     entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur]
     return entries
 
