@@ -43,8 +43,7 @@ def getUsersGroups():
 	userId = data_dict['userId']
 	entries = getGroups(userId)
 	return jsonify(data = entries)
-
-#
+	
 @user.route('/user/getPreferences', methods = ['POST'])
 def getPreferences():
 	db = get_db()
@@ -57,7 +56,7 @@ def getPreferences():
 	cur = db.execute("SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?", [genrePreferenceId])
 	entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row in cur.fetchall()]
 	return jsonify(data=entries)
-#	
+
 @user.route('/user/updatePreferences', methods = ['POST'])
 def updatePreferences():
 	db = get_db()
