@@ -49,7 +49,7 @@ def helpUpdateUser(name=None):
 
 @app.route('/help/user/getUser')
 @app.route('/help/user/getUser/<name>')
-def helpUpdateUser(name=None):
+def helpGetUser(name=None):
     return render_template("user/getUser.html", name=name)
 
 
