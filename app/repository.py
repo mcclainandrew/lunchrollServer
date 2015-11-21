@@ -2,14 +2,12 @@ from app import app
 from flask import g;
 import sqlite3
 import random
-from passlib.hash import md5_crypt
 
 
 ###################
 # User Repository #
 ###################
 def create_user(username, password, email):
-    encryptedPass = md5_crypt.encrypt(password)
     existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
     if existing_user is not None:
         errorReport = dict(success=False, Error="username already exists")
@@ -20,7 +18,7 @@ def create_user(username, password, email):
         errorReport = dict(success=False, Error="email already exists")
         return errorReport
 
-    query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email],
+    query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, password, email],
              one=True)
     cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
     if cur is None:
@@ -32,7 +30,6 @@ def create_user(username, password, email):
 
 
 def update_user(userId, username, password, email):
-    encryptedPass = md5_crypt.encrypt(password)
     user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
     if user is None:
         errorReport = dict(success=False, Error="username does not exist")
@@ -43,7 +40,7 @@ def update_user(userId, username, password, email):
         errorReport = dict(success=False, Error="email already exists")
         return errorReport
 
-    cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
+    cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
     successReport = dict(success=True, userId=userId)
     return successReport;
 
@@ -97,15 +94,14 @@ def get_groups(userId):
 
 
 def delete_group(groupId, password):
-    encryptedPass = md5_crypt.encrypt(password)
     cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
     userId = cur['userId']
     if userId is None:
         operationReport = dict(success=False, Error="unknown error in groupDB")
         return operationReport
     cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
-    if cur['password'] != encryptedPass:
-        operationReport = dict(success=False, Error="incorrect password", attempted=encryptedPass, actual=cur['password'])
+    if cur['password'] != password:
+        operationReport = dict(success=False, Error="incorrect password", attempted=password, actual=cur['password'])
         return operationReport
     query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
     operationReport = dict(success=True)
