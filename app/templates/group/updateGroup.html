@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>POST group/updateGroup</title>
+
+</head>
+<body>
+
+
+<link type="text/css" href="{{ url_for('static', filename='apipage.css') }}" rel="stylesheet">
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="/help">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h2>POST group/updateGroup</h2>
+
+        <div>
+            <p>Creates a new group or modifies an existing one.</p>
+
+            <h2>Request Information</h2>
+
+            <h3>URI Parameters</h3>
+
+            <p>None.</p>
+
+
+            <h3>Body Parameters</h3>
+
+            <p>User Fields</p>
+            <table class="help-page-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Additional Information</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>groupId</td>
+                    <td>The group's ID</td>
+                    <td>String</td>
+                    <td>Required<br>if the group does not have an Id, set to 0 to create a new group</td>
+                </tr>
+                <tr>
+                    <td>userId</td>
+                    <td>The user's ID</td>
+                    <td>String</td>
+                    <td>Required if the group is being created</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>The group's name</td>
+                    <td>String</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>users</td>
+                    <td>The users who belong in the group</td>
+                    <td>String</td>
+                    <td>Required<br>does not include the creator, comma delimited</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3>Request Formats</h3>
+
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
+			<span>
+				<pre class="wrapped">{"groupId":"0", "userId":"1", "name":"foodGroup5", "users":"2, 3"}</pre>
+			</span>
+                </div>
+            </div>
+            <h2>Response Information</h2>
+
+            <h3>Resource Description</h3>
+
+            <p>application/json</p>
+
+            <h3>Response Formats</h3>
+
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
+			<span>
+				<pre class="wrapped">
+{
+  "data": {
+    "groupId": 4,
+    "success": true
+  }
+}
+
+or if failed
+
+{
+  "data": {
+    "error": "reason for failure",
+    "success": false
+  }
+}
+				</pre>
+			</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

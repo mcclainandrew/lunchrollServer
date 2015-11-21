@@ -29,33 +29,48 @@ def help(name=None):
 
 @app.route('/help/client/nearbyAny')
 @app.route('/help/client/nearbyAny/<name>')
-def helpNearbyAny(name=None):
+def helpClientNearbyAny(name=None):
     return render_template("client/nearbyAny.html", name=name)
 
 @app.route('/help/client/nearbySpecific')
 @app.route('/help/client/nearbySpecific/<name>')
-def helpNearbySpecific(name=None):
+def helpClientNearbySpecific(name=None):
     return render_template("client/nearbySpecific.html", name=name)
 
 @app.route('/help/client/nearbySuggested')
 @app.route('/help/client/nearbySuggested/<name>')
-def helpNearbySuggested(name=None):
+def helpClientNearbySuggested(name=None):
     return render_template("client/nearbySuggested.html", name=name)
 	
 @app.route('/help/user/updateUser')
 @app.route('/help/user/updateUser/<name>')
-def helpUpdateUser(name=None):
+def helpUserUpdateUser(name=None):
     return render_template("user/updateUser.html", name=name)
 
 @app.route('/help/user/getUser')
 @app.route('/help/user/getUser/<name>')
-def helpGetUser(name=None):
+def helpUserGetUser(name=None):
     return render_template("user/getUser.html", name=name)
 
 @app.route('/help/user/getGroups')
 @app.route('/help/user/getGroups/<name>')
-def helpGetUserGroups(name=None):
+def helpUserGetGroups(name=None):
     return render_template("user/getGroups.html", name=name)
+
+@app.route('/help/group/getGroup')
+@app.route('/help/group/getGroup/<name>')
+def helpGroupGetGroup(name=None):
+    return render_template("group/getGroup.html", name=name)
+
+@app.route('/help/group/updateGroup')
+@app.route('/help/group/updateGroup/<name>')
+def helpGroupUpdateGroup(name=None):
+    return render_template("group/updateGroup.html", name=name)
+
+@app.route('/help/group/deleteGroup')
+@app.route('/help/group/deleteGroup/<name>')
+def helpGroupDeleteGroup(name=None):
+    return render_template("group/deleteGroup.html", name=name)
 
 #End Api Help Page
 ###################
