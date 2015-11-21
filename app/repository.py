@@ -127,7 +127,7 @@ def get_db():
 		db = g.db = connect_db()
 		db.row_factory = sqlite3.Row
 	return db
-    
+	
 def connect_db():
 	return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
 
