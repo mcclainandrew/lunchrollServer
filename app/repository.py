@@ -66,7 +66,7 @@ def create_group(userId, name, users):
     return operationReport
 
 
-def update_group(groupId, userId, name, users):
+def update_group(groupId, name, users):
     cur = query_db("Select * FROM Groups WHERE groupId=(?)", [groupId], one=True)
     if cur is None:
         operationReport = dict(success=False, Error="could not find group")
