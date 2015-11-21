@@ -4,137 +4,153 @@ import sqlite3
 import random
 from passlib.hash import md5_crypt
 
+
 ###################
 # User Repository #
 ###################
 def createUser(username, password, email):
-	encryptedPass = md5_crypt.encrypt(password)
-	existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
-	if existing_user is not None:
-		errorReport = dict(success=False, Error="username already exists")
-		return errorReport
-		
-	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
-	if existing_email is not None:
-		errorReport = dict(success=False, Error="email already exists")
-		return errorReport
-	
-	query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email], one=True)
-	cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
-	if cur is None:
-		errorReport = dict(success=False, Error="user was not successfully saved")
-		return errorReport
-	
-	successReport = dict(success=True, userId=cur['userId'])
-	return successReport;
+    encryptedPass = md5_crypt.encrypt(password)
+    existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
+    if existing_user is not None:
+        errorReport = dict(success=False, Error="username already exists")
+        return errorReport
+
+    existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
+    if existing_email is not None:
+        errorReport = dict(success=False, Error="email already exists")
+        return errorReport
+
+    query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, encryptedPass, email],
+             one=True)
+    cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
+    if cur is None:
+        errorReport = dict(success=False, Error="user was not successfully saved")
+        return errorReport
+
+    successReport = dict(success=True, userId=cur['userId'])
+    return successReport;
+
 
 def updateUser(userId, username, password, email):
-	encryptedPass = md5_crypt.encrypt(password)
-	user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
-	if user is None:
-		errorReport = dict(success=False, Error="username does not exist")
-		return errorReport
-	
-	existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
-	if existing_email is not None:
-		errorReport = dict(success=False, Error="email already exists")
-		return errorReport	
-		
-	cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
-	successReport = dict(success=True, userId=userId)
-	return successReport;
-	
+    encryptedPass = md5_crypt.encrypt(password)
+    user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
+    if user is None:
+        errorReport = dict(success=False, Error="username does not exist")
+        return errorReport
+
+    existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
+    if existing_email is not None:
+        errorReport = dict(success=False, Error="email already exists")
+        return errorReport
+
+    cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [encryptedPass, email, userId])
+    successReport = dict(success=True, userId=userId)
+    return successReport;
+
+
 def getUser(userId):
-	cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
-	if cur is None:
-		operationReport = dict(success=False, Error="could not find userId in the table")
-	else:
-		operationReport = dict(success=True, username=cur['username'], email=cur['email'])
-	return operationReport	
-	
+    cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
+    if cur is None:
+        operationReport = dict(success=False, Error="could not find userId in the table")
+    else:
+        operationReport = dict(success=True, username=cur['username'], email=cur['email'])
+    return operationReport
+
+
 ####################	
 # Group Repository #
 ####################
 def createGroup(userId, name, users):
-	cur = query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
-	if cur is None:
-		operationReport = dict(success=False, Error="could not create group")
-	else:
-		operationReport = dict(success=True, groupId=cur['groupId'])
-	return operationReport
-	
+    cur = query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
+    if cur is None:
+        operationReport = dict(success=False, Error="could not create group")
+    else:
+        operationReport = dict(success=True, groupId=cur['groupId'])
+    return operationReport
+
+
 def updateGroup(groupId, userId, name, users):
-	cur = query_db("Select * FROM Groups WHERE groupId=(?)",[groupId], one=True)
-	if cur is None:
-		operationReport = dict(success=False, Error="could not find group")
-	else:
-		cur = query_db("UPDATE Groups SET userId=(?),name=(?),users=(?) WHERE groupId=(?)", [userId, name, users, groupId], one=True)
-		operationReport = dict(success=True)
-	return operationReport
-	
+    cur = query_db("Select * FROM Groups WHERE groupId=(?)", [groupId], one=True)
+    if cur is None:
+        operationReport = dict(success=False, Error="could not find group")
+    else:
+        cur = query_db("UPDATE Groups SET userId=(?),name=(?),users=(?) WHERE groupId=(?)",
+                       [userId, name, users, groupId], one=True)
+        operationReport = dict(success=True)
+    return operationReport
+
+
 def getGroup(groupId):
-	cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
-	if cur is None:
-		operationReport = dict(success=False, Error="could not find group")
-	else:
-		operationReport = dict(Success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'], users=cur['users'])
-	return operationReport
+    cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
+    if cur is None:
+        operationReport = dict(success=False, Error="could not find group")
+    else:
+        operationReport = dict(Success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
+                               users=cur['users'])
+    return operationReport
+
 
 def getGroups(userId):
-	cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
-	if cur is None: 
-		operationReport = dict(success=False, Error="could not find any groups")
-	else:
-		operationReport = [dict(groupId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
-		operationReport['success'] = True
-	return operationReport
-	
+    cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
+    if cur is None:
+        operationReport = dict(success=False, Error="could not find any groups")
+    else:
+        operationReport = [dict(groupId=row[0], name=row[1], users=row[2]) for row in cur.fetchall()]
+        operationReport['success'] = True
+    return operationReport
+
+
 def deleteGroup(groupId, password):
-	encryptedPass = md5_crypt.encrypt(password)
-	cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
-	userId = cur['userId']
-	if userId is None:
-		operationReport = dict(Success=False, Error="unknown error in groupDB")
-		return operationReport
-	cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
-	if cur['password'] != encryptedPass
-		operationReport = dict(Success=False, Error="incorrect password")
-		return operationReport
-	query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
-	operationReport = dict(Success=True)
-	return operationReport
-	
+    encryptedPass = md5_crypt.encrypt(password)
+    cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
+    userId = cur['userId']
+    if userId is None:
+        operationReport = dict(Success=False, Error="unknown error in groupDB")
+        return operationReport
+    cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
+    if cur['password'] != encryptedPass:
+        operationReport = dict(Success=False, Error="incorrect password")
+        return operationReport
+    query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
+    operationReport = dict(Success=True)
+    return operationReport
+
+
 ##############################
 # Admin Repository Functions #
 ##############################
 
 def get_all_users():
-	cur = query_db("SELECT * FROM Users")
-	entries = [dict(userId=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
-	return entries
+    cur = query_db("SELECT * FROM Users")
+    entries = [dict(userId=row[0], username=row[1], password=row[2], email=row[3]) for row in cur.fetchall()]
+    return entries
+
 
 def get_all_groups():
-	cur = query_db("SELECT * FROM Groups")
-	entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
-	return entries
+    cur = query_db("SELECT * FROM Groups")
+    entries = [dict(groupId=row[0], userId=row[1], name=row[2], users=row[3]) for row in cur.fetchall()]
+    return entries
+
 
 ############################
 # Aux Repository Functions #
 ############################
 def get_db():
-	db = getattr(g, 'db', None)
-	if db is None:
-		db = g.db = connect_db()
-		db.row_factory = sqlite3.Row
-	return db
-	
+    db = getattr(g, 'db', None)
+    if db is None:
+        db = g.db = connect_db()
+        db.row_factory = sqlite3.Row
+    return db
+
+
 def connect_db():
-	return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
+    return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
+
 
 def query_db(query, args=(), one=False):
-	db = get_db()
-	cur = db.execute(query, args)
-	db.commit()
-	rv = cur.fetchall()
-	cur.close()
-	return (rv[0] if rv else None) if one else rv
+    db = get_db()
+    cur = db.execute(query, args)
+    db.commit()
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv

@@ -4,59 +4,67 @@ from flask import Blueprint, request, session, abort, jsonify, g
 import json
 import random
 
-
 user = Blueprint('user', __name__)
 group = Blueprint('group', __name__)
 admin = Blueprint('admin', __name__)
 
 app.debug = True
 
+
 #################
 # User Services #
 #################
-@user.route('/user/updateUser', methods = ['POST'])
+@user.route('/user/updateUser', methods=['POST'])
 def modifyUser():
-	data_dict = request.get_json()
-	userId = data_dict['userId']
-	username = data_dict['username']
-	password = data_dict['password']
-	email = data_dict['email']
-	
-	if userId == '0':
-		entries = createUser(username, password, email)
-	else:
-		entries = updateUser(userId, username, password, email)
-	
-	return jsonify(data=entries)
+    data_dict = request.get_json()
+    userId = data_dict['userId']
+    username = data_dict['username']
+    password = data_dict['password']
+    email = data_dict['email']
 
-@user.route('/user/getUser', methods = ['POST'])
+    if userId == '0':
+        entries = createUser(username, password, email)
+    else:
+        entries = updateUser(userId, username, password, email)
+
+    return jsonify(data=entries)
+
+
+@user.route('/user/getUser', methods=['POST'])
 def getUserData():
-	data_dict = request.get_json()
-	userId = data_dict['userId']
-	
-	entries = getUser(userId)
-	return jsonify(data=entries)   
+    data_dict = request.get_json()
+    userId = data_dict['userId']
 
-	@user.route('/user/getGroups', methods = ['POST'])
+    entries = getUser(userId)
+    return jsonify(data=entries)
+
+
+@user.route('/user/getGroups', methods=['POST'])
 def getUsersGroups():
-	data_dict = request.get_json()
-	userId = data_dict['userId']
-	entries = getGroups(userId)
-	return jsonify(data = entries)
-	
-@user.route('/user/getPreferences', methods = ['POST'])
-def getPreferences():
-	db = get_db()
-	data_dict = request.get_json()
-	userId = data_dict['userId']
-	cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?", [userId])
-	db.commit()
-	(rv,) = cur.fetchone()
-	genrePreferenceId = rv
-	cur = db.execute("SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?", [genrePreferenceId])
-	entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row in cur.fetchall()]
-	return jsonify(data=entries)
+    data_dict = request.get_json()
+    userId = data_dict['userId']
+    entries = getGroups(userId)
+    return jsonify(data=entries)
 
+
+@user.route('/user/getPreferences', methods=['POST'])
+def getPreferences():
+    db = get_db()
+    data_dict = request.get_json()
+    userId = data_dict['userId']
+    cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?", [userId])
+    db.commit()
+    (rv,) = cur.fetchone()
+    genrePreferenceId = rv
+    cur = db.execute(
+        "SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?",
+        [genrePreferenceId])
+    entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row
+               in cur.fetchall()]
+    return jsonify(data=entries)
+
+
+"""
 @user.route('/user/updatePreferences', methods = ['POST'])
 def updatePreferences():
 	db = get_db()
@@ -87,62 +95,71 @@ def updatePreferences():
 		db.execute("UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceId = ?", [asian,american,italian,mexican,indian,greek,groupPreferencesId])
 		db.commit()
 		return None
+"""
+
 
 ##################
 # Group Services #
 ##################
-@group.route('/group/getData', methods = ['POST'])
+@group.route('/group/getData', methods=['POST'])
 def getGroupData():
-	data_dict = request.get_json()
-	groupId = data_dict['groupId']
-	entries = getGroup(groupId)
-	return jsonify(data=entries)
-	
-@group.route('/group/updateGroup', methods = ['POST'])
-def updateGroup():    
-	data_dict = request.get_json()
-	groupId = data_dict['groupId']
-	userId = data_dict['userId']
-	name = data_dict['name']
-	users = data_dict['users']
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    entries = getGroup(groupId)
+    return jsonify(data=entries)
 
-	if groupId == '0':
-		entries = createGroup(userId, name, users)
-	else:
-		entries = updateGroup(groupId, userId, name, users)
-		
-	return jsonify(data=entries)
 
-@group.route('/group/deleteGroup', methods = ['POST'])
+@group.route('/group/updateGroup', methods=['POST'])
+def updateGroup():
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    userId = data_dict['userId']
+    name = data_dict['name']
+    users = data_dict['users']
+
+    if groupId == '0':
+        entries = createGroup(userId, name, users)
+    else:
+        entries = updateGroup(groupId, userId, name, users)
+
+    return jsonify(data=entries)
+
+
+@group.route('/group/deleteGroup', methods=['POST'])
 def delGroup():
-	data_dict = request.get_json()
-	groupId = data_dict['groupId']
-	password = data_dict['password']
-	report = deleteGroup(groupId, password)
-	return jsonify(data=report)
+    data_dict = request.get_json()
+    groupId = data_dict['groupId']
+    password = data_dict['password']
+    report = deleteGroup(groupId, password)
+    return jsonify(data=report)
 
-@admin.route('/admin/getUsers', methods = ['POST'])
+
+@admin.route('/admin/getUsers', methods=['POST'])
 def getAllUsers():
-	entries = get_all_users()
-	return jsonify(data=entries)
+    entries = get_all_users()
+    return jsonify(data=entries)
 
-@admin.route('/admin/getGroups', methods = ['POST'])
+
+@admin.route('/admin/getGroups', methods=['POST'])
 def getAllGroups():
-	entries = get_all_groups()
-	return jsonify(data=entries)
-	
-@user.route('/user/login', methods = ['POST'])
-def login():
-	db = get_db()
-	data_dict = request.get_json()
-	email = data_dict['email'] + ""
-	password = data_dict['password'] + ""
-	encryptedPass = md5_crypt.encrypt(password)
+    entries = get_all_groups()
+    return jsonify(data=entries)
 
-	cur = db.execute("SELECT * FROM Users WHERE email = ? AND password = ?", [email, password])
-	db.commit()
-	entries = [dict(userId=row[0], username=row[1]) for row in cur.fetchall()]
-	return jsonify(data=entries)         
+
+@user.route('/user/login', methods=['POST'])
+def login():
+    db = get_db()
+    data_dict = request.get_json()
+    email = data_dict['email'] + ""
+    password = data_dict['password'] + ""
+    encryptedPass = md5_crypt.encrypt(password)
+
+    cur = db.execute("SELECT * FROM Users WHERE email = ? AND password = ?", [email, password])
+    db.commit()
+    entries = [dict(userId=row[0], username=row[1]) for row in cur.fetchall()]
+    return jsonify(data=entries)
+
+
 '''d
 def suggest(userId):
 	db = get_db()
@@ -166,4 +183,4 @@ def suggest(userId):
 '''
 
 
-#End Database Calls
+# End Database Calls
