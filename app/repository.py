@@ -60,7 +60,7 @@ def get_user(userId):
 def create_group(userId, name, users):
     cur = query_db("SELECT * FROM Groups WHERE name=(?) and userId=(?)", [name, userId])
     if cur is not None:
-        operationReport = dict(success=False, error="group already exists for user")
+        operationReport = dict(success=False, error="group already exists for user", name=cur['name'])
         return operationReport
     query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
     cur = query_db("SELECT * FROM Groups WHERE name=(?) and userId=(?)", [name, userId])
