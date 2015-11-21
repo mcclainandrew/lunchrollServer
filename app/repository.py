@@ -10,19 +10,19 @@ import random
 def create_user(username, password, email):
     existing_user = query_db("SELECT * FROM Users WHERE username = (?)", [username], one=True)
     if existing_user is not None:
-        errorReport = dict(success=False, Error="username already exists")
+        errorReport = dict(success=False, error="username already exists")
         return errorReport
 
     existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
     if existing_email is not None:
-        errorReport = dict(success=False, Error="email already exists")
+        errorReport = dict(success=False, error="email already exists")
         return errorReport
 
     query_db("INSERT into Users (username, password, email) VALUES (?, ?, ?)", [username, password, email],
              one=True)
     cur = query_db("SELECT userId FROM Users WHERE username = (?)", [username], one=True)
     if cur is None:
-        errorReport = dict(success=False, Error="user was not successfully saved")
+        errorReport = dict(success=False, error="user was not successfully saved")
         return errorReport
 
     successReport = dict(success=True, userId=cur['userId'])
@@ -32,15 +32,15 @@ def create_user(username, password, email):
 def update_user(userId, username, password, email):
     user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
     if user is None:
-        errorReport = dict(success=False, Error="username does not exist")
+        errorReport = dict(success=False, error="username does not exist")
         return errorReport
 
     existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
     if existing_email is not None:
-        errorReport = dict(success=False, Error="email already exists")
+        errorReport = dict(success=False, error="email already exists")
         return errorReport
 
-    cur = query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
+    query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
     successReport = dict(success=True, userId=userId)
     return successReport;
 
@@ -48,7 +48,7 @@ def update_user(userId, username, password, email):
 def get_user(userId):
     cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
     if cur is None:
-        operationReport = dict(success=False, Error="could not find userId in the table")
+        operationReport = dict(success=False, error="could not find userId in the table")
     else:
         operationReport = dict(success=True, username=cur['username'], email=cur['email'])
     return operationReport
@@ -58,15 +58,20 @@ def get_user(userId):
 # Group Repository #
 ####################
 def create_group(userId, name, users):
-    cur = query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
+    cur = query_db("SELECT * FROM Groups WHERE name=(?) and userId=(?)", [name, userId])
+    if cur is not None:
+        operationReport = dict(success=False, error="group already exists for user")
+        return operationReport
+    query_db("INSERT INTO Groups (userId, name, users) VALUES (?, ?, ?)", [userId, name, users], one=True)
+    cur = query_db("SELECT * FROM Groups WHERE name=(?) and userId=(?)", [name, userId])
     operationReport = dict(success=True, groupId=cur['groupId'])
     return operationReport
 
 
 def update_group(groupId, name, users):
-    cur = query_db("Select * FROM Groups WHERE groupId=(?)", [groupId], one=True)
+    cur = query_db("SELECT * FROM Groups WHERE groupId=(?)", [groupId], one=True)
     if cur is None:
-        operationReport = dict(success=False, Error="could not find group")
+        operationReport = dict(success=False, error="could not find group")
     else:
         cur = query_db("UPDATE Groups SET name=(?),users=(?) WHERE groupId=(?)",
                        [name, users, groupId], one=True)
@@ -77,7 +82,7 @@ def update_group(groupId, name, users):
 def get_group(groupId):
     cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
     if cur is None:
-        operationReport = dict(success=False, Error="could not find group")
+        operationReport = dict(success=False, error="could not find group")
     else:
         operationReport = dict(success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
                                users=cur['users'])
@@ -87,7 +92,7 @@ def get_group(groupId):
 def get_groups(userId):
     cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
     if cur is None:
-        operationReport = dict(success=False, Error="could not find any groups")
+        operationReport = dict(success=False, error="could not find any groups")
     else:
         operationReport = [dict(success=True, groupId=row[0], name=row[1], users=row[2]) for row in cur]
     return operationReport
@@ -97,11 +102,11 @@ def delete_group(groupId, password):
     cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
     userId = cur['userId']
     if userId is None:
-        operationReport = dict(success=False, Error="unknown error in groupDB")
+        operationReport = dict(success=False, error="unknown error in groupDB")
         return operationReport
     cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
     if cur['password'] != password:
-        operationReport = dict(success=False, Error="incorrect password", attempted=password, actual=cur['password'])
+        operationReport = dict(success=False, error="incorrect password", attempted=password, actual=cur['password'])
         return operationReport
     query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
     operationReport = dict(success=True)
