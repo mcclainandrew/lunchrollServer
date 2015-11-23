@@ -58,7 +58,7 @@ def update_preferences(**data_dict):
     cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", [data_dict['userId']])
     if cur is None:
         pref_dict = dict(data_dict['asian'], data_dict['american'], data_dict['italian'], data_dict['mexican'],
-                         data_dict['indian'], data_dict['greek']);
+                         data_dict['indian'], data_dict['greek'])
 
         genrePreferenceId = query_db(
             "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek) VALUES (?, ?, ?, ?, ?, ?))",
