@@ -56,6 +56,7 @@ def get_user(userId):
 
 def update_preferences(**data_dict):
     userId = data_dict['userId']
+    check_user_existence(userId)
     asian = data_dict['asian']
     american = data_dict['american']
     italian = data_dict['italian']
@@ -68,13 +69,13 @@ def update_preferences(**data_dict):
         genrePreferenceId = query_db(
             "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek)"
             "VALUES (?, ?, ?, ?, ?, ?)",
-            [asian, american, italian, mexican, indian, greek], one=False, insert=True)
+            [asian, american, italian, mexican, indian, greek], insert=True)
         if genrePreferenceId == 0 or genrePreferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into genrePreference table")
             return operationReport
 
         preferenceId = query_db("INSERT INTO Preferences (userId, genrePreferenceId) VALUES (?, ?)",
-                                [data_dict['userId'], genrePreferenceId], one=False, insert=True)
+                                [data_dict['userId'], genrePreferenceId], insert=True)
         if preferenceId == 0 or preferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into preference table")
             return operationReport
@@ -98,6 +99,7 @@ def update_preferences(**data_dict):
 
 
 def get_preferences(userId):
+    check_user_existence(userId)
     cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", userId)
     if cur is None:
         operationReport = dict(success=False, Error="unable to find preference entry for user")
@@ -111,6 +113,34 @@ def get_preferences(userId):
         else:
             operationReport = dict(success=True, asian=cur['asian'], american=cur['american'], italian=cur['italian'],
                                    mexican=cur['mexican'], indian=cur['indian'], greek=cur['greek'])
+    return operationReport
+
+
+def add_friend(userId, friend_userId):
+    check_user_existence(userId + ", " + friend_userId)
+    cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
+    if cur is not None:
+        operationReport = dict(success=False, Error="user already has this friend")
+    else:
+        query_db("INSERT INTO Friends (userId, friendId) VALUES (?, ?)", [userId, friend_userId])
+        operationReport = dict(success=True)
+
+    return operationReport
+
+
+def remove_friend(userId, friend_userId):
+    cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
+    if cur is None:
+        operationReport = dict(success=False, Error="user does not have 2nd user as friend")
+    else:
+        query_db("DELETE FROM Friends WHERE userId=(?), friendId=(?)", [userId, friend_userId])
+        operationReport = dict(success=True)
+    return operationReport
+
+
+def get_user_friends(userId):
+    cur = query_db("SELECT friendId FROM Friends WHERE UserId=(?)")
+    operationReport = [dict(friendId=row[0]) for row in cur]
     return operationReport
 
 

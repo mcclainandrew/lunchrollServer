@@ -68,6 +68,29 @@ def get_preferences_service():
     entries = get_preferences(userId)
     return jsonify(data=entries)
 
+@user.route('/user/getFriends', methods=['POST'])
+def get_user_friends_service():
+    data_dict=request.get_json()
+    userId=data_dict['userId']
+    entries = get_user_friends(userId)
+    return jsonify(data=entries)
+
+@user.route('/user/addFriend', methods=['POST'])
+def add_friend_service():
+    data_dict=request.get_json()
+    userId=data_dict['userId']
+    friendId=data_dict['friendId']
+    entries = add_friend(userId, friendId)
+    return jsonify(data=entries)
+
+@user.route('/user/removeFriend', methods=['POST'])
+def remove_friend_service():
+    data_dict=request.get_json()
+    userId=data_dict['userId']
+    friendId=data_dict['friendId']
+    entries = remove_friend(userId, friendId)
+    return jsonify(data=entries)
+
 @user.route('/user/login', methods=['POST'])
 def login_service():
     data_dict = request.get_json()
