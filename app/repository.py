@@ -139,7 +139,7 @@ def remove_friend(userId, friend_userId):
 
 
 def get_user_friends(userId):
-    cur = query_db("SELECT * FROM Friends WHERE UserId=(?)")
+    cur = query_db("SELECT * FROM Friends WHERE UserId=(?)", [userId])
     operationReport = [dict(friendId=row[1]) for row in cur]
     return operationReport
 
