@@ -89,8 +89,8 @@ def update_preferences(**data_dict):
             return operationReport
 
         query_db(
-            "UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?)"
-            "WHERE genrePreferenceId = ?",
+            "UPDATE GenrePreferences SET (asian=(?), american=(?), italian=(?), mexican=(?), indian=(?), greek=(?))"
+            "WHERE genrePreferenceId = (?)",
             [asian, american, italian, mexican, indian, greek, genrePreferenceId])
 
         operationReport = dict(success=True)
