@@ -68,7 +68,7 @@ def update_preferences(**data_dict):
         genrePreferenceId = query_db(
             "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek)"
             "VALUES (?, ?, ?, ?, ?, ?)",
-            [asian, american, italian, mexican, indian, greek],one=False,insert=True)
+            [asian, american, italian, mexican, indian, greek], one=False, insert=True)
         if genrePreferenceId == 0 or genrePreferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into genrePreference table")
             return operationReport
@@ -89,7 +89,7 @@ def update_preferences(**data_dict):
             return operationReport
 
         query_db(
-            "UPDATE GenrePreferences SET (asian=(?), american=(?), italian=(?), mexican=(?), indian=(?), greek=(?))"
+            "UPDATE GenrePreferences SET asian=(?), american=(?), italian=(?), mexican=(?), indian=(?), greek=(?)"
             "WHERE genrePreferenceId = (?)",
             [asian, american, italian, mexican, indian, greek, genrePreferenceId])
 
@@ -135,6 +135,7 @@ def login(**data_dict):
         return operationReport
 
     return dict(success=True, userId=cur['userId'])
+
 
 ####################
 # Group Repository #
