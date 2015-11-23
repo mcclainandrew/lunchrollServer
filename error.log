@@ -1643,3 +1643,57 @@
 [Sat Nov 21 22:02:18.849513 2015] [:error] [pid 28314:tid 140409337816832] [client 69.16.152.156:57840]     userId = cur['userId']
 [Sat Nov 21 22:02:18.849532 2015] [:error] [pid 28314:tid 140409337816832] [client 69.16.152.156:57840] TypeError: 'NoneType' object has no attribute '__getitem__'
 [Sat Nov 21 22:03:03.589780 2015] [:info] [pid 28313:tid 140409337816832] [client 69.16.152.156:57841] mod_wsgi (pid=28313, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:15:11.264018 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956] mod_wsgi (pid=28314): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:15:11.264086 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956] Traceback (most recent call last):
+[Sat Nov 21 22:15:11.264109 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sat Nov 21 22:15:11.264151 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     return self.wsgi_app(environ, start_response)
+[Sat Nov 21 22:15:11.264161 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sat Nov 21 22:15:11.264175 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     response = self.make_response(self.handle_exception(e))
+[Sat Nov 21 22:15:11.264183 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sat Nov 21 22:15:11.264195 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     reraise(exc_type, exc_value, tb)
+[Sat Nov 21 22:15:11.264203 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sat Nov 21 22:15:11.264214 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     response = self.full_dispatch_request()
+[Sat Nov 21 22:15:11.264222 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sat Nov 21 22:15:11.264259 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     rv = self.handle_user_exception(e)
+[Sat Nov 21 22:15:11.264268 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sat Nov 21 22:15:11.264280 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     reraise(exc_type, exc_value, tb)
+[Sat Nov 21 22:15:11.264287 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sat Nov 21 22:15:11.264299 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     rv = self.dispatch_request()
+[Sat Nov 21 22:15:11.264306 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sat Nov 21 22:15:11.264317 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sat Nov 21 22:15:11.264325 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]   File "/var/www/lunchroll/app/services.py", line 151, in update_group_service
+[Sat Nov 21 22:15:11.264339 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956]     users = data_dict['users']
+[Sat Nov 21 22:15:11.264356 2015] [:error] [pid 28314:tid 140409183364864] [client 69.16.152.156:57956] KeyError: 'users'
+[Sat Nov 21 22:15:33.582687 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957] mod_wsgi (pid=28314): Exception occurred processing WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:15:33.582733 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957] Traceback (most recent call last):
+[Sat Nov 21 22:15:33.582755 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1836, in __call__
+[Sat Nov 21 22:15:33.582783 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     return self.wsgi_app(environ, start_response)
+[Sat Nov 21 22:15:33.582794 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1820, in wsgi_app
+[Sat Nov 21 22:15:33.582808 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     response = self.make_response(self.handle_exception(e))
+[Sat Nov 21 22:15:33.582816 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1403, in handle_exception
+[Sat Nov 21 22:15:33.582828 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     reraise(exc_type, exc_value, tb)
+[Sat Nov 21 22:15:33.582844 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Sat Nov 21 22:15:33.582856 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     response = self.full_dispatch_request()
+[Sat Nov 21 22:15:33.582863 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Sat Nov 21 22:15:33.582875 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     rv = self.handle_user_exception(e)
+[Sat Nov 21 22:15:33.582883 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Sat Nov 21 22:15:33.582895 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     reraise(exc_type, exc_value, tb)
+[Sat Nov 21 22:15:33.582902 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Sat Nov 21 22:15:33.582926 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     rv = self.dispatch_request()
+[Sat Nov 21 22:15:33.582934 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Sat Nov 21 22:15:33.582946 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     return self.view_functions[rule.endpoint](**req.view_args)
+[Sat Nov 21 22:15:33.582954 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/var/www/lunchroll/app/services.py", line 155, in update_group_service
+[Sat Nov 21 22:15:33.582967 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     entries = create_group(userId, name, users)
+[Sat Nov 21 22:15:33.582975 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]   File "/var/www/lunchroll/app/repository.py", line 62, in create_group
+[Sat Nov 21 22:15:33.582988 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957]     if result['success'] != True:
+[Sat Nov 21 22:15:33.583005 2015] [:error] [pid 28314:tid 140409174972160] [client 69.16.152.156:57957] KeyError: 'success'
+[Sat Nov 21 22:17:07.055638 2015] [:info] [pid 28579:tid 140066072495872] [client 69.16.152.156:57972] mod_wsgi (pid=28579, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:17:18.146134 2015] [:info] [pid 28580:tid 140066156422912] [client 69.16.152.156:57973] mod_wsgi (pid=28580, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:21:52.042290 2015] [:info] [pid 28726:tid 140385832777472] [client 69.16.152.156:57996] mod_wsgi (pid=28726, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:22:10.152092 2015] [:info] [pid 28727:tid 140385790813952] [client 69.16.152.156:57999] mod_wsgi (pid=28727, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:30:30.023244 2015] [:info] [pid 28872:tid 140609830475520] [client 69.16.152.156:58062] mod_wsgi (pid=28872, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:31:57.834909 2015] [:info] [pid 29014:tid 139703860811520] [client 69.16.152.156:58073] mod_wsgi (pid=29014, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
+[Sat Nov 21 22:32:24.544253 2015] [:info] [pid 29015:tid 139704027703040] [client 69.16.152.156:58075] mod_wsgi (pid=29015, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'., referer: http://52.8.67.183/help/user/getGroups
+[Sat Nov 21 23:09:23.370869 2015] [:info] [pid 29526:tid 139848077158144] [client 69.16.152.156:58222] mod_wsgi (pid=29526, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'., referer: http://52.8.67.183/help/user/getGroups
+[Sat Nov 21 23:09:44.057809 2015] [:info] [pid 29527:tid 139848051980032] [client 69.16.152.156:58224] mod_wsgi (pid=29527, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'., referer: http://52.8.67.183/help
+[Sun Nov 22 15:10:02.568727 2015] [:info] [pid 31564:tid 139848043534080] [client 40.78.145.48:1096] mod_wsgi (pid=31564, process='', application='ec2-54-183-138-254.us-west-1.compute.amazonaws.com|'): Loading WSGI script '/var/www/lunchroll/lunchroll.wsgi'.
