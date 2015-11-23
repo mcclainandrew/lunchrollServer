@@ -66,15 +66,15 @@ def update_preferences(**data_dict):
 
     if cur is None:
         genrePreferenceId = query_db(
-            "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek)" ""
+            "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek)"
             "VALUES (?, ?, ?, ?, ?, ?))",
-            [asian, american, italian, mexican, indian, greek], insert=True)
+            [asian, american, italian, mexican, indian, greek],one=False,insert=True)
         if genrePreferenceId == 0 or genrePreferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into genrePreference table")
             return operationReport
 
         preferenceId = query_db("INSERT INTO Preferences (userId, genrePreferenceId) VALUES (?, ?)",
-                                [data_dict['userId'], genrePreferenceId], insert=True)
+                                [data_dict['userId'], genrePreferenceId], one=False, insert=True)
         if preferenceId == 0 or preferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into preference table")
             return operationReport
