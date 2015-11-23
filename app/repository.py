@@ -245,9 +245,10 @@ def query_db(query, args=(), one=True, insert=False):
     db = get_db()
     cur = db.execute(query, args)
     db.commit()
-    rv = cur.fetchall()
     if insert is True:
         rv = cur.lastrowid
         one = False
+    else:
+        rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv
