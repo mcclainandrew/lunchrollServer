@@ -133,14 +133,14 @@ def remove_friend(userId, friend_userId):
     if cur is None:
         operationReport = dict(success=False, Error="user does not have 2nd user as friend")
     else:
-        query_db("DELETE FROM Friends WHERE userId=(?), friendId=(?)", [userId, friend_userId])
+        query_db("DELETE FROM Friends WHERE userId=(?) AND friendId=(?)", [userId, friend_userId])
         operationReport = dict(success=True)
     return operationReport
 
 
 def get_user_friends(userId):
-    cur = query_db("SELECT friendId FROM Friends WHERE UserId=(?)")
-    operationReport = [dict(friendId=row[0]) for row in cur]
+    cur = query_db("SELECT * FROM Friends WHERE UserId=(?)")
+    operationReport = [dict(friendId=row[1]) for row in cur]
     return operationReport
 
 
