@@ -117,7 +117,7 @@ def get_preferences(userId):
 
 
 def add_friend(userId, friend_userId):
-    check_user_existence(userId + ", " + friend_userId)
+    check_user_existence(userId + "," + friend_userId)
     cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
     if cur is not None:
         operationReport = dict(success=False, Error="user already has this friend")
@@ -254,7 +254,7 @@ def get_all_groups():
 def check_user_existence(users):
     user_list = users.split(',')
     for user in user_list:
-        cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user], one=True)
+        cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
         if cur is None:
             return dict(success=False, Error="could not find user", userId=user)
     return dict(success=True)
