@@ -54,7 +54,84 @@ def get_user(userId):
     return operationReport
 
 
-####################	
+def update_preferences(**data_dict):
+    cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", [data_dict['userId']])
+    if cur is None:
+        pref_dict = dict(data_dict['asian'], data_dict['american'], data_dict['italian'], data_dict['mexican'],
+                         data_dict['indian'], data_dict['greek']);
+
+        genrePreferenceId = query_db(
+            "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek) VALUES (?, ?, ?, ?, ?, ?))",
+            pref_dict, insert=True)
+        if genrePreferenceId == 0 or genrePreferenceId is None:
+            operationReport = dict(success=False, Error="unable to insert values into genrePreference table")
+            return operationReport
+
+        preferenceId = query_db("INSERT INTO Preferences (userId, genrePreferenceId) VALUES (?, ?)",
+                                [data_dict['userId'], genrePreferenceId], insert=True)
+        if (preferenceId == 0 or preferenceId is None):
+            operationReport = dict(success=False, Error="unable to insert values into preference table")
+            return operationReport
+
+        operationReport = dict(success=True)
+    else:
+        genrePreferenceId = cur['genrePreferenceId']
+        cur = query_db("SELECT * FROM GenrePreferences WHERE genrePreferenceId = (?)", [genrePreferenceId])
+        if cur is None:
+            operationReport = dict(success=False,
+                                   Error="incorrect genrePreferenceId set in preference table, blame it on Andrew")
+            return operationReport
+
+        pref_dict = dict(data_dict['asian'], data_dict['american'], data_dict['italian'], data_dict['mexican'],
+                         data_dict['indian'], data_dict['greek'], genrePreferenceId);
+        query_db(
+            "UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceId = ?",
+            pref_dict)
+
+        operationReport = dict(success=True)
+    return operationReport
+
+
+def get_preferences(userId):
+    cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", userId)
+    if cur is None:
+        operationReport = dict(success=False, Error="unable to find preference entry for user")
+        return operationReport
+    else:
+        genrePreferenceId = cur['genrePreferenceId']
+        cur = query_db("SELECT * FROM GenrePreferences WHERE genrePreferenceId=(?)", [genrePreferenceId])
+        if cur is None:
+            operationReport = dict(success=False,
+                                   Error="incorrect genrePreferenceId set in preference table, blame it on Andrew")
+        else:
+            operationReport = dict(success=True, asian=cur['asian'], american=cur['american'], italian=cur['italian'],
+                                   mexican=cur['mexican'], indian=cur['indian'], greek=cur['greek'])
+    return operationReport
+
+
+def login(**data_dict):
+    password = data_dict['password']
+    if 'username' in data_dict:
+        username = data_dict['username']
+        cur = query_db("SELECT * FROM Users WHERE username=(?)", [username])
+    elif 'email' in data_dict:
+        email = data_dict['email']
+        cur = query_db("SELECT * FROM Users WHERE email=(?)", [email])
+    else:
+        operationReport = dict(success=False, Error="no username or password")
+        return operationReport
+
+    if cur is None:
+        operationReport = dict(success=False, Error="unable to find user")
+        return operationReport
+
+    if password != cur['password']:
+        operationReport = dict(success=False, Error="incorrect password")
+        return operationReport
+
+    return dict(success=True, userId=cur['userId'])
+
+####################
 # Group Repository #
 ####################
 def create_group(userId, name, users):
@@ -81,7 +158,7 @@ def update_group(groupId, name, users):
         operationReport = dict(success=False, error="could not find group")
     else:
         query_db("UPDATE Groups SET name=(?),users=(?) WHERE groupId=(?)",
-                       [name, users, groupId], one=True)
+                 [name, users, groupId], one=True)
         operationReport = dict(success=True)
     return operationReport
 
@@ -146,6 +223,7 @@ def check_user_existence(users):
             return dict(success=False, Error="could not find user", userId=user)
     return dict(success=True)
 
+
 def get_db():
     db = getattr(g, 'db', None)
     if db is None:
@@ -158,10 +236,13 @@ def connect_db():
     return sqlite3.connect('/var/www/lunchroll/app/database/lunchroll.db')
 
 
-def query_db(query, args=(), one=True):
+def query_db(query, args=(), one=True, insert=False):
     db = get_db()
     cur = db.execute(query, args)
     db.commit()
     rv = cur.fetchall()
+    if insert is True:
+        rv = cur.lastrowid
+        one = False
     cur.close()
     return (rv[0] if rv else None) if one else rv

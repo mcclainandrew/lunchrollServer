@@ -28,3 +28,8 @@ create table GenrePreferences (
   indian integer not null,
   greek integer not null
 );
+drop table if exists Friends;
+create table Friends (
+  userId integer not null,
+  friendId integer not null
+);

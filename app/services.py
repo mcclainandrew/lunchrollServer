@@ -57,58 +57,41 @@ def get_preferences_service():
     (rv,) = cur.fetchone()
     genrePreferenceId = rv
     cur = db.execute(
-        "SELECT asian, american, italian, mexican,indian, greek FROM genrePreferences WHERE genrePreferenceId = ?",
+        "SELECT asian, american, italian, mexican, indian, greek FROM genrePreferences WHERE genrePreferenceId = ?",
         [genrePreferenceId])
     entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row
                in cur.fetchall()]
     return jsonify(data=entries)
 
 
-"""
-@user.route('/user/updatePreferences', methods = ['POST'])
-def updatePreferences():
-	db = get_db()
-	data_dict = request.get_json()
-	userId = data_dict['userId'] + ""
-	asian = data_dict['asian'] + ""
-	american = data_dict['american'] + ""
-	italian = data_dict['italian'] + ""
-	mexican = data_dict['mexican'] + ""
-	indian = data_dict['indian'] + ""
-	greek = data_dict['greek'] + ""
-	preferenceId = data_dict['preferenceId'] + ""
-	if preferenceId == '0':
-		c = db.cursor()
-		c.execute("INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek) VALUES (?, ?, ?, ?, ?, ?)", [asian, american, italian, mexican, indian, greek])
-		db.commit()
-		genrePreferenceId = c.lastrowid
-		c.execute("INSERT INTO Preferences (userId, genrePreferenceId) VALUES (?, ?)", [userId, genrePreferenceId])
-		db.commit()
-		preferenceId = c.lastrowid
-		entries = dict(preferenceId = preferenceId)
-		return jsonify(data = entries)
-	else:
-		#need to fix this
-		#user can't update settings yet
-		db.execute("SELECT GenrePrefernceId FROM Preferences WHERE userId = ?", [userId])
-		db.commit()
-		db.execute("UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?) WHERE genrePreferenceId = ?", [asian,american,italian,mexican,indian,greek,groupPreferencesId])
-		db.commit()
-		return None
-"""
-@user.route('/user/login', methods=['POST'])
-def login():
-    db = get_db()
+@user.route('/user/updatePreferences', methods=['POST'])
+def update_preferences_service():
     data_dict = request.get_json()
-    email = data_dict['email'] + ""
-    password = data_dict['password'] + ""
-    encryptedPass = md5_crypt.encrypt(password)
+    userId = data_dict['userId']
+    asian = data_dict['asian']
+    american = data_dict['american']
+    italian = data_dict['italian']
+    mexican = data_dict['mexican']
+    indian = data_dict['indian']
+    greek = data_dict['greek']
 
-    cur = db.execute("SELECT * FROM Users WHERE email = ? AND password = ?", [email, password])
-    db.commit()
-    entries = [dict(userId=row[0], username=row[1]) for row in cur.fetchall()]
+    entries = update_preferences(**data_dict)
+
     return jsonify(data=entries)
 
+@user.route('/user/getPreferences', methods=['POST'])
+def get_preferences_service():
+    data_dict = request.get_json()
+    userId = data_dict['userId']
+    entries = get_preferences(userId)
+    return jsonify(data=entries)
+
+@user.route('/user/login', methods=['POST'])
+def login_service():
+    data_dict = request.get_json()
+    password = data_dict['password']
+    entries = login(**data_dict)
+    return jsonify(data=entries)
 
 '''d
 def suggest(userId):
@@ -131,6 +114,7 @@ def suggest(userId):
 		if count <= ran:
 			return genres[i]
 '''
+
 
 ##################
 # Group Services #
@@ -166,6 +150,7 @@ def delete_group_service():
     password = data_dict['password']
     report = delete_group(groupId, password)
     return jsonify(data=report)
+
 
 ########################
 # Debug Admin Services #
