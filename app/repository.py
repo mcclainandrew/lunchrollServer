@@ -65,12 +65,10 @@ def update_preferences(**data_dict):
     cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", [userId])
 
     if cur is None:
-        pref_dict = [asian, american, italian, mexican, indian, greek]
-
         genrePreferenceId = query_db(
             "INSERT INTO GenrePreferences (asian, american, italian, mexican, indian, greek)" ""
             "VALUES (?, ?, ?, ?, ?, ?))",
-            pref_dict, insert=True)
+            [asian, american, italian, mexican, indian, greek], insert=True)
         if genrePreferenceId == 0 or genrePreferenceId is None:
             operationReport = dict(success=False, Error="unable to insert values into genrePreference table")
             return operationReport
@@ -90,11 +88,10 @@ def update_preferences(**data_dict):
                                    Error="incorrect genrePreferenceId set in preference table, blame it on Andrew")
             return operationReport
 
-        pref_dict = [asian, american, italian, mexican, indian, greek, genrePreferenceId]
         query_db(
             "UPDATE GenrePreferences SET (asian=?, american=?, italian=?, mexican=?, indian=?, greek=?)"
             "WHERE genrePreferenceId = ?",
-            pref_dict)
+            [asian, american, italian, mexican, indian, greek, genrePreferenceId])
 
         operationReport = dict(success=True)
     return operationReport
