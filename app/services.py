@@ -46,24 +46,6 @@ def get_user_groups_service():
     entries = get_groups(userId)
     return jsonify(data=entries)
 
-
-@user.route('/user/getPreferences', methods=['POST'])
-def get_preferences_service():
-    db = get_db()
-    data_dict = request.get_json()
-    userId = data_dict['userId']
-    cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?", [userId])
-    db.commit()
-    (rv,) = cur.fetchone()
-    genrePreferenceId = rv
-    cur = db.execute(
-        "SELECT asian, american, italian, mexican, indian, greek FROM genrePreferences WHERE genrePreferenceId = ?",
-        [genrePreferenceId])
-    entries = [dict(asian=row[0], american=row[1], italian=row[2], mexican=row[3], indian=row[4], greek=row[5]) for row
-               in cur.fetchall()]
-    return jsonify(data=entries)
-
-
 @user.route('/user/updatePreferences', methods=['POST'])
 def update_preferences_service():
     data_dict = request.get_json()
