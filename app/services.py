@@ -171,4 +171,14 @@ def get_all_groups_service():
     entries = get_all_groups()
     return jsonify(data=entries)
 
+@admin.route('/admin/getPreferences', methods=['POST'])
+def get_all_preferences_service():
+    entries = get_all_preferences()
+    return jsonify(data=entries)
+
+@admin.route('/admin/getFriends', methods=['POST'])
+def get_all_friends_service():
+    entries = get_all_friends()
+    return jsonify(data=entries)
+
 # End Database Calls

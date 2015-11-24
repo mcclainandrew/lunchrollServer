@@ -1,40 +1,40 @@
 from app import app
 import repository
-from flask import Blueprint, Response, jsonify
-import requests
+from flask import Blueprint, request
+from repository import search, user_suggest, group_suggest
 
-placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
-nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-headers = {'Content-Type':'application/json'}
+
 
 #Start Client Calls
 client = Blueprint('client', __name__)
 
-@client.route('/client/nearbySpecific', methods=['POST'])
-def searchSpecific():
+
+@client.route('/client/search', methods=['POST'])
+def search_specific_service():
     data_dict = request.get_json()
     latitude = data_dict['latitude']
     longitude = data_dict['longitude']
     location = latitude + ',' + longitude
     genre = data_dict['genre']
-    genre = genre + '+food'
-    payload = {'location': location, 'radius': 5000, 'types': "food|restaurant", 'query': genre, 'key': placesApiKey}
-    r = requests.post(textSearch, params=payload, headers=headers)
-    return Response(r.text, content_type='application/json')
-
-@client.route('/client/nearbySuggested', methods=['POST'])
+    return search(location, genre)
 
 
-@client.route('/client/nearbyAny', methods=['POST'])
-def searchNearby():
+@client.route('/client/suggest', methods=['POST'])
+def search_suggested_service():
     data_dict = request.get_json()
-
     latitude = data_dict['latitude']
     longitude = data_dict['longitude']
-    location = latitude + "," + longitude
-    payload = {'location': location, 'radius': 5000, 'types': 'food', 'key': placesApiKey}
-    r = requests.post(nearbySearch, params=payload, headers=headers)
-    return Response(r.text, content_type="application/json")
+    location = latitude + ',' + longitude
+    if 'userId' in data_dict.keys():
+        operationReport = user_suggest(data_dict['userId'])
+    elif 'groupId' in data_dict.keys():
+        operationReport = group_suggest(data_dict['groupId'])
+    else:
+        return dict(success=False, Error="no user or group ID in json")
+
+    if operationReport['success'] is not True:
+        return operationReport
+
+    return search(location, operationReport['genre'])
 
 #End Client Calls

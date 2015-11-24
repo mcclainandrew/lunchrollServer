@@ -1,8 +1,14 @@
 from app import app
-from flask import g;
+from flask import g, Response
+from collections import Counter
+import requests
 import sqlite3
 import random
 
+placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
+nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+headers = {'Content-Type':'application/json'}
 
 ###################
 # User Repository #
@@ -30,10 +36,9 @@ def create_user(username, password, email):
 
 
 def update_user(userId, username, password, email):
-    user = query_db("SELECT * FROM Users WHERE userId = (?)", [userId], one=True)
-    if user is None:
-        errorReport = dict(success=False, error="username does not exist")
-        return errorReport
+    result = check_user_existence(userId)
+    if result['success'] is not True:
+        return result
 
     existing_email = query_db("SELECT * FROM Users WHERE email = (?)", [email], one=True)
     if existing_email is not None:
@@ -56,7 +61,9 @@ def get_user(userId):
 
 def update_preferences(**data_dict):
     userId = data_dict['userId']
-    check_user_existence(userId)
+    result = check_user_existence(userId)
+    if result['success'] is not True:
+        return result
     asian = data_dict['asian']
     american = data_dict['american']
     italian = data_dict['italian']
@@ -99,7 +106,9 @@ def update_preferences(**data_dict):
 
 
 def get_preferences(userId):
-    check_user_existence(userId)
+    result = check_user_existence(userId)
+    if result['success'] is not True:
+        return result
     cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", userId)
     if cur is None:
         operationReport = dict(success=False, Error="unable to find preference entry for user")
@@ -111,14 +120,16 @@ def get_preferences(userId):
             operationReport = dict(success=False,
                                    Error="incorrect genrePreferenceId set in preference table, blame it on Andrew")
         else:
-            operationReport = dict(success=True, asian=cur['asian'], american=cur['american'], italian=cur['italian'],
+            operationReport = dict(asian=cur['asian'], american=cur['american'], italian=cur['italian'],
                                    mexican=cur['mexican'], indian=cur['indian'], greek=cur['greek'])
     return operationReport
 
 
 def add_friend(userId, friend_userId):
-    check_user_existence(userId + "," + friend_userId)
-    cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
+    result = check_user_existence(userId + "," + friend_userId)
+    if result['success'] is not True:
+        return result
+    cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FrendId = (?)", [userId, friend_userId])
     if cur is not None:
         operationReport = dict(success=False, Error="user already has this friend")
     else:
@@ -187,7 +198,7 @@ def create_group(userId, name, users):
 
 def update_group(groupId, name, users):
     result = check_user_existence(users)
-    if result['success'] != True:
+    if result['success'] is not True:
         return result
     cur = query_db("SELECT * FROM Groups WHERE groupId=(?)", [groupId], one=True)
     if cur is None:
@@ -232,9 +243,46 @@ def delete_group(groupId, password):
     return operationReport
 
 
+###############################
+# Client Repository Functions #
+###############################
+
+
+def search(location, genre=None):
+    if genre is None:
+        searchType = nearbySearch
+        payload = {'location': location, 'radius': 5000, 'types': 'restaurant', 'key': placesApiKey}
+    else:
+        searchType = textSearch
+        genre = genre + '+food'
+        payload = {'location': location, 'radius': 5000, 'types': "restaurant", 'query': genre, 'key': placesApiKey}
+
+    r = requests.post(searchType, params=payload, headers=headers)
+    return Response(r.text, content_type='application/json')
+
+
+def user_suggest(userId):
+    prefs = get_preferences(userId)
+    return suggest(prefs)
+
+
+def group_suggest(groupId):
+    group = get_group(groupId)
+    user_list = (group['users'] + ', ' + group['userId']).split(',')
+    total_prefs = {}
+    for user in user_list:
+        prefs = get_preferences(user)
+        A = Counter(prefs)
+        B = Counter(total_prefs)
+        total_prefs = A + B
+    return suggest(total_prefs)
+
+
+
 ##############################
 # Admin Repository Functions #
 ##############################
+
 
 def get_all_users():
     cur = query_db("SELECT * FROM Users", one=False)
@@ -248,9 +296,41 @@ def get_all_groups():
     return entries
 
 
+def get_all_preferences():
+    userIds = query_db("SELECT userId FROM Users", one=False)
+    entries = {}
+    for userId in userIds:
+        entries[userId] = get_preferences(userId)
+    return entries
+
+
+def get_all_friends():
+    users = query_db("SELECT UserId FROM Friends", one=False)
+    entries = {}
+    for user in users:
+        entries[user] = get_user_friends(user)
+    return entries
+
+
 ############################
 # Aux Repository Functions #
 ############################
+
+
+def suggest(prefs):
+    i = 0
+    for key in prefs:
+        i += prefs[key]
+    random.randint(1, i)
+    weights = 0
+    for key in prefs:
+        weights += prefs[key]
+        if i < weights:
+            return dict(success=True, genre=key)
+
+    return dict(success=False, Error="error in suggestion function")
+
+
 def check_user_existence(users):
     user_list = users.split(',')
     for user in user_list:
