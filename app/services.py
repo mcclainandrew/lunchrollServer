@@ -98,29 +98,6 @@ def login_service():
     entries = login(**data_dict)
     return jsonify(data=entries)
 
-'''d
-def suggest(userId):
-	db = get_db()
-	totalGenre = 6
-	genres = ["mexican", "american", "italian", "asian", "indian", "greek"]
-	genreTok = []
-	cur = db.execute("SELECT genrePreferenceId FROM Preferences WHERE userId = ?",[userId])
-	db.commit()
-	(rv,) = cur.fetchone()
-	cur = db.execute("SELECT mexican, american, italian, asian, indian, greek FROM GenrePreferences WHERE genrePreferenceId = ? ", rv)
-	for i in range(0,totalGenre)
-		(rv,) = cur.fetchone()
-		genreTok[i] = rv
-	totalTokens = sum(int(i) for i in genreTok)
-	ran = randomrange(0, totalTokens)
-	count = 0
-	for i in range(0, totalGenre)
-		count += genreTok[i]
-		if count <= ran:
-			return genres[i]
-'''
-
-
 ##################
 # Group Services #
 ##################
