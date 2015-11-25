@@ -8,14 +8,17 @@ from repository import search, user_suggest, group_suggest
 #Start Client Calls
 client = Blueprint('client', __name__)
 
-
+@client.route('/client/nearbyAny', methods=['POST'])
+@client.route('/client/nearbySpecific', methods=['POST'])
 @client.route('/client/search', methods=['POST'])
 def search_specific_service():
     data_dict = request.get_json()
     latitude = data_dict['latitude']
     longitude = data_dict['longitude']
     location = latitude + ',' + longitude
-    genre = data_dict['genre']
+    genre = None
+    if 'genre' in data_dict:
+        genre = data_dict['genre']
     return search(location, genre)
 
 

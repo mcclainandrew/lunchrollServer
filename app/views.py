@@ -27,21 +27,16 @@ app.register_blueprint(admin)
 def help(name=None):
     return render_template("apihelp.html", name=name) 
 
-@app.route('/help/client/nearbyAny')
-@app.route('/help/client/nearbyAny/<name>')
-def helpClientNearbyAny(name=None):
-    return render_template("client/nearbyAny.html", name=name)
+@app.route('/help/client/suggest')
+@app.route('/help/client/suggest/<name>')
+def helpClientSuggest(name=None):
+    return render_template("client/suggest.html", name=name)
 
-@app.route('/help/client/nearbySpecific')
-@app.route('/help/client/nearbySpecific/<name>')
-def helpClientNearbySpecific(name=None):
-    return render_template("client/nearbySpecific.html", name=name)
+@app.route('/help/client/search')
+@app.route('/help/client/search/<name>')
+def helpClientSearch(name=None):
+    return render_template("client/search.html", name=name)
 
-@app.route('/help/client/nearbySuggested')
-@app.route('/help/client/nearbySuggested/<name>')
-def helpClientNearbySuggested(name=None):
-    return render_template("client/nearbySuggested.html", name=name)
-	
 @app.route('/help/user/updateUser')
 @app.route('/help/user/updateUser/<name>')
 def helpUserUpdateUser(name=None):
