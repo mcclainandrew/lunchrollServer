@@ -1,10 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>POST user/getFriends</title>
+
 </head>
 <body>
 
+
+<link type="text/css" href="{{ url_for('static', filename='apipage.css') }}" rel="stylesheet">
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="/help">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h2>POST user/getFriends</h2>
+
+        <div>
+            <p>Retrieves all of user's friends</p>
+
+            <h2>Request Information</h2>
+
+            <h3>URI Parameters</h3>
+
+            <p>None.</p>
+
+
+            <h3>Body Parameters</h3>
+
+            <p>User Fields</p>
+            <table class="help-page-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Additional Information</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>userId</td>
+                    <td>The user's ID</td>
+                    <td>String</td>
+                    <td>Required</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3>Request Formats</h3>
+
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
+			<span>
+				<pre class="wrapped">{"userId": "1"}</pre>
+			</span>
+                </div>
+            </div>
+            <h2>Response Information</h2>
+
+            <h3>Resource Description</h3>
+
+            <p>application/json</p>
+
+            <h3>Response Formats</h3>
+
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
+			<span>
+				<pre class="wrapped">
+{
+  "data": [
+    {
+      "friendId": 1
+    },
+    {
+      "friendId": 2
+    }
+  ]
+}
+				</pre>
+			</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>

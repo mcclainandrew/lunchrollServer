@@ -52,6 +52,21 @@ def helpUserGetUser(name=None):
 def helpUserGetGroups(name=None):
     return render_template("user/getGroups.html", name=name)
 
+@app.route('/help/user/getFriends')
+@app.route('/help/user/getFriends/<name>')
+def helpUserGetFriends(name=None):
+    return render_template("user/getFriends.html", name=name)
+
+@app.route('/help/user/addFriend')
+@app.route('/help/user/addFriend/<name>')
+def helpUserAddFriend(name=None):
+    return render_template("user/addFriend.html", name=name)
+
+@app.route('/help/user/removeFriend')
+@app.route('/help/user/removeFriend/<name>')
+def helpUserRemoveFriend(name=None):
+    return render_template("user/removeFriend.html", name=name)
+
 @app.route('/help/group/getGroup')
 @app.route('/help/group/getGroup/<name>')
 def helpGroupGetGroup(name=None):

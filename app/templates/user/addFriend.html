@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>POST user/addFriend</title>
@@ -18,84 +20,81 @@
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">
-<h2>POST user/addFriend</h2>
-<div>
-    <p>Adds a friend for a user</p>
+        <h2>POST user/addFriend</h2>
 
-    <h2>Request Information</h2>
+        <div>
+            <p>Adds a friend for a user</p>
 
-    <h3>URI Parameters</h3>
-        <p>None.</p>
+            <h2>Request Information</h2>
+
+            <h3>URI Parameters</h3>
+
+            <p>None.</p>
 
 
+            <h3>Body Parameters</h3>
 
-    <h3>Body Parameters</h3>
+            <p>User Fields</p>
+            <table class="help-page-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Additional Information</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>userId</td>
+                    <td>The user's ID</td>
+                    <td>String</td>
+                    <td>Required</td>
+                </tr>
+                <tr>
+                    <td>friendId</td>
+                    <td>The friend's user ID</td>
+                    <td>String</td>
+                    <td>Required</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3>Request Formats</h3>
 
-    <p>User Fields</p>
-    <table class="help-page-table">
-        <thead>
-		<tr>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Type</th>
-			<th>Additional Information</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>userId</td>
-			<td>The user's ID</td>
-			<td>String</td>
-			<td>Required</td>
-		</tr>
-        <tr>
-			<td>friendId</td>
-			<td>The friend's user ID</td>
-			<td>String</td>
-			<td>Required</td>
-		</tr>
-	</tbody>
-    </table>
-	<h3>Request Formats</h3>
-	<div>
-		<h4 class="sample-header">application/json</h4>
-		<div class="sample-content">
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
 			<span>
 				<pre class="wrapped">{"userId": "1", "friendId": "2"}</pre>
 			</span>
-		</div>
-	</div>
-    <h2>Response Information</h2>
+                </div>
+            </div>
+            <h2>Response Information</h2>
 
-    <h3>Resource Description</h3>
+            <h3>Resource Description</h3>
 
-    <p>application/json</p>
+            <p>application/json</p>
 
-	<h3>Response Formats</h3>
+            <h3>Response Formats</h3>
 
-	<div>
-		<h4 class="sample-header">application/json</h4>
-		<div class="sample-content">
+            <div>
+                <h4 class="sample-header">application/json</h4>
+
+                <div class="sample-content">
 			<span>
 				<pre class="wrapped">
 {
-  "data": [
-    {
-      "groupId": 2,
-      "name": "foodGroup",
-      "success": true,
-      "users": "2"
-    },
-    {
-      "groupId": 3,
-      "name": "foodGroup2",
-      "success": true,
-      "users": "2, 3"
-    }
-  ]
+  "data": {
+    "success": true
+  }
 }
 				</pre>
 			</span>
-		</div>
-	</div>
-</body></html>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
