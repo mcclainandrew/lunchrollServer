@@ -1,10 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>POST user/updatePreferences</title>
+
 </head>
 <body>
 
-</body>
-</html>
+
+<link type="text/css" href="{{ url_for('static', filename='apipage.css') }}" rel="stylesheet">
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="/help">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+<h2>POST user/updatePreferences</h2>
+<div>
+    <p>Creates a new user preference entry or modifies an existing one.</p>
+
+    <h2>Request Information</h2>
+
+    <h3>URI Parameters</h3>
+        <p>None.</p>
+
+
+
+    <h3>Body Parameters</h3>
+
+    <p>User Fields</p>
+    <table class="help-page-table">
+        <thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Type</th>
+			<th>Additional Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>userId</td>
+			<td>The user's ID</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td>asian</td>
+			<td>The weight for asian food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td>american</td>
+			<td>The weight for american food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+		<tr>
+			<td>italian</td>
+			<td>The weight for italian food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+        <tr>
+			<td>mexican</td>
+			<td>The weight for mexican food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+        <tr>
+			<td>indian</td>
+			<td>The weight for indian food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+        <tr>
+			<td>greek</td>
+			<td>The weight for greek food</td>
+			<td>String</td>
+			<td>Required</td>
+		</tr>
+
+	</tbody>
+    </table>
+	<h3>Request Formats</h3>
+	<div>
+		<h4 class="sample-header">application/json</h4>
+		<div class="sample-content">
+			<span>
+				<pre class="wrapped">{"userId": "0", "username":"lonelyjoe", "password":"soAlone", "email":"partyguy123@plentyoffish.com"}</pre>
+			</span>
+		</div>
+	</div>
+    <h2>Response Information</h2>
+
+    <h3>Resource Description</h3>
+
+    <p>application/json</p>
+
+	<h3>Response Formats</h3>
+
+	<div>
+		<h4 class="sample-header">application/json</h4>
+		<div class="sample-content">
+			<span>
+				<pre class="wrapped">
+{
+  "data": {
+    "success": true,
+    "userId": 6
+  }
+}
+				</pre>
+			</span>
+		</div>
+	</div>
+</body></html>
