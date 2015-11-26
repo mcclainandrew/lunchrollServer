@@ -158,17 +158,11 @@ def get_user_friends(userId):
     return operationReport
 
 
-def login(**data_dict):
-    password = data_dict['password']
-    if 'username' in data_dict:
-        username = data_dict['username']
+def login(password, username=None, email=None):
+    if email is None:
         cur = query_db("SELECT * FROM Users WHERE username=(?)", [username])
-    elif 'email' in data_dict:
-        email = data_dict['email']
-        cur = query_db("SELECT * FROM Users WHERE email=(?)", [email])
     else:
-        operationReport = dict(success=False, Error="no username or password")
-        return operationReport
+        cur = query_db("SELECT * FROM Users WHERE email=(?)", [email])
 
     if cur is None:
         operationReport = dict(success=False, Error="unable to find user")
