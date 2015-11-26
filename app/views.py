@@ -52,6 +52,16 @@ def helpUserGetUser(name=None):
 def helpUserGetGroups(name=None):
     return render_template("user/getGroups.html", name=name)
 
+@app.route('/help/user/getPreferences')
+@app.route('/help/user/getPreferences/<name>')
+def helpUserGetPreferences(name=None):
+    return render_template("user/getPreferences.html", name=name)
+
+@app.route('/help/user/updatePreferences')
+@app.route('/help/user/updatePreferences/<name>')
+def helpUserGetPreferences(name=None):
+    return render_template("user/updatePreferences.html", name=name)
+
 @app.route('/help/user/getFriends')
 @app.route('/help/user/getFriends/<name>')
 def helpUserGetFriends(name=None):
