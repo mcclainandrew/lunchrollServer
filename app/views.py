@@ -59,7 +59,7 @@ def helpUserGetPreferences(name=None):
 
 @app.route('/help/user/updatePreferences')
 @app.route('/help/user/updatePreferences/<name>')
-def helpUserGetPreferences(name=None):
+def helpUserUpdatePreferences(name=None):
     return render_template("user/updatePreferences.html", name=name)
 
 @app.route('/help/user/getFriends')

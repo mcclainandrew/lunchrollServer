@@ -1815,3 +1815,259 @@
 [Mon Nov 23 01:32:01.538683 2015] [ssl:info] [pid 31565:tid 139847926789888] [client 89.248.172.110:21188] AH01998: Connection closed to child 201 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
 [Mon Nov 23 03:11:59.202761 2015] [ssl:info] [pid 31564:tid 139847943575296] [client 81.169.237.146:42553] AH01964: Connection to child 135 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
 [Mon Nov 23 03:11:59.377332 2015] [ssl:info] [pid 31564:tid 139847943575296] [client 81.169.237.146:42553] AH01998: Connection closed to child 135 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 04:59:39.866523 2015] [ssl:info] [pid 8946:tid 140366604683136] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 04:59:39.866772 2015] [ssl:info] [pid 8946:tid 140366604683136] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 04:59:39.867034 2015] [ssl:warn] [pid 8946:tid 140366604683136] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 04:59:39.867048 2015] [ssl:warn] [pid 8946:tid 140366604683136] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 04:59:39.875062 2015] [ssl:info] [pid 8947:tid 140366604683136] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 04:59:39.875300 2015] [ssl:info] [pid 8947:tid 140366604683136] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 04:59:39.875558 2015] [ssl:warn] [pid 8947:tid 140366604683136] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 04:59:39.875571 2015] [ssl:warn] [pid 8947:tid 140366604683136] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:02:52.252764 2015] [ssl:info] [pid 9094:tid 140478010431360] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:02:52.253015 2015] [ssl:info] [pid 9094:tid 140478010431360] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:02:52.253305 2015] [ssl:warn] [pid 9094:tid 140478010431360] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:02:52.253333 2015] [ssl:warn] [pid 9094:tid 140478010431360] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:02:52.261454 2015] [ssl:info] [pid 9095:tid 140478010431360] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:02:52.261681 2015] [ssl:info] [pid 9095:tid 140478010431360] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:02:52.261955 2015] [ssl:warn] [pid 9095:tid 140478010431360] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:02:52.261969 2015] [ssl:warn] [pid 9095:tid 140478010431360] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:07:24.720331 2015] [ssl:info] [pid 9218:tid 139795469571968] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:07:24.720575 2015] [ssl:info] [pid 9218:tid 139795469571968] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:07:24.720840 2015] [ssl:warn] [pid 9218:tid 139795469571968] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:07:24.720855 2015] [ssl:warn] [pid 9218:tid 139795469571968] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:07:24.729032 2015] [ssl:info] [pid 9219:tid 139795469571968] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:07:24.729296 2015] [ssl:info] [pid 9219:tid 139795469571968] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:07:24.729550 2015] [ssl:warn] [pid 9219:tid 139795469571968] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:07:24.729569 2015] [ssl:warn] [pid 9219:tid 139795469571968] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:10:37.636315 2015] [ssl:info] [pid 9370:tid 140704205625216] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:10:37.636543 2015] [ssl:info] [pid 9370:tid 140704205625216] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:10:37.636819 2015] [ssl:warn] [pid 9370:tid 140704205625216] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:10:37.636833 2015] [ssl:warn] [pid 9370:tid 140704205625216] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:10:37.645033 2015] [ssl:info] [pid 9371:tid 140704205625216] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:10:37.645269 2015] [ssl:info] [pid 9371:tid 140704205625216] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:10:37.645520 2015] [ssl:warn] [pid 9371:tid 140704205625216] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:10:37.645534 2015] [ssl:warn] [pid 9371:tid 140704205625216] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:16:11.996217 2015] [ssl:info] [pid 9375:tid 140703900317440] [client 216.218.206.67:34839] AH01964: Connection to child 78 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:16:19.379998 2015] [ssl:info] [pid 9375:tid 140703891924736] (104)Connection reset by peer: [client 216.218.206.67:34839] AH01991: SSL input filter read failed.
+[Mon Nov 23 05:20:14.609353 2015] [ssl:info] [pid 9667:tid 140335390377856] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:20:14.609590 2015] [ssl:info] [pid 9667:tid 140335390377856] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:20:14.609853 2015] [ssl:warn] [pid 9667:tid 140335390377856] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:20:14.609868 2015] [ssl:warn] [pid 9667:tid 140335390377856] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:20:14.618266 2015] [ssl:info] [pid 9668:tid 140335390377856] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:20:14.618527 2015] [ssl:info] [pid 9668:tid 140335390377856] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:20:14.618774 2015] [ssl:warn] [pid 9668:tid 140335390377856] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:20:14.618787 2015] [ssl:warn] [pid 9668:tid 140335390377856] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:21:40.864006 2015] [ssl:info] [pid 9672:tid 140335251920640] [client 216.218.206.67:34626] AH01964: Connection to child 67 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:21:40.864390 2015] [ssl:info] [pid 9672:tid 140335251920640] [client 216.218.206.67:34626] AH02008: SSL library error 1 in handshake (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:21:40.864427 2015] [ssl:info] [pid 9672:tid 140335251920640] SSL Library Error: error:1408A0C1:SSL routines:SSL3_GET_CLIENT_HELLO:no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+[Mon Nov 23 05:21:40.864434 2015] [ssl:info] [pid 9672:tid 140335251920640] [client 216.218.206.67:34626] AH01998: Connection closed to child 67 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:26:10.673168 2015] [ssl:info] [pid 9671:tid 140335251920640] [client 81.169.237.146:42894] AH01964: Connection to child 3 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:26:10.848811 2015] [ssl:info] [pid 9671:tid 140335251920640] [client 81.169.237.146:42894] AH01998: Connection closed to child 3 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 05:33:01.014731 2015] [ssl:info] [pid 9937:tid 139971536877440] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:33:01.014970 2015] [ssl:info] [pid 9937:tid 139971536877440] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:33:01.015227 2015] [ssl:warn] [pid 9937:tid 139971536877440] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:33:01.015255 2015] [ssl:warn] [pid 9937:tid 139971536877440] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:33:01.023824 2015] [ssl:info] [pid 9938:tid 139971536877440] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:33:01.024060 2015] [ssl:info] [pid 9938:tid 139971536877440] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:33:01.024329 2015] [ssl:warn] [pid 9938:tid 139971536877440] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:33:01.024357 2015] [ssl:warn] [pid 9938:tid 139971536877440] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:36:28.192917 2015] [ssl:info] [pid 10083:tid 140043997771648] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:36:28.193158 2015] [ssl:info] [pid 10083:tid 140043997771648] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:36:28.193425 2015] [ssl:warn] [pid 10083:tid 140043997771648] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:36:28.193440 2015] [ssl:warn] [pid 10083:tid 140043997771648] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:36:28.201727 2015] [ssl:info] [pid 10084:tid 140043997771648] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:36:28.201962 2015] [ssl:info] [pid 10084:tid 140043997771648] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:36:28.202234 2015] [ssl:warn] [pid 10084:tid 140043997771648] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:36:28.202260 2015] [ssl:warn] [pid 10084:tid 140043997771648] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:39:42.569946 2015] [ssl:info] [pid 10229:tid 140141685323648] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:39:42.570209 2015] [ssl:info] [pid 10229:tid 140141685323648] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:39:42.570545 2015] [ssl:warn] [pid 10229:tid 140141685323648] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:39:42.570562 2015] [ssl:warn] [pid 10229:tid 140141685323648] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:39:42.578627 2015] [ssl:info] [pid 10230:tid 140141685323648] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:39:42.578865 2015] [ssl:info] [pid 10230:tid 140141685323648] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:39:42.579120 2015] [ssl:warn] [pid 10230:tid 140141685323648] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:39:42.579133 2015] [ssl:warn] [pid 10230:tid 140141685323648] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:44:10.286483 2015] [ssl:info] [pid 10377:tid 140408041228160] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:44:10.286739 2015] [ssl:info] [pid 10377:tid 140408041228160] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:44:10.287007 2015] [ssl:warn] [pid 10377:tid 140408041228160] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:44:10.287022 2015] [ssl:warn] [pid 10377:tid 140408041228160] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:44:10.295967 2015] [ssl:info] [pid 10378:tid 140408041228160] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:44:10.296231 2015] [ssl:info] [pid 10378:tid 140408041228160] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:44:10.296501 2015] [ssl:warn] [pid 10378:tid 140408041228160] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:44:10.296516 2015] [ssl:warn] [pid 10378:tid 140408041228160] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:47:50.990708 2015] [ssl:info] [pid 10523:tid 140098246653824] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:47:50.990968 2015] [ssl:info] [pid 10523:tid 140098246653824] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:47:50.991253 2015] [ssl:warn] [pid 10523:tid 140098246653824] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:47:50.991267 2015] [ssl:warn] [pid 10523:tid 140098246653824] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 05:47:50.999660 2015] [ssl:info] [pid 10524:tid 140098246653824] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 05:47:50.999890 2015] [ssl:info] [pid 10524:tid 140098246653824] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 05:47:51.000159 2015] [ssl:warn] [pid 10524:tid 140098246653824] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 05:47:51.000185 2015] [ssl:warn] [pid 10524:tid 140098246653824] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:06:44.883796 2015] [ssl:info] [pid 10679:tid 140660029597568] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:06:44.884035 2015] [ssl:info] [pid 10679:tid 140660029597568] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:06:44.884313 2015] [ssl:warn] [pid 10679:tid 140660029597568] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:06:44.884328 2015] [ssl:warn] [pid 10679:tid 140660029597568] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:06:44.892117 2015] [ssl:info] [pid 10680:tid 140660029597568] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:06:44.892311 2015] [ssl:info] [pid 10680:tid 140660029597568] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:06:44.892542 2015] [ssl:warn] [pid 10680:tid 140660029597568] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:06:44.892555 2015] [ssl:warn] [pid 10680:tid 140660029597568] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:18:44.032568 2015] [ssl:info] [pid 10886:tid 139985426642816] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:18:44.032798 2015] [ssl:info] [pid 10886:tid 139985426642816] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:18:44.033067 2015] [ssl:warn] [pid 10886:tid 139985426642816] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:18:44.033082 2015] [ssl:warn] [pid 10886:tid 139985426642816] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:18:44.041218 2015] [ssl:info] [pid 10887:tid 139985426642816] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:18:44.041459 2015] [ssl:info] [pid 10887:tid 139985426642816] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:18:44.041713 2015] [ssl:warn] [pid 10887:tid 139985426642816] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:18:44.041727 2015] [ssl:warn] [pid 10887:tid 139985426642816] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:20:54.590960 2015] [ssl:info] [pid 11034:tid 140123583825792] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:20:54.591192 2015] [ssl:info] [pid 11034:tid 140123583825792] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:20:54.591431 2015] [ssl:warn] [pid 11034:tid 140123583825792] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:20:54.591445 2015] [ssl:warn] [pid 11034:tid 140123583825792] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:20:54.599169 2015] [ssl:info] [pid 11035:tid 140123583825792] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:20:54.599371 2015] [ssl:info] [pid 11035:tid 140123583825792] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:20:54.599627 2015] [ssl:warn] [pid 11035:tid 140123583825792] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:20:54.599641 2015] [ssl:warn] [pid 11035:tid 140123583825792] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:22:31.122145 2015] [ssl:info] [pid 11182:tid 139655132526464] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:22:31.122454 2015] [ssl:info] [pid 11182:tid 139655132526464] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:22:31.122730 2015] [ssl:warn] [pid 11182:tid 139655132526464] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:22:31.122745 2015] [ssl:warn] [pid 11182:tid 139655132526464] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:22:31.131015 2015] [ssl:info] [pid 11183:tid 139655132526464] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:22:31.131265 2015] [ssl:info] [pid 11183:tid 139655132526464] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:22:31.131545 2015] [ssl:warn] [pid 11183:tid 139655132526464] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:22:31.131558 2015] [ssl:warn] [pid 11183:tid 139655132526464] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:23:45.436112 2015] [ssl:info] [pid 11330:tid 140615620208512] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:23:45.436333 2015] [ssl:info] [pid 11330:tid 140615620208512] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:23:45.436594 2015] [ssl:warn] [pid 11330:tid 140615620208512] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:23:45.436608 2015] [ssl:warn] [pid 11330:tid 140615620208512] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 06:23:45.444699 2015] [ssl:info] [pid 11331:tid 140615620208512] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Mon Nov 23 06:23:45.444923 2015] [ssl:info] [pid 11331:tid 140615620208512] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Mon Nov 23 06:23:45.445190 2015] [ssl:warn] [pid 11331:tid 140615620208512] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Mon Nov 23 06:23:45.445205 2015] [ssl:warn] [pid 11331:tid 140615620208512] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Mon Nov 23 10:17:40.300798 2015] [ssl:info] [pid 11335:tid 140615358580480] [client 81.169.237.146:42380] AH01964: Connection to child 73 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 10:17:40.470332 2015] [ssl:info] [pid 11335:tid 140615358580480] [client 81.169.237.146:42380] AH01998: Connection closed to child 73 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 15:57:25.513576 2015] [ssl:info] [pid 11335:tid 140615350187776] [client 54.169.154.221:47435] AH01964: Connection to child 74 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 15:57:25.727906 2015] [ssl:info] [pid 11335:tid 140615350187776] [client 54.169.154.221:47435] AH01998: Connection closed to child 74 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 17:18:36.245017 2015] [ssl:info] [pid 11334:tid 140615358580480] [client 66.240.213.93:42689] AH01964: Connection to child 9 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 17:18:36.270445 2015] [ssl:info] [pid 11334:tid 140615358580480] [client 66.240.213.93:42689] AH01998: Connection closed to child 9 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 17:19:17.313980 2015] [ssl:info] [pid 11335:tid 140615325009664] [client 81.169.237.146:46701] AH01964: Connection to child 77 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 17:19:17.488994 2015] [ssl:info] [pid 11335:tid 140615325009664] [client 81.169.237.146:46701] AH01998: Connection closed to child 77 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 19:12:49.917052 2015] [ssl:info] [pid 11334:tid 140615341795072] [client 46.237.207.196:48030] AH01964: Connection to child 11 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Mon Nov 23 19:17:49.946417 2015] [ssl:info] [pid 11334:tid 140615341795072] [client 46.237.207.196:48030] AH01998: Connection closed to child 11 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 00:22:38.880919 2015] [ssl:info] [pid 11335:tid 140615283046144] [client 199.115.117.117:53295] AH01964: Connection to child 82 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 00:22:39.142635 2015] [ssl:info] [pid 11335:tid 140615257868032] (70014)End of file found: [client 199.115.117.117:53295] AH01991: SSL input filter read failed.
+[Tue Nov 24 00:31:49.121903 2015] [ssl:info] [pid 11334:tid 140615308224256] [client 81.169.237.146:36960] AH01964: Connection to child 15 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 00:31:49.296850 2015] [ssl:info] [pid 11334:tid 140615308224256] [client 81.169.237.146:36960] AH01998: Connection closed to child 15 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 00:36:12.745520 2015] [ssl:info] [pid 11334:tid 140615291438848] [client 54.234.237.189:53949] AH01964: Connection to child 17 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 00:36:12.913114 2015] [ssl:error] [pid 11334:tid 140615291438848] AH02032: Hostname 52.8.67.183 provided via SNI and hostname andrew mcclain provided via HTTP are different
+[Tue Nov 24 08:10:55.719481 2015] [ssl:info] [pid 11335:tid 140615291438848] [client 216.218.206.68:45101] AH01964: Connection to child 81 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 08:11:01.357435 2015] [ssl:info] [pid 11335:tid 140615274653440] (104)Connection reset by peer: [client 216.218.206.68:45101] AH01991: SSL input filter read failed.
+[Tue Nov 24 08:21:58.742434 2015] [ssl:info] [pid 11335:tid 140615266260736] [client 216.218.206.68:36033] AH01964: Connection to child 84 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 08:22:02.510668 2015] [ssl:info] [pid 11335:tid 140615249475328] (104)Connection reset by peer: [client 216.218.206.68:36033] AH01991: SSL input filter read failed.
+[Tue Nov 24 08:23:19.990551 2015] [ssl:info] [pid 11334:tid 140615366973184] [client 216.218.206.68:35235] AH01964: Connection to child 8 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 08:23:19.990821 2015] [ssl:info] [pid 11334:tid 140615366973184] [client 216.218.206.68:35235] AH02008: SSL library error 1 in handshake (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 08:23:19.990859 2015] [ssl:info] [pid 11334:tid 140615366973184] SSL Library Error: error:1408A0C1:SSL routines:SSL3_GET_CLIENT_HELLO:no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+[Tue Nov 24 08:23:19.990866 2015] [ssl:info] [pid 11334:tid 140615366973184] [client 216.218.206.68:35235] AH01998: Connection closed to child 8 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 09:46:28.136375 2015] [ssl:info] [pid 11334:tid 140615341795072] [client 180.97.106.36:17120] AH01964: Connection to child 11 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 09:46:30.741618 2015] [ssl:info] [pid 11334:tid 140615308224256] (104)Connection reset by peer: [client 180.97.106.36:17120] AH01991: SSL input filter read failed.
+[Tue Nov 24 12:51:26.299490 2015] [ssl:info] [pid 11335:tid 140615308224256] [client 81.169.237.146:59373] AH01964: Connection to child 79 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 12:51:26.474556 2015] [ssl:info] [pid 11335:tid 140615308224256] [client 81.169.237.146:59373] AH01998: Connection closed to child 79 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 14:47:03.357313 2015] [ssl:info] [pid 11335:tid 140615299831552] [client 141.212.121.208:13754] AH01964: Connection to child 80 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 14:47:08.270420 2015] [ssl:info] [pid 11335:tid 140615299831552] (70014)End of file found: [client 141.212.121.208:13754] AH01991: SSL input filter read failed.
+[Tue Nov 24 15:34:50.613261 2015] [ssl:info] [pid 11335:tid 140615241082624] [client 81.169.237.146:53124] AH01964: Connection to child 87 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 15:34:50.783459 2015] [ssl:info] [pid 11335:tid 140615241082624] [client 81.169.237.146:53124] AH01998: Connection closed to child 87 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 18:06:10.291692 2015] [ssl:info] [pid 11334:tid 140615283046144] [client 81.169.237.146:44747] AH01964: Connection to child 18 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 18:06:10.488506 2015] [ssl:info] [pid 11334:tid 140615283046144] [client 81.169.237.146:44747] AH01998: Connection closed to child 18 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 20:45:15.041659 2015] [ssl:info] [pid 11335:tid 140615291438848] [client 81.169.237.146:59480] AH01964: Connection to child 81 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 20:45:15.213738 2015] [ssl:info] [pid 11335:tid 140615291438848] [client 81.169.237.146:59480] AH01998: Connection closed to child 81 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 23:22:51.695546 2015] [ssl:info] [pid 11334:tid 140615266260736] [client 81.169.237.146:55518] AH01964: Connection to child 20 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Tue Nov 24 23:22:51.870552 2015] [ssl:info] [pid 11334:tid 140615266260736] [client 81.169.237.146:55518] AH01998: Connection closed to child 20 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 02:02:27.557869 2015] [ssl:info] [pid 11334:tid 140615241082624] [client 81.169.237.146:46050] AH01964: Connection to child 23 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 02:02:27.733074 2015] [ssl:info] [pid 11334:tid 140615241082624] [client 81.169.237.146:46050] AH01998: Connection closed to child 23 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 04:28:43.514273 2015] [ssl:info] [pid 31689:tid 139725678987136] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:28:43.514569 2015] [ssl:info] [pid 31689:tid 139725678987136] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:28:43.514863 2015] [ssl:warn] [pid 31689:tid 139725678987136] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:28:43.514878 2015] [ssl:warn] [pid 31689:tid 139725678987136] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 04:28:43.527433 2015] [ssl:info] [pid 31691:tid 139725678987136] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:28:43.527669 2015] [ssl:info] [pid 31691:tid 139725678987136] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:28:43.527929 2015] [ssl:warn] [pid 31691:tid 139725678987136] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:28:43.527943 2015] [ssl:warn] [pid 31691:tid 139725678987136] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 04:37:26.191815 2015] [ssl:info] [pid 31695:tid 139725444720384] [client 81.169.237.146:43271] AH01964: Connection to child 70 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 04:37:26.361563 2015] [ssl:info] [pid 31695:tid 139725444720384] [client 81.169.237.146:43271] AH01998: Connection closed to child 70 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 04:40:23.631108 2015] [ssl:info] [pid 31694:tid 139725394364160] [client 81.169.237.146:38644] AH01964: Connection to child 12 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 04:40:23.796778 2015] [ssl:info] [pid 31694:tid 139725394364160] [client 81.169.237.146:38644] AH01998: Connection closed to child 12 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 04:47:02.460505 2015] [ssl:info] [pid 2167:tid 139743081437056] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:47:02.460808 2015] [ssl:info] [pid 2167:tid 139743081437056] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:47:02.461096 2015] [ssl:warn] [pid 2167:tid 139743081437056] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:47:02.461111 2015] [ssl:warn] [pid 2167:tid 139743081437056] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 04:47:02.481000 2015] [ssl:info] [pid 2168:tid 139743081437056] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:47:02.481318 2015] [ssl:info] [pid 2168:tid 139743081437056] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:47:02.481607 2015] [ssl:warn] [pid 2168:tid 139743081437056] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:47:02.481624 2015] [ssl:warn] [pid 2168:tid 139743081437056] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 04:56:15.966541 2015] [ssl:info] [pid 3667:tid 140430620788608] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:56:15.966776 2015] [ssl:info] [pid 3667:tid 140430620788608] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:56:15.967022 2015] [ssl:warn] [pid 3667:tid 140430620788608] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:56:15.967040 2015] [ssl:warn] [pid 3667:tid 140430620788608] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 04:56:15.974886 2015] [ssl:info] [pid 3668:tid 140430620788608] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Wed Nov 25 04:56:15.975123 2015] [ssl:info] [pid 3668:tid 140430620788608] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Wed Nov 25 04:56:15.975384 2015] [ssl:warn] [pid 3668:tid 140430620788608] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Wed Nov 25 04:56:15.975397 2015] [ssl:warn] [pid 3668:tid 140430620788608] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Wed Nov 25 06:42:27.105204 2015] [ssl:info] [pid 3671:tid 140430473938688] [client 74.82.47.2:60385] AH01964: Connection to child 4 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 06:42:31.528798 2015] [ssl:info] [pid 3671:tid 140430322657024] (104)Connection reset by peer: [client 74.82.47.2:60385] AH01991: SSL input filter read failed.
+[Wed Nov 25 06:50:31.708346 2015] [ssl:info] [pid 3672:tid 140430356227840] [client 74.82.47.2:58356] AH01964: Connection to child 74 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 06:50:36.386198 2015] [ssl:info] [pid 3672:tid 140430347835136] (104)Connection reset by peer: [client 74.82.47.2:58356] AH01991: SSL input filter read failed.
+[Wed Nov 25 06:51:55.062039 2015] [ssl:info] [pid 3672:tid 140430339442432] [client 74.82.47.2:50135] AH01964: Connection to child 76 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 06:51:55.062427 2015] [ssl:info] [pid 3672:tid 140430339442432] [client 74.82.47.2:50135] AH02008: SSL library error 1 in handshake (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 06:51:55.062457 2015] [ssl:info] [pid 3672:tid 140430339442432] SSL Library Error: error:1408A0C1:SSL routines:SSL3_GET_CLIENT_HELLO:no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+[Wed Nov 25 06:51:55.062476 2015] [ssl:info] [pid 3672:tid 140430339442432] [client 74.82.47.2:50135] AH01998: Connection closed to child 76 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 07:17:54.424207 2015] [ssl:info] [pid 3671:tid 140430238729984] [client 81.169.237.146:45786] AH01964: Connection to child 24 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 07:17:54.593655 2015] [ssl:info] [pid 3671:tid 140430238729984] [client 81.169.237.146:45786] AH01998: Connection closed to child 24 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 09:51:21.226215 2015] [ssl:info] [pid 3671:tid 140430347835136] [client 81.169.237.146:34494] AH01964: Connection to child 11 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 09:51:21.395992 2015] [ssl:info] [pid 3671:tid 140430347835136] [client 81.169.237.146:34494] AH01998: Connection closed to child 11 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 11:58:52.190163 2015] [ssl:info] [pid 3671:tid 140430297478912] [client 141.212.121.176:7945] AH01964: Connection to child 17 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 12:32:33.259329 2015] [ssl:info] [pid 3672:tid 140430331049728] [client 81.169.237.146:52710] AH01964: Connection to child 77 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 12:32:33.424351 2015] [ssl:info] [pid 3672:tid 140430331049728] [client 81.169.237.146:52710] AH01998: Connection closed to child 77 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 15:06:01.024780 2015] [ssl:info] [pid 3671:tid 140430373013248] [client 81.169.237.146:58625] AH01964: Connection to child 8 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 15:06:01.211671 2015] [ssl:info] [pid 3671:tid 140430373013248] [client 81.169.237.146:58625] AH01998: Connection closed to child 8 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 15:07:55.734017 2015] [ssl:info] [pid 3672:tid 140430322657024] [client 81.169.237.146:42505] AH01964: Connection to child 78 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 15:07:55.903977 2015] [ssl:info] [pid 3672:tid 140430322657024] [client 81.169.237.146:42505] AH01998: Connection closed to child 78 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 17:49:27.228786 2015] [ssl:info] [pid 3671:tid 140430381405952] [client 81.169.237.146:45019] AH01964: Connection to child 7 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 17:49:27.398477 2015] [ssl:info] [pid 3671:tid 140430381405952] [client 81.169.237.146:45019] AH01998: Connection closed to child 7 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 19:27:41.982707 2015] [ssl:info] [pid 3671:tid 140430364620544] [client 23.20.60.205:33159] AH01964: Connection to child 9 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 19:27:42.114733 2015] [ssl:info] [pid 3671:tid 140430364620544] [client 23.20.60.205:33159] AH02008: SSL library error 1 in handshake (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 19:27:42.114756 2015] [ssl:info] [pid 3671:tid 140430364620544] SSL Library Error: error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca (SSL alert number 48)
+[Wed Nov 25 19:27:42.114764 2015] [ssl:info] [pid 3671:tid 140430364620544] [client 23.20.60.205:33159] AH01998: Connection closed to child 9 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 20:27:27.134398 2015] [ssl:info] [pid 3672:tid 140430314264320] [client 81.169.237.146:55741] AH01964: Connection to child 79 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 20:27:27.309486 2015] [ssl:info] [pid 3672:tid 140430314264320] [client 81.169.237.146:55741] AH01998: Connection closed to child 79 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 23:09:27.380392 2015] [ssl:info] [pid 3672:tid 140430305871616] [client 81.169.237.146:38876] AH01964: Connection to child 80 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Wed Nov 25 23:09:27.555231 2015] [ssl:info] [pid 3672:tid 140430305871616] [client 81.169.237.146:38876] AH01998: Connection closed to child 80 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 01:44:28.120493 2015] [ssl:info] [pid 3671:tid 140430507509504] [client 81.169.237.146:42395] AH01964: Connection to child 0 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 01:44:28.290234 2015] [ssl:info] [pid 3671:tid 140430507509504] [client 81.169.237.146:42395] AH01998: Connection closed to child 0 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 01:52:52.685507 2015] [ssl:info] [pid 3671:tid 140430499116800] [client 81.169.237.146:35236] AH01964: Connection to child 1 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 01:52:52.861349 2015] [ssl:info] [pid 3671:tid 140430499116800] [client 81.169.237.146:35236] AH01998: Connection closed to child 1 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 02:49:39.231670 2015] [ssl:info] [pid 3672:tid 140430289086208] [client 137.116.71.170:34104] AH01964: Connection to child 82 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 04:32:56.457627 2015] [ssl:info] [pid 3671:tid 140430482331392] [client 81.169.237.146:34368] AH01964: Connection to child 3 established (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 04:32:56.622150 2015] [ssl:info] [pid 3671:tid 140430482331392] [client 81.169.237.146:34368] AH01998: Connection closed to child 3 with abortive shutdown (server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443)
+[Thu Nov 26 04:39:33.860057 2015] [ssl:info] [pid 24496:tid 140223513511808] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 04:39:33.860300 2015] [ssl:info] [pid 24496:tid 140223513511808] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 04:39:33.860561 2015] [ssl:warn] [pid 24496:tid 140223513511808] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 04:39:33.860574 2015] [ssl:warn] [pid 24496:tid 140223513511808] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 26 04:39:33.868341 2015] [ssl:info] [pid 24497:tid 140223513511808] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 04:39:33.868555 2015] [ssl:info] [pid 24497:tid 140223513511808] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 04:39:33.868820 2015] [ssl:warn] [pid 24497:tid 140223513511808] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 04:39:33.868833 2015] [ssl:warn] [pid 24497:tid 140223513511808] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 26 04:59:32.375595 2015] [ssl:info] [pid 24618:tid 140501239936896] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 04:59:32.375832 2015] [ssl:info] [pid 24618:tid 140501239936896] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 04:59:32.376090 2015] [ssl:warn] [pid 24618:tid 140501239936896] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 04:59:32.376104 2015] [ssl:warn] [pid 24618:tid 140501239936896] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 26 04:59:32.384040 2015] [ssl:info] [pid 24619:tid 140501239936896] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 04:59:32.384254 2015] [ssl:info] [pid 24619:tid 140501239936896] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 04:59:32.384501 2015] [ssl:warn] [pid 24619:tid 140501239936896] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 04:59:32.384518 2015] [ssl:warn] [pid 24619:tid 140501239936896] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 26 05:16:53.817352 2015] [ssl:info] [pid 24875:tid 140712769378176] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 05:16:53.817602 2015] [ssl:info] [pid 24875:tid 140712769378176] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 05:16:53.817879 2015] [ssl:warn] [pid 24875:tid 140712769378176] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 05:16:53.817895 2015] [ssl:warn] [pid 24875:tid 140712769378176] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
+[Thu Nov 26 05:16:53.825963 2015] [ssl:info] [pid 24876:tid 140712769378176] AH02200: Loading certificate & private key of SSL-aware server 'ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443'
+[Thu Nov 26 05:16:53.826174 2015] [ssl:info] [pid 24876:tid 140712769378176] AH01914: Configuring server ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 for SSL protocol
+[Thu Nov 26 05:16:53.826464 2015] [ssl:warn] [pid 24876:tid 140712769378176] AH01906: RSA server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Thu Nov 26 05:16:53.826480 2015] [ssl:warn] [pid 24876:tid 140712769378176] AH01909: RSA certificate configured for ec2-54-183-138-254.us-west-1.compute.amazonaws.com:443 does NOT include an ID which matches the server name
