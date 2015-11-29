@@ -8,7 +8,8 @@ import random
 placesApiKey = "AIzaSyD7Dxn7cpZ2q70mDr3Ia5stmPrcydNgh0w"
 nearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 textSearch = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-headers = {'Content-Type':'application/json'}
+headers = {'Content-Type': 'application/json'}
+
 
 ###################
 # User Repository #
@@ -34,6 +35,7 @@ def create_user(username, password, email):
     successReport = dict(success=True, userId=cur['userId'])
     return successReport;
 
+
 ##UPDATE API PAGE
 def update_user(userId, username, password, email):
     result = check_user_existence(userId)
@@ -48,6 +50,7 @@ def update_user(userId, username, password, email):
     query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
     successReport = dict(success=True)
     return successReport
+
 
 ##UPDATE API PAGE
 def get_user(userId):
@@ -151,6 +154,7 @@ def remove_friend(userId, friend_userId):
         operationReport = dict(success=True)
     return operationReport
 
+
 ##UPDATE API PAGE
 def get_user_friends(userId):
     cur = query_db("SELECT friendId FROM Friends WHERE UserId=(?)", [userId], one=False)
@@ -205,6 +209,7 @@ def update_group(groupId, name, users):
                  [name, users, groupId], one=True)
         operationReport = dict(success=True)
     return operationReport
+
 
 ##UPDATE API PAGE
 def get_group(groupId):
@@ -275,7 +280,6 @@ def group_suggest(groupId):
     return suggest(total_prefs)
 
 
-
 ##############################
 # Admin Repository Functions #
 ##############################
@@ -327,9 +331,11 @@ def suggest(prefs):
 
     return dict(success=False, Error="error in suggestion function")
 
+
 def parse_users(users):
     user_list = users.split(',')
-    return [dict(user=get_user(user)) for user in user_list]
+    OperationReport = [dict(user=get_user(user)) for user in user_list]
+    return OperationReport
 
 
 def check_user_existence(users):
