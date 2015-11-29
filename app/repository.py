@@ -254,11 +254,11 @@ def delete_group(groupId, password):
 def search(location, genre):
     if genre is None:
         searchType = nearbySearch
-        payload = {'location': location, 'radius': 5000, 'types': 'restaurant', 'key': placesApiKey}
+        payload = {'location': location, 'radius': 5000, 'types': 'restaurant|food', 'key': placesApiKey}
     else:
         searchType = textSearch
         genre = genre + '+food'
-        payload = {'location': location, 'radius': 5000, 'types': "restaurant", 'query': genre, 'key': placesApiKey}
+        payload = {'location': location, 'radius': 5000, 'types': "restaurant|food", 'query': genre, 'key': placesApiKey}
 
     r = requests.post(searchType, params=payload, headers=headers)
     return Response(r.text, content_type='application/json')
