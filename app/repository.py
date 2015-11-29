@@ -274,10 +274,13 @@ def user_suggest(userId):
 
 def group_suggest(groupId):
     group = get_group(groupId)
-    user_list = (group['users'] + ',' + group['userId']).split(',')
     total_prefs = {}
-    for user in user_list:
-        prefs = get_preferences(user)
+    prefs = get_preferences(group['userId'])
+    A = Counter(prefs)
+    B = Counter(total_prefs)
+    total_prefs = A + B
+    for user in group['users']:
+        prefs = get_preferences(user['userId'])
         A = Counter(prefs)
         B = Counter(total_prefs)
         total_prefs = A + B
@@ -335,7 +338,7 @@ def suggest(prefs):
 
 def parse_users(users):
     user_list = users.split(',')
-    OperationReport = [dict(user=get_user(user)) for user in user_list]
+    OperationReport = [get_user(user) for user in user_list]
     return OperationReport
 
 
