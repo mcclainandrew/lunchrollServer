@@ -318,14 +318,11 @@ def get_all_friends():
 
 
 def suggest(prefs):
-    i = 0
-    for key in prefs:
-        i += prefs[key]
-    random.randint(1, i)
+    r = random.randint(1, sum(prefs.values()))
     weights = 0
-    for key in prefs:
-        weights += prefs[key]
-        if i < weights:
+    for key, value in prefs:
+        weights += value
+        if r < weights:
             return dict(success=True, genre=key)
 
     return dict(success=False, Error="error in suggestion function")
