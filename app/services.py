@@ -119,10 +119,10 @@ def login_service():
 
     if 'username' in data_dict:
         username = data_dict['username']
-        entries = login(password, username)
+        entries = login(password, username=username)
     elif 'email' in data_dict:
         email = data_dict['email']
-        entries = login(password, email)
+        entries = login(password, email=email)
     else:
         operationReport = dict(success=False, Error="no username or password")
         return operationReport

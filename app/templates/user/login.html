@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>POST user/getPreferences</title>
+    <title>POST user/login</title>
 
 </head>
 <body>
@@ -20,10 +20,10 @@
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">
-        <h2>POST user/getPreferences</h2>
+        <h2>POST user/login</h2>
 
         <div>
-            <p>Retrieves a user's preferences.</p>
+            <p>Checks a supplied password and username/email against the user databased.</p>
 
             <h2>Request Information</h2>
 
@@ -46,12 +46,23 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>userId</td>
-                    <td>The user's ID</td>
+                    <td>password</td>
+                    <td>The user's password</td>
                     <td>String</td>
                     <td>Required</td>
                 </tr>
-
+                <tr>
+                    <td>username</td>
+                    <td>The username of the user</td>
+                    <td>String</td>
+                    <td>Optional<br>must supply either a username or email</td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td>The email of the user</td>
+                    <td>String</td>
+                    <td>Optional<br>must supply either a username or email</td>
+                </tr>
                 </tbody>
             </table>
             <h3>Request Formats</h3>
