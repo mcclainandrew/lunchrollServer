@@ -89,7 +89,9 @@ def get_user_friends_service():
 @user.route('/user/addFriend', methods=['POST'])
 def add_friend_service():
     data_dict = request.get_json()
-    if 'userId' or 'friendId' not in data_dict:
+    if 'userId' not in data_dict:
+        return dict(success=False, Error="missing fields in json")
+    elif 'friendId' not in data_dict:
         return dict(success=False, Error="missing fields in json")
     userId = data_dict['userId']
     friendId = data_dict['friendId']
