@@ -217,7 +217,7 @@ def get_group(groupId):
     if cur is None:
         operationReport = dict(success=False, error="could not find group")
     else:
-        operationReport = dict(success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
+        operationReport = dict(success=True, groupId=cur['groupId'], creator=get_user(cur['userId']), name=cur['name'],
                                users=parse_users(cur['users']))
     return operationReport
 
