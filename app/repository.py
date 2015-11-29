@@ -266,6 +266,9 @@ def search(location, genre):
 
 def user_suggest(userId):
     prefs = get_preferences(userId)
+    if 'success' in prefs:
+        if prefs['success'] == False:
+            return prefs
     return suggest(prefs)
 
 
