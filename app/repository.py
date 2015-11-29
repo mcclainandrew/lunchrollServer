@@ -47,15 +47,15 @@ def update_user(userId, username, password, email):
 
     query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
     successReport = dict(success=True, userId=userId)
-    return successReport;
+    return successReport
 
-
+##UPDATE API PAGE
 def get_user(userId):
     cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
     if cur is None:
         operationReport = dict(success=False, error="could not find userId in the table")
     else:
-        operationReport = dict(success=True, username=cur['username'], email=cur['email'])
+        operationReport = dict(success=True, userId=userId, username=cur['username'], email=cur['email'])
     return operationReport
 
 
