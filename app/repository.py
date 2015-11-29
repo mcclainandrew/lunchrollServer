@@ -274,7 +274,7 @@ def user_suggest(userId):
 
 def group_suggest(groupId):
     group = get_group(groupId)
-    user_list = (group['users'] + ', ' + group['userId']).split(',')
+    user_list = (group['users'] + ',' + group['userId']).split(',')
     total_prefs = {}
     for user in user_list:
         prefs = get_preferences(user)
@@ -321,7 +321,7 @@ def get_all_friends():
 
 
 def suggest(prefs):
-    r = random.randint(1, sum(prefs.values()))
+    r = random.randint(0, sum(prefs.itervalues()))
     weights = 0
     for key, value in prefs.iteritems():
         weights += value
