@@ -338,8 +338,8 @@ def parse_users(users):
     return OperationReport
 
 
-def check_user_existence(users):
-    user_list = users.split(',')
+def check_user_existence(userIds):
+    user_list = userIds.split(',')
     for user in user_list:
         cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
         if cur is None:
