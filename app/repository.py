@@ -323,10 +323,11 @@ def suggest(prefs):
     for key, value in prefs.iteritems():
         weights += value
         if r < weights:
-            operationReport =  dict(success=True, genre=key)
+            operationReport = dict(success=True, genre=key)
             return operationReport
 
-    return dict(success=False, Error="error in suggestion function")
+    operationReport = dict(success=False, Error="error in suggestion function")
+    return operationReport
 
 
 def parse_users(users):
