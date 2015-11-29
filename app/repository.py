@@ -323,7 +323,8 @@ def suggest(prefs):
     for key, value in prefs.iteritems():
         weights += value
         if r < weights:
-            return dict(success=True, genre=key)
+            operationReport =  dict(success=True, genre=key)
+            return operationReport
 
     return dict(success=False, Error="error in suggestion function")
 
