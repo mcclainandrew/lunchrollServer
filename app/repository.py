@@ -34,7 +34,7 @@ def create_user(username, password, email):
     successReport = dict(success=True, userId=cur['userId'])
     return successReport;
 
-
+##UPDATE API PAGE
 def update_user(userId, username, password, email):
     result = check_user_existence(userId)
     if result['success'] is not True:
@@ -46,14 +46,14 @@ def update_user(userId, username, password, email):
         return errorReport
 
     query_db("UPDATE Users SET password=(?), email=(?) WHERE userId=(?)", [password, email, userId])
-    successReport = dict(success=True, userId=userId)
+    successReport = dict(success=True)
     return successReport
 
 ##UPDATE API PAGE
 def get_user(userId):
     cur = query_db("SELECT username, email FROM Users WHERE userId = (?)", [userId], one=True)
     if cur is None:
-        operationReport = dict(success=False, error="could not find userId in the table")
+        operationReport = dict(success=False, error="could not find userId " + userId + " in the table")
     else:
         operationReport = dict(success=True, userId=userId, username=cur['username'], email=cur['email'])
     return operationReport
@@ -151,10 +151,10 @@ def remove_friend(userId, friend_userId):
         operationReport = dict(success=True)
     return operationReport
 
-
+##UPDATE API PAGE
 def get_user_friends(userId):
     cur = query_db("SELECT friendId FROM Friends WHERE UserId=(?)", [userId], one=False)
-    operationReport = [dict(friendId=row[0]) for row in cur]
+    operationReport = [dict(friend=get_user(row[0])) for row in cur]
     return operationReport
 
 
@@ -206,14 +206,14 @@ def update_group(groupId, name, users):
         operationReport = dict(success=True)
     return operationReport
 
-
+##UPDATE API PAGE
 def get_group(groupId):
     cur = query_db("SELECT * FROM Groups WHERE groupId = (?)", [groupId], one=True)
     if cur is None:
         operationReport = dict(success=False, error="could not find group")
     else:
         operationReport = dict(success=True, groupId=cur['groupId'], userId=cur['userId'], name=cur['name'],
-                               users=cur['users'])
+                               users=parse_users(cur['users']))
     return operationReport
 
 
@@ -326,6 +326,10 @@ def suggest(prefs):
             return dict(success=True, genre=key)
 
     return dict(success=False, Error="error in suggestion function")
+
+def parse_users(users):
+    user_list = users.split(',')
+    return [dict(user=get_user(user)) for user in user_list]
 
 
 def check_user_existence(users):
