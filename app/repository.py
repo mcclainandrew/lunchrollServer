@@ -251,7 +251,7 @@ def delete_group(groupId, password):
 ###############################
 
 
-def search(location, genre=None):
+def search(location, genre):
     if genre is None:
         searchType = nearbySearch
         payload = {'location': location, 'radius': 5000, 'types': 'restaurant', 'key': placesApiKey}
