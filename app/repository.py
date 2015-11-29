@@ -343,7 +343,8 @@ def parse_users(users):
 
 
 def check_user_existence(userIds):
-    user_list = userIds.split(',')
+    user_list = userIds.split(',') if type(userIds) is str else userIds
+
     for user in user_list:
         cur = query_db("SELECT * FROM Users WHERE userId = (?)", [user])
         if cur is None:
