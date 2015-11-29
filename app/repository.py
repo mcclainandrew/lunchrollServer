@@ -298,10 +298,8 @@ def get_all_groups():
 
 
 def get_all_preferences():
-    userIds = query_db("SELECT userId FROM Users", one=False)
-    entries = {}
-    for userId in userIds:
-        entries[userId] = get_preferences(userId)
+    cur = query_db("SELECT userId FROM Users", one=False)
+    entries = [dict(userId=row['userId'], preferences=get_preferences(row['userId'])) for row in cur]
     return entries
 
 
