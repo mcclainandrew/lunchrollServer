@@ -222,6 +222,7 @@ def get_group(groupId):
     return operationReport
 
 
+##UPDATE API PAGE
 def get_groups(userId):
     cur = query_db("SELECT groupId, name, users FROM Groups WHERE userId = ?", [userId], one=False)
     if cur is None:

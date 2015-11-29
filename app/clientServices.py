@@ -28,9 +28,9 @@ def search_suggested_service():
     latitude = data_dict['latitude']
     longitude = data_dict['longitude']
     location = latitude + ',' + longitude
-    if 'userId' in data_dict.keys():
+    if 'userId' in data_dict:
         operationReport = user_suggest(data_dict['userId'])
-    elif 'groupId' in data_dict.keys():
+    elif 'groupId' in data_dict:
         operationReport = group_suggest(data_dict['groupId'])
     else:
         return dict(success=False, Error="no user or group ID in json")
