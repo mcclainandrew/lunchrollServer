@@ -227,7 +227,7 @@ def get_groups(userId):
     if cur is None:
         operationReport = dict(success=False, error="could not find any groups")
     else:
-        operationReport = [dict(success=True, groupId=row[0], name=row[1], users=row[2]) for row in cur]
+        operationReport = [dict(success=True, groupId=row[0], name=row[1], users=parse_users(row[2])) for row in cur]
     return operationReport
 
 
