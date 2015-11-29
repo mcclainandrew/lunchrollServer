@@ -320,7 +320,7 @@ def get_all_friends():
 def suggest(prefs):
     r = random.randint(1, sum(prefs.values()))
     weights = 0
-    for key, value in prefs:
+    for key, value in prefs.iteritems():
         weights += value
         if r < weights:
             return dict(success=True, genre=key)
