@@ -1,6 +1,6 @@
 from app import app
 import repository
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from repository import search, user_suggest, group_suggest
 
 
@@ -36,7 +36,7 @@ def search_suggested_service():
         return dict(success=False, Error="no user or group ID in json")
 
     if operationReport['success'] is not True:
-        return operationReport
+        return jsonify(data=operationReport)
 
     return search(location, operationReport['genre'])
 
