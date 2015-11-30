@@ -274,11 +274,7 @@ def user_suggest(userId):
 
 def group_suggest(groupId):
     group = get_group(groupId)
-    total_prefs = {}
-    prefs = get_preferences(group['creator']['userId'])
-    A = Counter(prefs)
-    B = Counter(total_prefs)
-    total_prefs = A + B
+    total_prefs = get_preferences(group['creator']['userId'])
     for user in group['users']:
         prefs = get_preferences(user['userId'])
         A = Counter(prefs)
