@@ -58,7 +58,7 @@ def get_user(userId):
     if cur is None:
         operationReport = dict(success=False, error="could not find userId " + userId + " in the table")
     else:
-        operationReport = dict(success=True, userId=userId, username=cur['username'], email=cur['email'])
+        operationReport = dict(success=True, userId=str(userId), username=cur['username'], email=cur['email'])
     return operationReport
 
 
