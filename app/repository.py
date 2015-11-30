@@ -1,5 +1,5 @@
 from app import app
-from flask import g, Response
+from flask import g, Response, jsonify
 from collections import Counter
 import requests
 import sqlite3
@@ -261,7 +261,7 @@ def search(location, genre):
         payload = {'location': location, 'radius': 5000, 'types': "restaurant|food", 'query': genre, 'key': placesApiKey}
 
     r = requests.post(searchType, params=payload, headers=headers)
-    return Response(r.text, content_type='application/json')
+    return jsonify(genre=genre, response=Response(r.text, content_type='application/json'))
 
 
 def user_suggest(userId):
