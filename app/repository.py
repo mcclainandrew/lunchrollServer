@@ -262,7 +262,8 @@ def search(location, genre):
                    'key': placesApiKey}
 
     r = requests.post(searchType, params=payload, headers=headers)
-    return jsonify(genre=genre, response=Response(r.text, content_type='application/json'))
+    r['genre'] = genre
+    return Response(r.text, content_type='application/json')
 
 
 def user_suggest(userId):
