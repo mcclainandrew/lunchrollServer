@@ -267,7 +267,7 @@ def search(location, genre):
 def user_suggest(userId):
     prefs = get_preferences(userId)
     if 'success' in prefs:
-        if prefs['success'] == False:
+        if prefs['success'] is False:
             return prefs
     return suggest(prefs)
 
@@ -275,9 +275,16 @@ def user_suggest(userId):
 def group_suggest(groupId):
     group = get_group(groupId)
     creatorId = group['creator']['userId']
-    total_prefs = get_preferences(creatorId)
+    prefs = get_preferences(creatorId)
+    if 'success' in prefs and prefs['success'] is False:
+        pass
+    else:
+        total_prefs = prefs
     for user in group['users']:
         prefs = get_preferences(user['userId'])
+        if 'success' in prefs:
+            if prefs['success'] is False:
+                continue
         A = Counter(prefs)
         B = Counter(total_prefs)
         total_prefs = A + B
