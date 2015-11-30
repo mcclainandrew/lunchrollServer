@@ -33,7 +33,8 @@ def search_suggested_service():
     elif 'groupId' in data_dict:
         operationReport = group_suggest(data_dict['groupId'])
     else:
-        return dict(success=False, Error="no user or group ID in json")
+        operationReport = dict(success=False, Error="no user or group ID in json")
+        return jsonify(data=operationReport)
 
     if operationReport['success'] is not True:
         return jsonify(data=operationReport)

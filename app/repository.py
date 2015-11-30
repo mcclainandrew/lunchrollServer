@@ -275,8 +275,6 @@ def user_suggest(userId):
 def group_suggest(groupId):
     group = get_group(groupId)
     creatorId = group['creator']['userId']
-    operationReport = dict(success=False, creatorId=creatorId)
-    return operationReport
     total_prefs = get_preferences(creatorId)
     for user in group['users']:
         prefs = get_preferences(user['userId'])
