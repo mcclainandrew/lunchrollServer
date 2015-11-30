@@ -262,7 +262,7 @@ def search(location, genre):
                    'key': placesApiKey}
 
     r = requests.post(searchType, params=payload, headers=headers)
-    r.meta['genre'] = genre
+    ##r.meta['genre'] = genre
     return Response(r.text, content_type='application/json')
 
 
