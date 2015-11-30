@@ -258,7 +258,8 @@ def search(location, genre):
     else:
         searchType = textSearch
         genre = genre + '+food'
-        payload = {'location': location, 'radius': 5000, 'types': "restaurant|food", 'query': genre, 'key': placesApiKey}
+        payload = {'location': location, 'radius': 5000, 'types': "restaurant|food", 'query': genre,
+                   'key': placesApiKey}
 
     r = requests.post(searchType, params=payload, headers=headers)
     return jsonify(genre=genre, response=Response(r.text, content_type='application/json'))
