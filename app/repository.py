@@ -123,8 +123,8 @@ def get_preferences(userId):
             operationReport = dict(success=False,
                                    Error="incorrect genrePreferenceId set in preference table, blame it on Andrew")
         else:
-            operationReport = dict(asian=cur['asian'], american=cur['american'], italian=cur['italian'],
-                                   mexican=cur['mexican'], indian=cur['indian'], greek=cur['greek'])
+            operationReport = dict(asian=int(cur['asian']), american=int(cur['american']), italian=int(cur['italian']),
+                                   mexican=int(cur['mexican']), indian=int(cur['indian']), greek=int(cur['greek']))
     return operationReport
 
 
