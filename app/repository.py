@@ -176,7 +176,7 @@ def login(password, username=None, email=None):
         operationReport = dict(success=False, Error="incorrect password")
         return operationReport
 
-    return dict(success=True, userId=cur['userId'])
+    return dict(success=True, user=get_user(cur['userId']))
 
 
 ####################
