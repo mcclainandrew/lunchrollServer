@@ -72,7 +72,8 @@ def get_preferences_service():
     userId = data_dict['userId']
 
     entries = get_preferences(userId)
-    entries['success'] = True
+    if 'success' not in entries:
+        entries['success'] = True
     return jsonify(data=entries)
 
 
