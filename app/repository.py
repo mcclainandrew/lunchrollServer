@@ -129,12 +129,13 @@ def get_preferences(userId):
 
 
 def add_friend(userId, friend_userId):
-    result = check_user_existence(userId + "," + friend_userId)
+    result = check_user_existence(userId)
+    result2 = check_user_existence(friend_userId)
     if friend_userId == userId:
         operationReport = dict(success=False, Error="you can't add yourself as a friend, that's just sad")
         return operationReport
-    if result['success'] is not True:
-        return result
+    if result['success'] or result2['success'] is not True:
+        return result if not result['success'] else result2
     cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
     if cur is not None:
         operationReport = dict(success=False, Error="user already has this friend")
