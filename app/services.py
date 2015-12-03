@@ -93,12 +93,18 @@ def add_friend_service():
     data_dict = request.get_json()
     if 'userId' not in data_dict:
         return dict(success=False, Error="missing fields in json")
-    elif 'friendId' not in data_dict:
-        return dict(success=False, Error="missing fields in json")
-    userId = data_dict['userId']
-    friendId = data_dict['friendId']
 
-    entries = add_friend(userId, friendId)
+    userId = data_dict['userId']
+    friendUsername = None
+    friendEmail = None
+    if 'friendUsername' in data_dict:
+        friendUsername = data_dict['friendUsername']
+    elif 'friendEmail' in data_dict:
+        friendEmail = data_dict['friendEmail']
+    else:
+        return dict(success=False, Error="missing fields in json")
+
+    entries = add_friend(userId, friend_username=friendUsername, friend_email=friendEmail)
     return jsonify(data=entries)
 
 

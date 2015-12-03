@@ -128,7 +128,20 @@ def get_preferences(userId):
     return operationReport
 
 
-def add_friend(userId, friend_userId):
+def add_friend(userId, friend_username=None, friend_email=None):
+    if friend_username is not None:
+        friend = friend_username
+        query = "SELECT userId from Users WHERE username = (?)"
+    else:
+        friend = friend_email
+        query = "SELECT userId from Users WHERE email = (?)"
+
+    cur = query_db(query, [friend])
+    if cur is None:
+        operationReport = dict(success=False, Error="could not found user with " +  friend)
+        return operationReport
+
+    friend_userId = cur['userId']
     result = check_user_existence(userId)
     result2 = check_user_existence(friend_userId)
     if friend_userId == userId:
