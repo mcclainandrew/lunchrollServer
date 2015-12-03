@@ -144,7 +144,7 @@ def add_friend(userId, friend_username=None, friend_email=None):
     friend_userId = cur['userId']
     result = check_user_existence(userId)
     result2 = check_user_existence(friend_userId)
-    if friend_userId == userId:
+    if str(friend_userId) == str(userId):
         operationReport = dict(success=False, Error="you can't add yourself as a friend, that's just sad")
         return operationReport
     if result['success'] is not True:
