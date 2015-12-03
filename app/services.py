@@ -174,7 +174,9 @@ def update_group_service():
 @group.route('/group/deleteGroup', methods=['POST'])
 def delete_group_service():
     data_dict = request.get_json()
-    if 'groupId' not in data_dict or 'password' not in data_dict:
+    if 'groupId' not in data_dict
+        return dict(success=False, Error="missing fields in json")
+    if'password' not in data_dict:
         return dict(success=False, Error="missing fields in json")
     groupId = data_dict['groupId']
     password = data_dict['password']
