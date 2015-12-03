@@ -111,7 +111,7 @@ def add_friend_service():
 @user.route('/user/removeFriend', methods=['POST'])
 def remove_friend_service():
     data_dict = request.get_json()
-    if 'userId' or 'friendId' not in data_dict:
+    if 'userId' not in data_dict or 'friendId' not in data_dict:
         return dict(success=False, Error="missing fields in json")
     userId = data_dict['userId']
     friendId = data_dict['friendId']
