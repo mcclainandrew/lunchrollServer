@@ -177,7 +177,6 @@ def delete_group_service():
     if 'groupId' not in data_dict
         return dict(success=False, Error="missing fields in json")
     groupId = data_dict['groupId']
-    password = data_dict['password']
     report = delete_group(groupId, password)
     return jsonify(data=report)
 

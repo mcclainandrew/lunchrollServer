@@ -248,15 +248,7 @@ def get_groups(userId):
     return operationReport
 
 
-def delete_group(groupId, password):
-    cur = query_db("SElECT userId FROM Groups WHERE groupId=(?)", [groupId], one=True)
-    userId = cur['userId']
-    cur = query_db("SELECT password FROM Users WHERE userId=(?)", [userId], one=True)
-    if cur is None:
-        return dict(success=False, error="could not find user associated with group")
-    if cur['password'] != password:
-        operationReport = dict(success=False, error="incorrect password", attempted=password, actual=cur['password'])
-        return operationReport
+def delete_group(groupId):
     query_db("DELETE FROM Groups WHERE groupId=(?)", [groupId], one=True)
     operationReport = dict(success=True)
     return operationReport
