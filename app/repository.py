@@ -346,11 +346,11 @@ def get_all_friends():
 
 
 def suggest(prefs):
-    r = random.randint(0, sum(prefs.itervalues()))
+    r = random.randint(1, sum(prefs.itervalues()))
     weights = 0
     for key, value in prefs.iteritems():
         weights += value
-        if r < weights:
+        if r <= weights:
             operationReport = dict(success=True, genre=key)
             return operationReport
 
