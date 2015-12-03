@@ -134,8 +134,10 @@ def add_friend(userId, friend_userId):
     if friend_userId == userId:
         operationReport = dict(success=False, Error="you can't add yourself as a friend, that's just sad")
         return operationReport
-    if result['success'] or result2['success'] is not True:
-        return result if not result['success'] else result2
+    if result['success'] is not True:
+        return result
+    if result2['success'] is not True:
+        return result2
     cur = query_db("SELECT * FROM Friends WHERE UserId = (?) AND FriendId = (?)", [userId, friend_userId])
     if cur is not None:
         operationReport = dict(success=False, Error="user already has this friend")
