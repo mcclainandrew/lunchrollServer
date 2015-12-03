@@ -138,7 +138,7 @@ def add_friend(userId, friend_username=None, friend_email=None):
 
     cur = query_db(query, [friend])
     if cur is None:
-        operationReport = dict(success=False, Error="could not found user with " +  friend)
+        operationReport = dict(success=False, Error="could not find friend user")
         return operationReport
 
     friend_userId = cur['userId']
