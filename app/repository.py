@@ -112,7 +112,7 @@ def get_preferences(userId):
     result = check_user_existence(userId)
     if result['success'] is not True:
         return result
-    cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", userId)
+    cur = query_db("SELECT * FROM Preferences WHERE UserId = (?)", [userId])
     if cur is None:
         operationReport = dict(success=False, Error="unable to find preference entry for user")
         return operationReport
