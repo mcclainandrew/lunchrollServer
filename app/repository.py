@@ -156,7 +156,7 @@ def add_friend(userId, friend_username=None, friend_email=None):
         operationReport = dict(success=False, Error="user already has this friend")
     else:
         query_db("INSERT INTO Friends (userId, friendId) VALUES (?, ?)", [userId, friend_userId])
-        operationReport = dict(success=True)
+        operationReport = dict(success=True, friend=get_user(friend_userId))
 
     return operationReport
 
